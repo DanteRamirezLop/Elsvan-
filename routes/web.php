@@ -2,9 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\AboutusController;
 
 Route::get('/',[HomeController::class,'index'])->name('inicio');
+Route::get('/contactanos',[ContactController::class,'index'])->name('contactanos');
+Route::get('/galeria',[GalleryController::class,'index'])->name('galeria');
+Route::get('/nosotros',[AboutusController::class,'index'])->name('nosotros');
+Route::resource('proyectos',ProjectController::class);
 
 // Route::get('/', function () {
 //     return view('welcome');
