@@ -13,6 +13,5 @@ Route::get('/galeria',[GalleryController::class,'index'])->name('galeria');
 Route::get('/nosotros',[AboutusController::class,'index'])->name('nosotros');
 Route::resource('proyectos',ProjectController::class);
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/brochure',[ProjectController::class,'brochure'])->name('brochure');
+

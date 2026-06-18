@@ -7,12 +7,9 @@
             <h1 class="banner-category-title"> La confianza no se vende</h1>
             <p class="text-center text-white text-xl lg:text-3xl"> se construye</p>
             <div class="text-center mt-5">
-                <a href="#" class="btn-line bg-orange mr-2">
+                <a href="" class="btn-banner"> Cotiza aquí </a>
+                <!-- <a href="#" class="btn-line bg-orange mr-2">
                     <span class="min-w-24"> Cotiza aquí </span>
-                </a>
-
-                <!-- <a href="#" class="btn-line bg-brown">
-                    Brochure
                 </a> -->
             </div>
         </div>
@@ -70,11 +67,9 @@
     <div class="location-card">
 
     <div class="map-panel">
-        <img
-          id="mapImage"
+        <img id="mapImage"
           src="https://edifica.com.pe/uploads/02-proyectos-en-venta/monument/monument-areas-comunes/aacc-reel/yoga-zone-1.jpg"
-          alt="Mapa de ubicación en Miraflores"
-        />
+          alt="Mapa de ubicación en Miraflores"/>
       </div>
 
       <div class="info-panel">
@@ -126,27 +121,33 @@
 
 @endsection
 
+@push('seo')
+    <title>{{$seo['title']}}</title>
+    <meta name="description" content="{{$seo['description']}}">
+    <meta name="keywords" content="{{$seo['keywords']}}">
+    <meta property="og:image" itemprop="image" content="{{$seo['image']}}" />
+@endpush
 
 @push('javascript')
-<script>
-    const buttons = document.querySelectorAll(".category-btn");
-    const mapImage = document.getElementById("mapImage");
+    <script>
+        const buttons = document.querySelectorAll(".category-btn");
+        const mapImage = document.getElementById("mapImage");
 
-    buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-        const newImage = button.getAttribute("data-image");
+        buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const newImage = button.getAttribute("data-image");
 
-        buttons.forEach((btn) => btn.classList.remove("active"));
-        button.classList.add("active");
+            buttons.forEach((btn) => btn.classList.remove("active"));
+            button.classList.add("active");
 
-        mapImage.classList.add("fade");
+            mapImage.classList.add("fade");
 
-        setTimeout(() => {
-        mapImage.src = newImage;
-        mapImage.alt = `Mapa de ${button.innerText}`;
-        mapImage.classList.remove("fade");
-        }, 250);
-    });
-    });
-</script>
+            setTimeout(() => {
+            mapImage.src = newImage;
+            mapImage.alt = `Mapa de ${button.innerText}`;
+            mapImage.classList.remove("fade");
+            }, 250);
+        });
+        });
+    </script>
 @endpush
