@@ -1,7 +1,7 @@
 @extends('layouts.web')
 
 @section('content')
-    <div class="banner-category container-fluid">
+    <section class="banner-category container-fluid">
         <img src="{{asset('images/banner.jpg')}}" alt="La confianza no se vende se construye" class="banner-category-img">
         <div class="banner-category-box-title">
             <h1 class="banner-category-title"> La confianza no se vende</h1>
@@ -13,7 +13,7 @@
                 </a> -->
             </div>
         </div>
-    </div>
+    </section>
 
     <section class="contact-bar">
         <div class="contact-content ">
@@ -112,9 +112,6 @@
           </button>
         </div>
       </div>
-
-
-
     </div>
 </div>
 </section>
