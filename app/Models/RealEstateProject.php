@@ -16,6 +16,10 @@ class RealEstateProject extends Model
         'area_from',
         'main_image',
         'status',
+        'tag',
+        'rooms_from',
+        'bathrooms_from',
+        'delivery_date',
     ];
 
     // public function environments(): HasMany

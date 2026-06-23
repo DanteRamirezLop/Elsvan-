@@ -38,5 +38,10 @@
             @include('footer')
         </main>
         @stack('javascript')
+
+         <script>
+            document.getElementById('years-in-market').textContent = '+' + (new Date().getFullYear() - 2012) + ' años';
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        </script>
     </body>
 </html>

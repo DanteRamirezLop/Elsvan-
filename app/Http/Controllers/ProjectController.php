@@ -10,7 +10,7 @@ class ProjectController extends Controller
 {
     public function index(){
 
-        $projects = RealEstateProject::where('status','published')->get();
+        $projects = RealEstateProject::where('status','published')->paginate(9);
         $data['projects'] = $projects;
 
         $dominio = config('app.url');

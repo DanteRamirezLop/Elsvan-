@@ -20,17 +20,32 @@ class RealEstateProjectsTable
                     ->searchable(),
                 TextColumn::make('slug')
                     ->searchable(),
-                TextColumn::make('location')
-                    ->searchable(),
-                TextColumn::make('price_from')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('area_from')
-                    ->numeric()
-                    ->sortable(),
+                // TextColumn::make('location')
+                //     ->searchable(),
+                // TextColumn::make('price_from')
+                //     ->numeric()
+                //     ->sortable(),
+                // TextColumn::make('area_from')
+                //     ->numeric()
+                //     ->sortable(),
                 ImageColumn::make('main_image'),
-                TextColumn::make('status')
-                    ->badge(),
+                TextColumn::make('status')->badge(),
+
+                TextColumn::make('tag')
+                    ->label('Etiqueta')
+                    ->badge()
+                    ->formatStateUsing(fn (string $state): string => match ($state) {
+                        'vendido' => 'Vendido',
+                        'lanzamiento' => 'Lanzamiento',
+                        'estreno' => 'Estreno',
+                        default => $state,
+                    })
+                    ->color(fn (string $state): string => match ($state) {
+                        'vendido' => 'danger',
+                        'lanzamiento' => 'warning',
+                        'estreno' => 'success',
+                        default => 'gray',
+                    }),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

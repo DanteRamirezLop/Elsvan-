@@ -1,8 +1,9 @@
 @extends('layouts.web')
 
 @section('content')
+
     <section class="banner-category container-fluid">
-        <img src="{{asset('images/banner.jpg')}}" alt="La confianza no se vende se construye" class="banner-category-img">
+        <img src="{{asset('images/proyectos.webp')}}" alt="La confianza no se vende se construye" class="banner-category-img">
         <div class="banner-category-box-title">
             <h1 class="banner-category-title"> Nuestros Proyectos</h1>
             <p class="text-center text-white text-xl lg:text-3xl"> Elsvan Inmobiliaria</p>
@@ -36,57 +37,61 @@
         </div>
     </section>
 
+    <section class="section-projects py-12" >
+        <!-- Grid de proyectos -->
+        <div class="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+            @foreach($projects as $project)
+            <article class="project-card">
+                <a href="">
+                    <div class="rounded-t-xl project-image relative overflow-hidden bg-gray-200 shadow-lg">
+                        @if($project->tag == 'vendido')
+                            <div class="absolute inset-0 z-20 flex items-center justify-center">
+                                <span class="rounded-lg bg-white px-10 py-3 text-2xl font-extrabold uppercase text-orange shadow-lg">
+                                     {{$project->tag}}
+                                </span>
+                            </div>
+                        @else
+                            <div class="uppercase absolute left-0 top-0 z-20 flex h-14 w-full items-center justify-center bg-green-tranparence px-4 text-center text-xl font-extrabold text-white">
+                                {{$project->tag}}
+                            </div>
+                        @endif
 
-    <!-- <section class="mx-auto max-w-7xl"> -->
-    <section class="section pt-12 pb-12" >
-            <!-- Grid de proyectos -->
-            <div class="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-
-                @foreach($projects as $project)
-                <article class="project-card">
-                    <div class="project-image relative overflow-hidden rounded-[18px] bg-gray-200">
-                        <div class=" absolute left-0 top-0 z-20 flex h-14 w-full items-center justify-center bg-green-tranparence px-4 text-center text-xl font-extrabold text-white">
-                            LANZAMIENTO
-                        </div>
-                        <a href="">
-                            <img src="{{ $project->main_image ? Storage::disk('public')->url($project->main_image) : '' }}" alt="{{$project->name}}" class="h-full w-full object-cover">
-                        </a>
+                        <img src="{{ $project->main_image ? Storage::disk('public')->url($project->main_image) : '' }}" alt="{{$project->name}}" class="h-full w-full object-cover">
                     </div>
-
-                    <div class="mt-4 rounded-[9px] bg-brown px-5 py-4 text-center shadow-project">
-                        <h2 class="text-xl font-extrabold uppercase text-green">
-                            {{$project->name}}
-                        </h2>
-                        <p class="text-white">
-                            {{$project->location}}
-                        </p>
-                        <div class="project-list-details">
-                            <div class="project-list-detail-box ">
-                                <i class="la la-bed text-2xl text-gray-200 mr-1" aria-hidden="true"></i>
-                                <span class="project-list-detail-text"> 1-2-3 </span>
-                            </div>
-                            <div class="project-list-detail-box ">
-                                <i class="la la-bath text-2xl text-gray-200 mr-1" aria-hidden="true"></i>
-                                <span class="project-list-detail-text"> 1-2 </span>
-                            </div>
-                            <div class="project-list-detail-box ">
-                                <i class="la la-ruler-horizontal text-2xl text-gray-200 mr-2" aria-hidden="true"></i>
-                                <span class="project-list-detail-text"> Desde {{ number_format($project->area_from,0)}} m² </span>
-                            </div>
+                </a>
+                <div class=" rounded-b-xl bg-brown px-5 py-4 text-center shadow-project">
+                    <h2 class="text-xl font-extrabold uppercase text-green">
+                        {{$project->name}}
+                    </h2>
+                    <p class="text-white">
+                        {{$project->location}}
+                    </p>
+                    <div class="project-list-details">
+                        <div class="project-list-detail-box ">
+                            <i class="la la-bed text-2xl text-gray-200 mr-1" aria-hidden="true"></i>
+                            <span class="project-list-detail-text">{{$project->rooms_from}} </span>
                         </div>
-                        <p class="mt-1 text-sm">
-                           <span class="text-gray-200"> Entrega: </span> <strong class="text-white">  Agosto 2026  </strong>
-                        </p>
+                        <div class="project-list-detail-box ">
+                            <i class="la la-bath text-2xl text-gray-200 mr-1" aria-hidden="true"></i>
+                            <span class="project-list-detail-text">{{$project->bathrooms_from}} </span>
+                        </div>
+                        <div class="project-list-detail-box ">
+                            <i class="la la-ruler-combined text-2xl text-gray-200 mr-2" aria-hidden="true"></i>
+                            <span class="project-list-detail-text">Desde {{ number_format($project->area_from,0)}} m² </span>
+                        </div>
                     </div>
-                </article>
-                @endforeach
-
-            </div>
-
-        </section>
-
+                    <p class="mt-1 text-sm">
+                        <span class="text-gray-200"> Entrega: </span> <strong class="text-white"> {{$project->delivery_date}}  </strong>
+                    </p>
+                </div>
+            </article>
+            @endforeach
+        </div>
+        <div class="mt-10">
+            {{ $projects->links() }}
+        </div>
+    </section>
 @endsection
-
 
 @push('seo')
     <title>{{$seo['title']}}</title>

@@ -25,11 +25,11 @@
 
         <!-- Menú -->
         <nav class="flex flex-col gap-5 text-center lg:text-left text-[15px] font-medium">
-          <a href="#" class="hover:text-orange-400 transition">Nosotros</a>
-          <a href="#" class="hover:text-orange-400 transition">Proyectos</a>
-          <a href="#" class="hover:text-orange-400 transition">Galería</a>
-          <a href="#" class="hover:text-orange-400 transition">Contáctanos</a>
-          <a href="#" class="hover:text-orange-400 transition">Términos y condiciones</a>
+          <a href="#" class="hover:text-orange-500 transition">Nosotros</a>
+          <a href="#" class="hover:text-orange-500 transition">Proyectos</a>
+          <a href="#" class="hover:text-orange-500 transition">Galería</a>
+          <a href="#" class="hover:text-orange-500 transition">Contáctanos</a>
+          <a href="#" class="hover:text-orange-500 transition">Términos y condiciones</a>
         </nav>
 
         <!-- Información de contacto -->
@@ -118,7 +118,7 @@
           <i class="la la-shield-alt text-orange text-7xl"></i>
 
           <div>
-            <span class="text-5xl lg:text-6xl font-bold leading-none">+14 años</span>
+            <span id="years-in-market" class="text-5xl lg:text-6xl font-bold leading-none">+0 años</span>
             <p class="text-base font-semibold">
               en el mercado inmobiliario
             </p>
@@ -131,9 +131,11 @@
 
     <!-- Barra copyright -->
     <div class="bg-orange py-4 text-center text-white text-sm  px-4">
-      Copyright © 2026. Designed & Developed by
-      <a href="#" class="underline underline-offset-4 hover:text-gray-200">
+      Copyright © <span id="current-year"></span>. Designed & Developed by
+      <a href="https://onfleekmedia.com/" target="_blank" class="underline underline-offset-4 hover:text-gray-200">
         Onfleek Media
       </a>
     </div>
   </footer>
+
+

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Page;
+use App\Models\RealEstateProject;
 
 class HomeController extends Controller
 {
@@ -27,6 +28,9 @@ class HomeController extends Controller
                 'image'         => $dominio.'/images/logo-seo.png',
             );
         }
+
+        $data['projects'] = RealEstateProject::where('status','published')->where('tag','<>','vendido')->get();
+
 
        return view('home',$data);
     }
