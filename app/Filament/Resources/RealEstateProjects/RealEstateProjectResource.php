@@ -3,6 +3,8 @@
 namespace App\Filament\Resources\RealEstateProjects;
 
 use App\Filament\Resources\RealEstateProjects\RelationManagers\EnvironmentsRelationManager;
+use App\Filament\Resources\RealEstateProjects\RelationManagers\BlueprintsRelationManager;
+
 use App\Filament\Resources\RealEstateProjects\Pages\CreateRealEstateProject;
 use App\Filament\Resources\RealEstateProjects\Pages\EditRealEstateProject;
 use App\Filament\Resources\RealEstateProjects\Pages\ListRealEstateProjects;
@@ -44,6 +46,7 @@ class RealEstateProjectResource extends Resource
     {
         return [
             EnvironmentsRelationManager::class,
+            BlueprintsRelationManager::class,
         ];
     }
 

@@ -32,4 +32,9 @@ class RealEstateProject extends Model
     {
         return $this->hasMany(ProjectEnvironment::class);
     }
+
+    public function blueprints(): HasMany
+    {
+        return $this->hasMany(ProjectBlueprints::class);
+    }
 }

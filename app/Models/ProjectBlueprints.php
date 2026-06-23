@@ -3,24 +3,24 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-
-class ProjectEnvironment extends Model
+class ProjectBlueprints extends Model
 {
     protected $fillable = [
         'real_estate_project_id',
-        'type',
-        'title',
+        'name',
         'description',
         'image',
-        'sort_order',
+        'bedrooms',
+        'bathrooms',
+        'garden',
+        'balcony',
+        'number_departments',
+        'area_from',
     ];
 
     public function realEstateProject(): BelongsTo
     {
         return $this->belongsTo(RealEstateProject::class);
     }
-
-
 }
