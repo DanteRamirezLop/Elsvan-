@@ -8,25 +8,22 @@ import {
     EffectFade,
 } from 'swiper/modules';
 
-
-
-
 // Estilos generales
 import 'swiper/css';
-
 // Estilos de módulos
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const slider = document.querySelector('.mySwiper');
+    const sliderHome = document.querySelector('.sliderHome');
+    const sliderBlueprint =  document.querySelector('.sliderBlueprint');
 
-    if (!slider) {
+    if (!sliderHome) {
         return;
     }
 
-    new Swiper(slider, {
+    new Swiper(sliderHome, {
         modules: [
             Navigation,
             Pagination,
@@ -34,12 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
             EffectFade,
         ],
 
-
         slidesPerView: 1,
         spaceBetween: 20,
         loop: true,
-
-
 
         autoplay: {
             delay: 3000,
@@ -64,4 +58,32 @@ document.addEventListener('DOMContentLoaded', () => {
         },
 
     });
+
+    if (!sliderBlueprint) {
+        return;
+    }
+
+     new Swiper(sliderBlueprint, {
+        modules: [
+            Navigation,
+            EffectFade,
+        ],
+
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+        effect: 'fade',
+        speed: 600,
+            fadeEffect: {
+            crossFade: true,
+        },
+
+    });
+
 });

@@ -104,7 +104,7 @@ class BlueprintsRelationManager extends RelationManager
                     ->searchable(),
 
                 TextColumn::make('garden')
-                    ->label('Jardín')
+                    ->label('Terraza')
                     ->searchable(),
 
               TextColumn::make('balcony')

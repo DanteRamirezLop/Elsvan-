@@ -6,6 +6,8 @@
   --swiper-pagination-bullet-horizontal-gap: 12px;
   --color-primary: #EA6109;
   --color-secondary: #94c80f;
+  --swiper-navigation-color: #ea6109;
+  --swiper-theme-color : #94c80f;
 }
 
 body {
@@ -128,6 +130,7 @@ header>nav{
 .bg-green-tranparence{
     background-color: #94c80fc7;
 }
+
 
 .text-brown{
     color: #53484B;
@@ -265,6 +268,47 @@ header>nav{
     gap: 60px;
     padding: 0 24px 24px;
     background: #ffffff;
+}
+
+.proeyct-home-section{
+    background-color: #f3f3f3;
+    position: relative;
+}
+
+.proeyct-home-section::before {
+    content: "";
+    display: block;
+    width: 210px;
+    height: 300px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-image: url('/images/flecha.png');
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.proeyct-home-section::after {
+    content: "";
+    width: 210px;
+    height: 300px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-image: url('/images/flecha-up.png');
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.proeyct-home-section > .section {
+    position: relative;
+    z-index: 1;
 }
 
 .about-text .marquee {
@@ -510,6 +554,7 @@ header>nav{
     border-radius: 12px;
     font-size: 18px;
     transition: 0.3s ease;
+    min-width: 180px;
 }
 
 .btn-projects:hover {

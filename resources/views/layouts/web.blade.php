@@ -23,6 +23,7 @@
         <link rel="apple-touch-icon" href="{{env('APP_URL')}}/images/icon/favicon.ico" />
         <!-- css -->
         <link rel="stylesheet" href="{{asset('css/line-awesome.css')}}?v=1993.1.1">
+         <link rel="stylesheet" href="{{asset('css/whatsapp.css')}}?v=1993.1.1">
         <link rel="stylesheet" href="{{asset('css/style.css')}}?v=1993.1.1">
         <link rel="stylesheet" href="{{asset('css/responsive.css')}}?v=1993.1.1">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -30,6 +31,7 @@
         @stack('css')
     </head>
     <body>
+        <livewire:whatsapp />
         <main class="wrapper-main">
             @include('header')
             <main class="main">
@@ -38,7 +40,10 @@
             @include('footer')
         </main>
         @stack('javascript')
-
+        <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
+        <script src="{{asset('js/jquery-ui.min.js')}}"></script>
+        <script src="{{asset('js/app.js')}}?v=1993.1.3"></script>
+        <script src="{{asset('js/cookies.js')}}"></script>
          <script>
             document.getElementById('years-in-market').textContent = '+' + (new Date().getFullYear() - 2012) + ' años';
             document.getElementById('current-year').textContent = new Date().getFullYear();
