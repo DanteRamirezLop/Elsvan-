@@ -17,12 +17,9 @@ import 'swiper/css/effect-fade';
 
 document.addEventListener('DOMContentLoaded', () => {
     const sliderHome = document.querySelector('.sliderHome');
-    const sliderBlueprint =  document.querySelector('.sliderBlueprint');
+    const sliderBlueprints = document.querySelectorAll('.sliderBlueprint');
 
-    if (!sliderHome) {
-        return;
-    }
-
+    if (sliderHome) {
     new Swiper(sliderHome, {
         modules: [
             Navigation,
@@ -58,32 +55,31 @@ document.addEventListener('DOMContentLoaded', () => {
         },
 
     });
-
-    if (!sliderBlueprint) {
-        return;
     }
 
-     new Swiper(sliderBlueprint, {
-        modules: [
-            Navigation,
-            EffectFade,
-        ],
+    sliderBlueprints.forEach((sliderBlueprint) => {
+        new Swiper(sliderBlueprint, {
+            modules: [
+                Navigation,
+                EffectFade,
+            ],
 
-        slidesPerView: 1,
-        spaceBetween: 20,
-        loop: true,
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
 
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
+            navigation: {
+                nextEl: sliderBlueprint.querySelector('.swiper-button-next'),
+                prevEl: sliderBlueprint.querySelector('.swiper-button-prev'),
+            },
 
-        effect: 'fade',
-        speed: 600,
+            effect: 'fade',
+            speed: 600,
             fadeEffect: {
-            crossFade: true,
-        },
+                crossFade: true,
+            },
 
+        });
     });
 
 });

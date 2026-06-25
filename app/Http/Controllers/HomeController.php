@@ -29,7 +29,10 @@ class HomeController extends Controller
             );
         }
 
-        $data['projects'] = RealEstateProject::where('status','published')->where('tag','<>','vendido')->get();
+        $data['projects'] = RealEstateProject::with('blueprints')
+            ->where('status', 'published')
+            ->where('tag', '<>', 'vendido')
+            ->get();
 
 
        return view('home',$data);

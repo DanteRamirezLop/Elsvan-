@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Page;
 
 class GalleryController extends Controller
 {
@@ -28,6 +29,6 @@ class GalleryController extends Controller
         }
 
 
-        return view('gallery');
+        return view('gallery', $data);
     }
 }

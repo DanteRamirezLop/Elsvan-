@@ -93,117 +93,77 @@
     </section>
 
     @foreach($projects as $project)
-        <section class="proeyct-home-section mt-8 mb-12 py-5">
+        <section class="proeyct-home-section mt-8 mb-14 py-10">
             <div class="section">
                 <div class="grid w-full items-start gap-8 lg:grid-cols-[1fr_1fr] lg:gap-16" aria-label="Departamentos disponibles">
-                <!-- COLUMNA IZQUIERDA -->
-                <div class="min-w-0">
-                    <h2 class="text-4xl text-center py-5"> {{$project->name}} </h2>
-                    <p></p>
-                    <div class="swiper sliderBlueprint">
-                        <div class="swiper-wrapper">
-                            @foreach($project->blueprints as $blueprint)
-                            <div class="swiper-slide">
-                                <article id="property-card" class="overflow-hidden rounded-[26px] bg-[#f06400] shadow-[0_18px_45px_rgba(15,23,42,0.12)]">
-                                    <!-- Ficha blanca -->
-                                    <div class="m-[5px] mb-0 rounded-t-[22px] rounded-br-[22px] bg-white px-5 pb-7 pt-4 sm:px-9 sm:pb-8 sm:pt-5">
-                                        <!-- <header class="flex items-start justify-between gap-5">
-                                            <div class="pt-1 text-[9px] font-medium uppercase leading-tight tracking-wide text-slate-500 sm:text-[10px]">
-                                                <p>{{$project->name}}</p>
-                                                <p class="normal-case">{{$project->name}}</p>
+                    <!-- COLUMNA IZQUIERDA -->
+                    <div class="min-w-0 {{ $loop->even ? 'lg:order-2' : 'lg:order-1' }}">
+                        <h2 class="text-4xl text-center pt-5"> {{$project->name}} </h2>
+                        <p class="text-center mb-2">  {{$project->location}} </p>
+                        <div class="swiper sliderBlueprint">
+                            <div class="swiper-wrapper">
+                                @foreach($project->blueprints as $blueprint)
+                                <div class="swiper-slide">
+                                    <article id="property-card" class="overflow-hidden rounded-[26px] bg-[#f06400] shadow-[0_18px_45px_rgba(15,23,42,0.12)]">
+                                        <!-- Ficha blanca -->
+                                        <div class="m-[5px] mb-0 rounded-t-[22px] rounded-br-[22px] bg-white px-5 pb-7 pt-4 sm:px-9 sm:pb-8 sm:pt-5">
+                                        <!-- Plano -->
+                                        <div class="mt-6 overflow-hidden rounded-xl bg-white sm:mt-8">
+                                            <img id="floor-plan"
+                                                src="{{ $blueprint->image ? Storage::disk('public')->url($blueprint->image) : '' }}"
+                                                alt="Plano del departamento del Residencial Escudero"
+                                                class=" w-full object-contain"/>
                                             </div>
-
-                                            <div class="flex flex-col items-center text-slate-600" aria-label="Elsvan">
-                                                <svg class="h-8 w-10" viewBox="0 0 48 38" fill="none" aria-hidden="true">
-                                                <path d="M5 18 17 11v17L5 35V18Zm14-9L31 2v17l-12 7V9Zm14 8 10-6v17l-10 6V17Z" fill="currentColor"/>
-                                                <path d="M5 12 17 5v4L5 16v-4Zm14-9L25 0v4l-6 4V3Zm14 8 10-6v4l-10 6v-4Z" fill="currentColor" opacity=".75"/>
-                                                </svg>
-                                                <span class="mt-0.5 text-[9px] font-extrabold tracking-wide">ELSVAN</span>
-                                            </div>
-                                        </header> -->
-
-                                        <!-- Datos principales -->
-                                        <!-- <dl class="mt-5 grid grid-cols-3 gap-3 text-slate-500 sm:mt-7 sm:gap-6">
-                                            <div>
-                                                <dt class="text-[11px] sm:text-sm">Departamento</dt>
-                                                <dd id="apartment-range" class="mt-0.5 text-base font-extrabold text-slate-600 sm:text-xl">
-                                                    202° al 602
-                                                </dd>
-                                            </div>
-                                            <div>
-                                                <dt class="text-[11px] sm:text-sm">Área total</dt>
-                                                <dd id="area" class="mt-0.5 text-base font-extrabold text-slate-600 sm:text-xl">
-                                                    81.12m²
-                                                </dd>
-                                            </div>
-                                            <div>
-                                                <dt class="text-[11px] sm:text-sm">Dormitorios</dt>
-                                                <dd id="bedrooms" class="mt-0.5 text-base font-extrabold text-slate-600 sm:text-xl">
-                                                    03
-                                                </dd>
-                                            </div>
-                                        </dl> -->
-
-                                    <!-- Plano -->
-                                    <div class="mt-6 overflow-hidden rounded-xl bg-white sm:mt-8">
-                                        <img id="floor-plan"
-                                            src="{{ $blueprint->image ? Storage::disk('public')->url($blueprint->image) : '' }}"
-                                            alt="Plano del departamento del Residencial Escudero"
-                                            class=" w-full object-contain"/>
                                         </div>
-                                    </div>
-
-                                    <!-- Franja naranja -->
-                                    <div class="grid gap-5 px-5 py-5 text-white sm:grid-cols-[1fr_auto] sm:px-9 sm:py-6">
-                                        <div>
-                                            <p id="property-type" class="text-xl font-black uppercase leading-none sm:text-2xl">
-                                                {{$blueprint->name}}
-                                            </p>
-                                            <p id="apartment-number" class="mt-2 text-lg font-medium sm:text-xl"> {{$blueprint->number_departments}}</p>
-                                            <!-- <p id="price" class="mt-1 text-xl font-black tracking-tight sm:text-2xl">S/687,000</p> -->
+                                        <!-- Franja naranja -->
+                                        <div class="grid gap-5 px-5 py-5 text-white sm:grid-cols-[1fr_auto] sm:px-9 sm:py-6">
+                                            <div>
+                                                <p id="property-type" class="text-xl font-black uppercase leading-none sm:text-2xl">
+                                                    {{$blueprint->name}}
+                                                </p>
+                                                <p id="apartment-number" class="mt-2 text-lg font-medium sm:text-xl"> {{$blueprint->number_departments}}</p>
+                                                <!-- <p id="price" class="mt-1 text-xl font-black tracking-tight sm:text-2xl">S/687,000</p> -->
+                                            </div>
+                                            <ul class="grid grid-cols-4 items-center gap-4 sm:gap-5" aria-label="Características">
+                                            <li class="text-center">
+                                                <!-- <svg class="mx-auto h-7 w-8" viewBox="0 0 34 28" fill="none" aria-hidden="true">
+                                                <path d="M3 9v15m28-15v15M3 17h28M7 12h8v5H7v-5Zm12 0h8v5h-8v-5ZM1 22h32" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+                                                </svg> -->
+                                                <i class="las la-bed text-2xl"></i>
+                                                <span class="mt-1 block text-lg font-bold">{{$blueprint->bedrooms}}</span>
+                                            </li>
+                                            <li class="text-center">
+                                                <i class="las la-bath text-2xl"></i>
+                                                <span class="mt-1 block text-lg font-bold">{{$blueprint->bathrooms}}</span>
+                                            </li>
+                                            <li class="text-center">
+                                                <i class="las la-seedling text-2xl"></i>
+                                                <span class="mt-1 block text-base font-semibold">{{$blueprint->garden}}</span>
+                                            </li>
+                                            <li class="text-center">
+                                                <i class="las la-seedling text-2xl"></i>
+                                                <span class="mt-1 block text-base font-semibold">{{$blueprint->balcony}}</span>
+                                            </li>
+                                            </ul>
                                         </div>
-
-                                        <ul class="grid grid-cols-4 items-center gap-4 sm:gap-5" aria-label="Características">
-                                        <li class="text-center">
-                                            <!-- <svg class="mx-auto h-7 w-8" viewBox="0 0 34 28" fill="none" aria-hidden="true">
-                                            <path d="M3 9v15m28-15v15M3 17h28M7 12h8v5H7v-5Zm12 0h8v5h-8v-5ZM1 22h32" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
-                                            </svg> -->
-                                            <i class="las la-bed text-2xl"></i>
-                                            <span class="mt-1 block text-lg font-bold">{{$blueprint->bedrooms}}</span>
-                                        </li>
-                                        <li class="text-center">
-                                            <i class="las la-bath text-2xl"></i>
-                                            <span class="mt-1 block text-lg font-bold">{{$blueprint->bathrooms}}</span>
-                                        </li>
-                                        <li class="text-center">
-                                            <i class="las la-seedling text-2xl"></i>
-                                            <span class="mt-1 block text-base font-semibold">{{$blueprint->garden}}</span>
-                                        </li>
-                                        <li class="text-center">
-                                            <i class="las la-seedling text-2xl"></i>
-                                            <span class="mt-1 block text-base font-semibold">{{$blueprint->balcony}}</span>
-                                        </li>
-                                        </ul>
-                                    </div>
-                                </article>
+                                    </article>
+                                </div>
+                                @endforeach
                             </div>
-                            @endforeach
-
                             {{-- Flechas --}}
                             <div class="swiper-button-prev"></div>
                             <div class="swiper-button-next"></div>
                         </div>
                     </div>
-                </div>
                     <!-- COLUMNA DERECHA -->
-                    <div class="h-full  flex items-center">
+                    <div class="h-full  flex items-center {{ $loop->even ? 'lg:order-1' : 'lg:order-2' }}">
                         <div>
                             <img src="{{ $project->main_image ? Storage::disk('public')->url($project->main_image) : '' }}"
                             alt="{{$project->name}}"
-                            class=" inset-0 min-h-[380px] sm:min-h-[540px] object-cover object-center"/>
+                            class=" inset-0 min-h-[380px] sm:min-h-[500px] object-cover object-center"/>
                             <div class="flex justify-center">
                                 <a href="#" class="btn-projects mt-3">Ver proyecto <i class="las la-arrow-right ms-1"></i></a>
-                             </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -213,7 +173,9 @@
         <section class="location-section">
             <div class="location-card">
                 <div class="map-panel">
-                    <img id="mapImage" src="{{Storage::disk('public')->url($project->environments->first()->image)}}" alt="Image de portada"/>
+                    @if($project->environments->first())
+                    <img class="mapImage" src="{{Storage::disk('public')->url($project->environments->first()->image)}}" alt="Image de portada"/>
+                    @endif
                 </div>
                 <div class="info-panel">
                     <h1 class="text-center">Áreas internas</h1>
@@ -244,15 +206,15 @@
 @push('javascript')
     <script>
         const buttons = document.querySelectorAll(".category-btn");
-        const mapImage = document.getElementById("mapImage");
 
         buttons.forEach((button) => {
         button.addEventListener("click", () => {
+            const card = button.closest(".location-card");
+            const mapImage = card.querySelector(".mapImage");
             const newImage = button.getAttribute("data-image");
 
-            buttons.forEach((btn) => btn.classList.remove("active"));
+            card.querySelectorAll(".category-btn").forEach((btn) => btn.classList.remove("active"));
             button.classList.add("active");
-
             mapImage.classList.add("fade");
 
             setTimeout(() => {
