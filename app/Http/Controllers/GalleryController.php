@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Page;
+use App\Models\GalleryImage;
 
 class GalleryController extends Controller
 {
      public function index(){
 
-       $dominio = config('app.url');
+        $dominio = config('app.url');
         $page = Page::where('title','gallery')->first();
         if($page){
             $data['seo'] = array(
@@ -27,6 +28,7 @@ class GalleryController extends Controller
                 'image'         => $dominio.'/images/logo-seo.png',
             );
         }
+        $data['images'] = GalleryImage::where('is_active',1)->get();
 
 
         return view('gallery', $data);

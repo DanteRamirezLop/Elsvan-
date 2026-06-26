@@ -25,11 +25,12 @@
 
         <!-- Menú -->
         <nav class="flex flex-col gap-5 text-center lg:text-left text-[15px] font-medium">
-          <a href="#" class="hover:text-orange-500 transition">Nosotros</a>
-          <a href="#" class="hover:text-orange-500 transition">Proyectos</a>
-          <a href="#" class="hover:text-orange-500 transition">Galería</a>
-          <a href="#" class="hover:text-orange-500 transition">Contáctanos</a>
-          <a href="#" class="hover:text-orange-500 transition">Términos y condiciones</a>
+          <a href="{{route('nosotros')}}" class="hover:text-orange-500 transition">Nosotros</a>
+          <a href="{{route('proyectos.index')}}" class="hover:text-orange-500 transition">Proyectos</a>
+          <a href="{{route('galeria')}}" class="hover:text-orange-500 transition">Galería</a>
+          <a href="{{route('contactanos')}}" class="hover:text-orange-500 transition">Contáctanos</a>
+          <a href="{{route('termsandconditions')}}" class="hover:text-orange-500 transition">Términos y condiciones</a>
+
         </nav>
 
         <!-- Información de contacto -->
@@ -86,11 +87,9 @@
             class="w-52 mb-5"
           />
 
-          <img
-            src="{{asset('images/libro-reclamaciones.webp')}}"
-            alt="Libro de Reclamaciones"
-            class="w-52 bg-white rounded-sm"
-          />
+          <a href="{{route('complaintsbook')}}">
+            <img src="{{asset('images/libro-reclamaciones.webp')}}" alt="Libro de Reclamaciones" class="w-52 bg-white rounded-sm"/>
+          </a>
         </div>
 
       </div>

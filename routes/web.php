@@ -6,6 +6,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\AboutusController;
+use App\Http\Controllers\PageController;
 
 Route::get('/',[HomeController::class,'index'])->name('inicio');
 Route::get('/contactanos',[ContactController::class,'index'])->name('contactanos');
@@ -13,5 +14,7 @@ Route::get('/galeria',[GalleryController::class,'index'])->name('galeria');
 Route::get('/nosotros',[AboutusController::class,'index'])->name('nosotros');
 Route::resource('proyectos',ProjectController::class);
 
+Route::get('/complaintsbook',[PageController::class,'complaintsbook'])->name('complaintsbook');
+Route::get('/terminos-y-condiocnes',[PageController::class,'termsandconditions'])->name('termsandconditions');
 Route::get('/brochure',[ProjectController::class,'brochure'])->name('brochure');
 
