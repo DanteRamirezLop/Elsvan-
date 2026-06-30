@@ -264,21 +264,11 @@
         <div class="section">
             <div class="swiper sliderContact">
                 <div class="swiper-wrapper mt-8">
+                    @foreach($images as $image)
                     <div class="swiper-slide">
-                        <img src="{{asset('images/inicio.webp')}}" alt="La confianza no se vende se construye" class="rounded-2xl">
+                        <img src="{{ $image->image ? Storage::disk('public')->url($image->image) : '' }}" alt="{{ $image->title ?? 'Galería del proyecto' }}" class="rounded-2xl">
                     </div>
-                    <div class="swiper-slide">
-                        <img src="{{asset('images/inicio.webp')}}" alt="La confianza no se vende se construye" class="rounded-2xl">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="{{asset('images/inicio.webp')}}" alt="La confianza no se vende se construye" class="rounded-2xl">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="{{asset('images/inicio.webp')}}" alt="La confianza no se vende se construye" class="rounded-2xl">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="{{asset('images/inicio.webp')}}" alt="La confianza no se vende se construye" class="rounded-2xl">
-                    </div>
+                    @endforeach
                 </div>
                 {{-- Flechas --}}
                 <div class="swiper-button-prev"></div>
@@ -286,6 +276,22 @@
             </div>
         </div>
     </div>
+    <section class="section">
+
+        <!-- Dirección -->
+        <div class="text-center my-8">
+            <h2 class="text-3xl font-bold leading-tight md:text-4xl ">
+                <i class="las la-map-marker text-3xl text-orange md:text-4xl "aria-hidden="true"></i>
+                Visítanos nuestras oficionas en:
+                <span class="text-green">
+                    Av. Brasil 1000
+                </span>
+            </h2>
+        </div>
+
+        <!-- <img src="{{asset('images/mapa.png')}}" alt="" class="w-full"> -->
+         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3699.2356501622958!2d-77.05261469917947!3d-12.062808450599775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c93321989817%3A0x5e3b803d28c2ca6a!2sOnfleek%20Media!5e0!3m2!1ses-419!2spe!4v1782852011746!5m2!1ses-419!2spe" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </section>
 @endsection
 
 @push('seo')

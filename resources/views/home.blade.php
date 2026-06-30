@@ -92,14 +92,21 @@
         </div>
     </section>
 
+    <!-- Dirección -->
+        <div class="text-center my-10">
+            <h2 class="text-3xl  font-bold  md:text-4xl text-brown">
+                 Mira nuestros departamentos en venta
+            </h2>
+        </div>
+
     @foreach($projects as $project)
         <section class="proeyct-home-section mt-8 mb-14 py-10">
             <div class="section">
                 <div class="grid w-full items-start gap-8 lg:grid-cols-[1fr_1fr] lg:gap-16" aria-label="Departamentos disponibles">
                     <!-- COLUMNA IZQUIERDA -->
                     <div class="min-w-0 {{ $loop->even ? 'lg:order-2' : 'lg:order-1' }}">
-                        <h2 class="text-4xl text-center pt-5"> {{$project->name}} </h2>
-                        <p class="text-center mb-2">  {{$project->location}} </p>
+                        <h2 class="text-4xl text-center pt-5 mb-2">    <i class="las la-map-marker text-orange "aria-hidden="true"></i> {{$project->name}} - <span class="text-green text-4xl"> Miraflores</span> </h2>
+                        <!-- <p class="text-center mb-2">  {{$project->location}} </p> -->
                         <div class="swiper sliderBlueprint">
                             <div class="swiper-wrapper">
                                 @foreach($project->blueprints as $blueprint)

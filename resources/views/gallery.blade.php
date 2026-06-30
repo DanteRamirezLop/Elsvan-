@@ -48,6 +48,7 @@
 
     </div>
 </section>
+
 @endsection
 
 @push('seo')
@@ -55,4 +56,9 @@
     <meta name="description" content="{{$seo['description']}}">
     <meta name="keywords" content="{{$seo['keywords']}}">
     <meta property="og:image" itemprop="image" content="{{$seo['image']}}" />
+@endpush
+
+@push('javascript')
+
+
 @endpush

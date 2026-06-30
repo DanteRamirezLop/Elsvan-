@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Page;
+use App\Models\GalleryImage;
 
 class AboutusController extends Controller
 {
@@ -26,7 +27,7 @@ class AboutusController extends Controller
                 'image'         => $dominio.'/images/logo-seo.png',
             );
         }
-
+         $data['images'] = GalleryImage::where('is_active',1)->limit(10)->get();
         return view('about-us',$data);
     }
 }

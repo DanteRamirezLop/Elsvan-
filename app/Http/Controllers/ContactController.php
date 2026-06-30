@@ -26,6 +26,8 @@ class ContactController extends Controller
                 'image'         => $dominio.'/images/logo-seo.png',
             );
         }
+
+
         return view('contact',$data);
     }
 }
