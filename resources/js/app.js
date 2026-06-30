@@ -18,43 +18,87 @@ import 'swiper/css/effect-fade';
 document.addEventListener('DOMContentLoaded', () => {
     const sliderHome = document.querySelector('.sliderHome');
     const sliderBlueprints = document.querySelectorAll('.sliderBlueprint');
+    const sliderContact = document.querySelector('.sliderContact');
+
 
     if (sliderHome) {
-    new Swiper(sliderHome, {
-        modules: [
-            Navigation,
-            Pagination,
-            Autoplay,
-            EffectFade,
-        ],
+        new Swiper(sliderHome, {
+            modules: [
+                Navigation,
+                Pagination,
+                Autoplay,
+                EffectFade,
+            ],
 
-        slidesPerView: 1,
-        spaceBetween: 20,
-        loop: true,
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
 
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-        },
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
 
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
 
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
 
 
-        effect: 'fade',
-        speed: 800,
-            fadeEffect: {
-            crossFade: true,
-        },
+            effect: 'fade',
+            speed: 800,
+                fadeEffect: {
+                crossFade: true,
+            },
 
-    });
+        });
+    }
+
+    if (sliderContact) {
+        new Swiper(sliderContact, {
+            modules: [
+                Navigation,
+                Pagination,
+                Autoplay,
+            ],
+
+            slidesPerView: 1,
+            spaceBetween: 16,
+            loop: true,
+
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 16,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 24,
+                },
+            },
+
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            speed: 600,
+        });
     }
 
     sliderBlueprints.forEach((sliderBlueprint) => {
