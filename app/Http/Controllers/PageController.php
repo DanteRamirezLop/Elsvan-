@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 
 class PageController extends Controller
@@ -26,6 +27,17 @@ class PageController extends Controller
             'keywords'      => 'Inmobiliaria, departamentos, Lima',
             'image'         => $dominio.'/images/logo-seo.png',
         );
+
+        //  $libro = Claim::latest()->first();
+        //  if($libro){
+        //      $number = $libro->id;
+        //  }else{
+        //      $number =0;
+        //  }
+        $data['number'] =0;
+        $data['anioActual'] = Carbon::now()->year;
+        $data['fechaActual'] = Carbon::now()->format('d/m/Y');
+
         return view('complaintsbook',$data);
     }
 }

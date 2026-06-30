@@ -22,10 +22,8 @@
                     $position = $loop->index % 5;
                 @endphp
 
-                <figure
-                    class="
+                <figure class="
                         group relative overflow-hidden rounded-[24px] bg-gray-100
-
                         @if ($position === 2)
                             aspect-[4/3] md:col-span-2 md:aspect-[2.18/1]
                         @elseif ($position === 0 || $position === 1)
@@ -33,21 +31,23 @@
                         @else
                             aspect-[4/3] md:aspect-[1.8/1]
                         @endif
-                    "
-                >
+                    ">
 
+                    <a href="{{ $image->image ? Storage::disk('public')->url($image->image) : '' }}" data-lightbox="imagen" data-title="Descripción de la imagen">
                     <img
-                        src=" {{ $image->image ? Storage::disk('public')->url($image->image) : '' }}"
+                        src=" {{ $image->image ? Storage::disk('public')->url($image->image) : '' }} "
                         alt="{{ $image->alt ?? 'Galería del proyecto' }}"
                         loading="lazy"
                         class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     >
+                   </a>
                 </figure>
             @endforeach
         </div>
 
     </div>
 </section>
+
 
 @endsection
 

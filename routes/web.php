@@ -16,5 +16,6 @@ Route::resource('proyectos',ProjectController::class);
 
 Route::get('/complaintsbook',[PageController::class,'complaintsbook'])->name('complaintsbook');
 Route::get('/terminos-y-condiocnes',[PageController::class,'termsandconditions'])->name('termsandconditions');
+Route::get('/politicas-de-privacidad',[PageController::class,'privacypolicies'])->name('privacypolicies');
 Route::get('/brochure',[ProjectController::class,'brochure'])->name('brochure');
 

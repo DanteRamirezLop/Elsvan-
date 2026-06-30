@@ -1,5 +1,4 @@
 import './bootstrap';
-
 import Swiper from 'swiper';
 import {
     Navigation,
@@ -7,7 +6,6 @@ import {
     Autoplay,
     EffectFade,
 } from 'swiper/modules';
-
 // Estilos generales
 import 'swiper/css';
 // Estilos de módulos
@@ -15,11 +13,16 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
+//paquete para ver imagesn en galeria
+import 'lightbox2/dist/css/lightbox.min.css';
+import '../css/app.css';
+
+import lightbox from 'lightbox2';
+
 document.addEventListener('DOMContentLoaded', () => {
     const sliderHome = document.querySelector('.sliderHome');
     const sliderBlueprints = document.querySelectorAll('.sliderBlueprint');
     const sliderContact = document.querySelector('.sliderContact');
-
 
     if (sliderHome) {
         new Swiper(sliderHome, {
@@ -127,3 +130,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+
+lightbox.option({
+    resizeDuration: 300,
+    wrapAround: true,
+    disableScrolling: true,
+    albumLabel: 'Imagen %1 de %2',
+
+});
+
+// function colocarDescripcionArriba() {
+//     const descripcion = document.querySelector(
+//         '#lightbox .lb-dataContainer'
+//     );
+
+//     const imagen = document.querySelector(
+//         '#lightbox .lb-outerContainer'
+//     );
+
+//     if (!descripcion || !imagen) {
+//         return;
+//     }
+
+//     imagen.parentNode.insertBefore(descripcion, imagen);
+// }
+
+// /*
+//  * Lightbox crea su HTML cuando el documento carga.
+//  */
+// document.addEventListener('DOMContentLoaded', () => {
+//     setTimeout(colocarDescripcionArriba, 100);
+// });
+
+// /*
+//  * Se ejecuta cuando Lightbox abre o cambia de imagen.
+//  */
+// $(document).on('lightbox:open lightbox:change', () => {
+//     colocarDescripcionArriba();
+// });
