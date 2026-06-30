@@ -12,7 +12,7 @@ class ContactController extends Controller
         $page = Page::where('title','contact')->first();
         if($page){
             $data['seo'] = array(
-                'title'         => $page->title,
+                'title'         => $page->meta_title,
                 'description'   => $page->meta_description,
                 'keywords'      => $page->tags,
                 'image'         => $dominio.'/uploads/cms/'.$page->feature_image,
@@ -20,13 +20,12 @@ class ContactController extends Controller
 
         }else{
             $data['seo'] = array(
-                'title'         => 'Gallery | Inmobiliaria en lima',
+                'title'         => 'Galeria | Inmobiliaria en lima',
                 'description'   => 'Elsvan desarrolla proyectos inmobiliarios que combinan diseño, calidad y sostenibilidad, consolidando una trayectoria respaldada por la confianza de sus clientes y la entrega exitosa de sus proyectos',
                 'keywords'      => 'Inmobiliaria, departamentos, Lima',
                 'image'         => $dominio.'/images/logo-seo.png',
             );
         }
-
 
         return view('contact',$data);
     }

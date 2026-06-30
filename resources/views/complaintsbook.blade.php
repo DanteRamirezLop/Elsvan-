@@ -72,12 +72,13 @@
                                     </div>
 
                                     <div class="col-span-12 md:col-span-6">
-                                        <select name="Tipo de Documento" id="tipodoc" value="" class=" border border-default-medium text-heading text-sm rounded-md focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" >
+                                        <select name="Tipo de Documento" id="tipodoc" value="" class="border border-default-medium text-heading text-sm rounded-md focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" >
                                             <option value="" selected disabled >Tipo de Documento</option>
                                             <option value="DNI" class="text-black">DNI</option>
                                             <option value="PASAPORTE">PASAPORTE</option>
                                             <option value="RUC">RUC</option>
                                         </select>
+
                                     </div>
 
                                     <div class="col-span-12 md:col-span-6">

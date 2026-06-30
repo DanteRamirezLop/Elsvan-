@@ -9,12 +9,11 @@ use App\Models\RealEstateProject;
 class HomeController extends Controller
 {
     public function index(){
-
         $dominio = config('app.url');
         $page = Page::where('title','home')->first();
         if($page){
             $data['seo'] = array(
-                'title'         => $page->title,
+                'title'         => $page->meta_title,
                 'description'   => $page->meta_description,
                 'keywords'      => $page->tags,
                 'image'         => $dominio.'/uploads/cms/'.$page->feature_image,

@@ -14,7 +14,7 @@ class PageInfolist
             ->components([
                 TextEntry::make('title'),
                 TextEntry::make('slug'),
-                TextEntry::make('content')
+                TextEntry::make('tag')
                     ->placeholder('-')
                     ->columnSpanFull(),
                 TextEntry::make('meta_title')

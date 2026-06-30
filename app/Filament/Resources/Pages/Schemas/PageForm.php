@@ -18,7 +18,7 @@ class PageForm
                     ->required(),
                 TextInput::make('slug')
                     ->required(),
-                Textarea::make('content')
+                TextInput::make('tag')
                     ->columnSpanFull(),
                 TextInput::make('meta_title'),
                 Textarea::make('meta_description')

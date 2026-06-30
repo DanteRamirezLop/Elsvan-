@@ -11,7 +11,7 @@ class PageController extends Controller
     public function termsandconditions(){
         $dominio = config('app.url');
         $data['seo'] = array(
-            'title'         => 'Términos y condiciones | Inmobiliaria en lima',
+            'title'         => 'Términos y condiciones | Elsvan construcciones inmobiliarias',
             'description'   => 'Elsvan desarrolla proyectos inmobiliarios que combinan diseño, calidad y sostenibilidad, consolidando una trayectoria respaldada por la confianza de sus clientes y la entrega exitosa de sus proyectos',
             'keywords'      => 'Inmobiliaria, departamentos, Lima',
             'image'         => $dominio.'/images/logo-seo.png',
@@ -19,10 +19,21 @@ class PageController extends Controller
         return view('termsandconditions',$data);
     }
 
+    public function privacypolicies(){
+    $dominio = config('app.url');
+        $data['seo'] = array(
+            'title'         => 'Políticas de privacidad | Elsvan construcciones inmobiliarias',
+            'description'   => 'Elsvan desarrolla proyectos inmobiliarios que combinan diseño, calidad y sostenibilidad, consolidando una trayectoria respaldada por la confianza de sus clientes y la entrega exitosa de sus proyectos',
+            'keywords'      => 'Inmobiliaria, departamentos, Lima',
+            'image'         => $dominio.'/images/logo-seo.png',
+        );
+        return view('privacypolicies',$data);
+    }
+
     public function complaintsbook(){
         $dominio = config('app.url');
         $data['seo'] = array(
-            'title'         => 'Libro de reclamaciones | Inmobiliaria en lima',
+            'title'         => 'Libro de reclamaciones | Elsvan construcciones inmobiliarias',
             'description'   => 'Elsvan desarrolla proyectos inmobiliarios que combinan diseño, calidad y sostenibilidad, consolidando una trayectoria respaldada por la confianza de sus clientes y la entrega exitosa de sus proyectos',
             'keywords'      => 'Inmobiliaria, departamentos, Lima',
             'image'         => $dominio.'/images/logo-seo.png',

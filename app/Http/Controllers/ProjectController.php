@@ -17,7 +17,7 @@ class ProjectController extends Controller
         $page = Page::where('title','projects')->first();
         if($page){
             $data['seo'] = array(
-                'title'         => $page->title,
+                'title'         => $page->meta_title,
                 'description'   => $page->meta_description,
                 'keywords'      => $page->tags,
                 'image'         => $dominio.'/uploads/cms/'.$page->feature_image,
