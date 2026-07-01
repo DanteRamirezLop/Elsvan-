@@ -262,11 +262,11 @@
     </div>
     <div class="bg-orange">
         <div class="section">
-            <div class="swiper sliderContact">
+            <div class="swiper sliderContact" style="height: 320px;">
                 <div class="swiper-wrapper mt-8">
                     @foreach($images as $image)
                     <div class="swiper-slide">
-                        <img src="{{ $image->image ? Storage::disk('public')->url($image->image) : '' }}" alt="{{ $image->title ?? 'Galería del proyecto' }}" class="rounded-2xl">
+                        <img src="{{ $image->image ? Storage::disk('public')->url($image->image) : '' }}" alt="{{ $image->title ?? 'Galería del proyecto' }}" class="rounded-2xl w-full h-full object-cover">
                     </div>
                     @endforeach
                 </div>

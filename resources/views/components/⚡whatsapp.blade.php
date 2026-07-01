@@ -1,10 +1,17 @@
 <?php
 
 use Livewire\Component;
+use App\Models\Phone;
 
 new class extends Component
 {
-    //
+
+    public $whatsapps;
+
+    public function mount(){
+        $this->whatsapps =  Phone::orderBy('id', 'DESC')->limit(5)->get();
+    }
+
 };
 ?>
 
@@ -23,19 +30,19 @@ new class extends Component
         <div class="wa__popup_notice">El equipo suele responder en unos minutos.</div>
             <div class="wa__popup_content_list">
 
-                <!-- foreach($whatsapps as $items) -->
+                @foreach($whatsapps as $item)
                 <div class="wa__popup_content_item ">
-                    <a target="_blank" href="https://web.whatsapp.com/send?phone=&amp;text=Hola, tengo una consulta" class="wa__stt wa__stt_online">
+                    <a target="_blank" href="https://web.whatsapp.com/send?phone={{$item->number}}&amp;text=Hola, tengo una consulta" class="wa__stt wa__stt_online">
                         <div class="wa__popup_avatar">
                             <div class="wa__cs_img_wrap wrap_img_icon"></div>
                         </div>
                         <div class="wa__popup_txt">
-                            <div class="wa__member_name">Nombre</div>
-                            <div class="wa__member_duty"> Titulo</div>
+                            <div class="wa__member_name">{{$item->name}}</div>
+                            <div class="wa__member_duty">{{$item->title}}</div>
                         </div>
                     </a>
                 </div>
-                <!-- endforeach -->
+                @endforeach
 
 
 

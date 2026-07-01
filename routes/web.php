@@ -7,14 +7,14 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\AboutusController;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ArticleController;
 
 Route::get('/',[HomeController::class,'index'])->name('inicio');
 Route::get('/contactanos',[ContactController::class,'index'])->name('contactanos');
 Route::get('/galeria',[GalleryController::class,'index'])->name('galeria');
 Route::get('/nosotros',[AboutusController::class,'index'])->name('nosotros');
 
-Route::resource('/noticias',BlogController::class);
+Route::resource('noticias',ArticleController::class);
 
 Route::resource('proyectos',ProjectController::class);
 Route::get('/brochure',[ProjectController::class,'brochure'])->name('brochure');

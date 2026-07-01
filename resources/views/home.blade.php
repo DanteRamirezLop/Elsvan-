@@ -105,53 +105,49 @@
                 <div class="grid w-full items-start gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16" aria-label="Departamentos disponibles">
                     <!-- COLUMNA IZQUIERDA -->
                     <div class="min-w-0 {{ $loop->even ? 'lg:order-2' : 'lg:order-1' }}">
-                        <!-- <h2 class="text-4xl text-center mb-2">    <i class="las la-map-marker text-orange "aria-hidden="true"></i> {{$project->name}} - <span class="text-green text-4xl"> Miraflores</span> </h2> -->
                         <div class="swiper sliderBlueprint">
                             <div class="swiper-wrapper">
                                 @foreach($project->blueprints as $blueprint)
-                                <div class="swiper-slide">
-                                    <article id="property-card" class="overflow-hidden rounded-[26px] bg-[#f06400] shadow-[0_18px_45px_rgba(15,23,42,0.12)]">
+                                    <div class="swiper-slide ">
+                                        <article id="property-card" class="overflow-hidden rounded-[26px] bg-orange ">
                                         <!-- Ficha blanca -->
                                         <div class="m-[5px] mb-0 rounded-t-[22px] rounded-br-[22px] bg-white px-5 pb-7 pt-4 sm:px-9 sm:pb-8 sm:pt-5">
-                                        <!-- Plano -->
-                                        <div class="mt-6 overflow-hidden rounded-xl bg-white sm:mt-8">
-                                            <img id="floor-plan"
-                                                src="{{ $blueprint->image ? Storage::disk('public')->url($blueprint->image) : '' }}"
-                                                alt="Plano del departamento del Residencial Escudero"
-                                                class=" w-full object-contain"/>
+                                            <!-- Plano -->
+                                            <div class="mt-6 overflow-hidden rounded-xl bg-white sm:mt-8">
+                                                <img id="floor-plan"
+                                                    src="{{ $blueprint->image ? Storage::disk('public')->url($blueprint->image) : '' }}"
+                                                    alt="Plano del departamento del Residencial Escudero"
+                                                    class=" w-full object-contain"/>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- Franja naranja -->
-                                        <div class="grid gap-5 px-5 py-5 text-white sm:grid-cols-[1fr_auto] sm:px-9 sm:py-6">
-                                            <div>
-                                                <p id="property-type" class="text-xl font-black uppercase leading-none sm:text-2xl">
-                                                    {{$blueprint->name}}
-                                                </p>
-                                                <p id="apartment-number" class="mt-2 text-lg font-medium sm:text-xl"> {{$blueprint->number_departments}}</p>
-                                                <!-- <p id="price" class="mt-1 text-xl font-black tracking-tight sm:text-2xl">S/687,000</p> -->
+                                            <!-- Franja naranja -->
+                                            <div class="grid gap-5 px-5 py-5 text-white sm:grid-cols-[1fr_auto] sm:px-9 sm:py-6">
+                                                <div>
+                                                    <p id="property-type" class="text-xl font-black uppercase leading-none sm:text-2xl">
+                                                        {{$blueprint->name}}
+                                                    </p>
+                                                    <p id="apartment-number" class="mt-2 text-lg font-medium sm:text-xl"> {{$blueprint->number_departments}}</p>
+                                                </div>
+                                                <ul class="grid grid-cols-4 items-center gap-4 sm:gap-5" aria-label="Características">
+                                                <li class="text-center">
+                                                    <img src="{{ asset('images/item-icon/dormitorio.webp') }}" alt="Dormitorios" class="mx-auto w-7 h-7">
+                                                    <span class="mt-1 block text-base font-semibold">{{ $blueprint->bedrooms }}</span>
+                                                </li>
+                                                <li class="text-center">
+                                                    <img src="{{ asset('images/item-icon/bano.webp') }}" alt="Baños" class="mx-auto w-7 h-7">
+                                                    <span class="mt-1 block text-base font-semibold">{{$blueprint->bathrooms}}</span>
+                                                </li>
+                                                <li class="text-center">
+                                                    <img src="{{ asset('images/item-icon/jardin.webp') }}" alt="Jardín" class="mx-auto w-7 h-7">
+                                                    <span class="mt-1 block text-base font-semibold">{{$blueprint->garden}}</span>
+                                                </li>
+                                                <li class="text-center">
+                                                    <img src="{{ asset('images/item-icon/balcon.webp') }}" alt="Balcón" class="mx-auto w-7 h-7">
+                                                    <span class="mt-1 block text-base font-semibold">{{$blueprint->balcony}}</span>
+                                                </li>
+                                                </ul>
                                             </div>
-                                            <ul class="grid grid-cols-4 items-center gap-4 sm:gap-5" aria-label="Características">
-                                            <li class="text-center">
-                                                <!-- <svg class="mx-auto h-7 w-8" viewBox="0 0 34 28" fill="none" aria-hidden="true">
-                                                <path d="M3 9v15m28-15v15M3 17h28M7 12h8v5H7v-5Zm12 0h8v5h-8v-5ZM1 22h32" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
-                                                </svg> -->
-                                                <i class="las la-bed text-2xl"></i>
-                                                <span class="mt-1 block text-lg font-bold">{{$blueprint->bedrooms}}</span>
-                                            </li>
-                                            <li class="text-center">
-                                                <i class="las la-bath text-2xl"></i>
-                                                <span class="mt-1 block text-lg font-bold">{{$blueprint->bathrooms}}</span>
-                                            </li>
-                                            <li class="text-center">
-                                                <i class="las la-seedling text-2xl"></i>
-                                                <span class="mt-1 block text-base font-semibold">{{$blueprint->garden}}</span>
-                                            </li>
-                                            <li class="text-center">
-                                                <i class="las la-seedling text-2xl"></i>
-                                                <span class="mt-1 block text-base font-semibold">{{$blueprint->balcony}}</span>
-                                            </li>
-                                            </ul>
-                                        </div>
+
                                     </article>
                                 </div>
                                 @endforeach
@@ -165,22 +161,21 @@
                     <div class="h-full flex items-center {{ $loop->even ? 'lg:order-1' : 'lg:order-2' }}">
                         <div>
                              <h2 class="text-3xl text-center mb-2">    <i class="las la-map-marker text-orange "aria-hidden="true"></i> {{$project->name}} - <span class="text-brown"> Miraflores</span> </h2>
-
-                        <div class="inset-0 min-h-[380px] sm:min-h-[500px] object-cover object-center  mx-auto">
-                            <article class="">
-                                <a href="">
-                                    <div class="rounded-t-xl relative overflow-hidden bg-gray-200 shadow-lg">
-                                        <div class="uppercase absolute left-0 top-0 z-20 flex h-14 w-full items-center justify-center bg-green-tranparence px-4 text-center text-xl font-extrabold text-white">
-                                            {{$project->tag}}
+                            <div class="inset-0 min-h-[380px] sm:min-h-[500px] object-cover object-center  mx-auto">
+                                <article class="">
+                                    <a href="">
+                                        <div class="rounded-t-xl relative overflow-hidden bg-gray-200 shadow-lg">
+                                            <div class="uppercase absolute left-0 top-0 z-20 flex h-14 w-full items-center justify-center bg-green-tranparence px-4 text-center text-xl font-extrabold text-white">
+                                                {{$project->tag}}
+                                            </div>
+                                            <img src="{{ $project->main_image ? Storage::disk('public')->url($project->main_image) : '' }}" alt="{{$project->name}}" class="h-full w-full object-cover">
                                         </div>
-                                        <img src="{{ $project->main_image ? Storage::disk('public')->url($project->main_image) : '' }}" alt="{{$project->name}}" class="h-full w-full object-cover">
+                                    </a>
+                                    <div class="rounded-b-xl bg-brown shadow-project">
+                                        <a href="#" class="btn-projects-see text-white block w-full px-5 py-6 text-center h-14">  VER PROYECTO </a>
                                     </div>
-                                </a>
-                                <div class="rounded-b-xl bg-brown shadow-project">
-                                    <a href="#" class="btn-projects text-white block w-full px-5 py-6 text-center h-14">  VER PROYECTO </a>
-                                </div>
-                            </article>
-                        </div>
+                                </article>
+                            </div>
                         </div>
                     </div>
                 </div>
