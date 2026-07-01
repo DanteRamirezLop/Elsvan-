@@ -28,7 +28,7 @@ class GalleryController extends Controller
                 'image'         => $dominio.'/images/logo-seo.png',
             );
         }
-        $data['images'] = GalleryImage::where('is_active',1)->get();
+        $data['images'] = GalleryImage::where('is_active',1)->paginate(6);
 
 
         return view('gallery', $data);

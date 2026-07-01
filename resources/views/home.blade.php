@@ -93,20 +93,19 @@
     </section>
 
     <!-- Dirección -->
-        <div class="text-center my-10">
-            <h2 class="text-3xl  font-bold  md:text-4xl text-brown">
-                 Mira nuestros departamentos en venta
-            </h2>
-        </div>
+    <div class="text-center my-10">
+        <h2 class="text-3xl  font-bold  md:text-4xl text-brown">
+                Mira nuestros departamentos en venta
+        </h2>
+    </div>
 
     @foreach($projects as $project)
         <section class="proeyct-home-section mt-8 mb-14 py-10">
             <div class="section">
-                <div class="grid w-full items-start gap-8 lg:grid-cols-[1fr_1fr] lg:gap-16" aria-label="Departamentos disponibles">
+                <div class="grid w-full items-start gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16" aria-label="Departamentos disponibles">
                     <!-- COLUMNA IZQUIERDA -->
                     <div class="min-w-0 {{ $loop->even ? 'lg:order-2' : 'lg:order-1' }}">
-                        <h2 class="text-4xl text-center pt-5 mb-2">    <i class="las la-map-marker text-orange "aria-hidden="true"></i> {{$project->name}} - <span class="text-green text-4xl"> Miraflores</span> </h2>
-                        <!-- <p class="text-center mb-2">  {{$project->location}} </p> -->
+                        <!-- <h2 class="text-4xl text-center mb-2">    <i class="las la-map-marker text-orange "aria-hidden="true"></i> {{$project->name}} - <span class="text-green text-4xl"> Miraflores</span> </h2> -->
                         <div class="swiper sliderBlueprint">
                             <div class="swiper-wrapper">
                                 @foreach($project->blueprints as $blueprint)
@@ -163,14 +162,25 @@
                         </div>
                     </div>
                     <!-- COLUMNA DERECHA -->
-                    <div class="h-full  flex items-center {{ $loop->even ? 'lg:order-1' : 'lg:order-2' }}">
+                    <div class="h-full flex items-center {{ $loop->even ? 'lg:order-1' : 'lg:order-2' }}">
                         <div>
-                            <img src="{{ $project->main_image ? Storage::disk('public')->url($project->main_image) : '' }}"
-                            alt="{{$project->name}}"
-                            class=" inset-0 min-h-[380px] sm:min-h-[500px] object-cover object-center"/>
-                            <div class="flex justify-center">
-                                <a href="#" class="btn-projects mt-3">Ver proyecto <i class="las la-arrow-right ms-1"></i></a>
-                            </div>
+                             <h2 class="text-3xl text-center mb-2">    <i class="las la-map-marker text-orange "aria-hidden="true"></i> {{$project->name}} - <span class="text-brown"> Miraflores</span> </h2>
+
+                        <div class="inset-0 min-h-[380px] sm:min-h-[500px] object-cover object-center  mx-auto">
+                            <article class="">
+                                <a href="">
+                                    <div class="rounded-t-xl relative overflow-hidden bg-gray-200 shadow-lg">
+                                        <div class="uppercase absolute left-0 top-0 z-20 flex h-14 w-full items-center justify-center bg-green-tranparence px-4 text-center text-xl font-extrabold text-white">
+                                            {{$project->tag}}
+                                        </div>
+                                        <img src="{{ $project->main_image ? Storage::disk('public')->url($project->main_image) : '' }}" alt="{{$project->name}}" class="h-full w-full object-cover">
+                                    </div>
+                                </a>
+                                <div class="rounded-b-xl bg-brown shadow-project">
+                                    <a href="#" class="btn-projects text-white block w-full px-5 py-6 text-center h-14">  VER PROYECTO </a>
+                                </div>
+                            </article>
+                        </div>
                         </div>
                     </div>
                 </div>
