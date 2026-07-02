@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Page;
 use App\Models\RealEstateProject;
 
+
 class HomeController extends Controller
 {
     public function index(){
@@ -27,6 +28,9 @@ class HomeController extends Controller
                 'image'         => $dominio.'/images/logo-seo.png',
             );
         }
+
+        $data['page'] = $page;
+        $data['year'] = date('Y') - 2012;
 
         $data['projects'] = RealEstateProject::with('blueprints')
             ->where('status', 'published')

@@ -11,6 +11,7 @@ class RealEstateProject extends Model
         'name',
         'slug',
         'location',
+        'district',
         'description',
         'price_from',
         'area_from',

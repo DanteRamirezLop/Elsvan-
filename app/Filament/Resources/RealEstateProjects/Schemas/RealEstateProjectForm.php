@@ -23,6 +23,7 @@ class RealEstateProjectForm
                 TextInput::make('slug')
                     ->required(),
                 TextInput::make('location'),
+                TextInput::make('district'),
                 Textarea::make('description')
                     ->columnSpanFull(),
                 TextInput::make('price_from')

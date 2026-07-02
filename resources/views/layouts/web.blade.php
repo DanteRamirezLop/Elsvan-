@@ -37,16 +37,16 @@
             <main class="main">
                 @yield('content')
            </main>
-            @include('footer')
+           <livewire:footer/>
         </main>
         @stack('javascript')
         <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
         <script src="{{asset('js/jquery-ui.min.js')}}"></script>
         <script src="{{asset('js/app.js')}}?v=1993.1.3"></script>
         <script src="{{asset('js/cookies.js')}}"></script>
-         <script>
+         <!-- <script>
             document.getElementById('years-in-market').textContent = '+' + (new Date().getFullYear() - 2012) + ' años';
             document.getElementById('current-year').textContent = new Date().getFullYear();
-        </script>
+        </script> -->
     </body>
 </html>

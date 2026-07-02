@@ -10,7 +10,7 @@
                         <h1 class="banner-category-title"> La confianza no se vende</h1>
                         <p class="text-center text-white text-xl lg:text-3xl"> se construye</p>
                         <div class="text-center mt-5">
-                            <a href="" class="btn-banner"> Cotiza aquí </a>
+                            <a href="{{route('quote')}}" class="btn-banner"> Cotiza aquí </a>
                         </div>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                         <h1 class="banner-category-title"> La confianza no se vende 1</h1>
                         <p class="text-center text-white text-xl lg:text-3xl"> se construye</p>
                         <div class="text-center mt-5">
-                            <a href="" class="btn-banner"> Cotiza aquí </a>
+                            <a href="{{route('quote')}}" class="btn-banner"> Cotiza aquí </a>
                         </div>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                         <h1 class="banner-category-title"> La confianza no se vende 2</h1>
                         <p class="text-center text-white text-xl lg:text-3xl"> se construye</p>
                         <div class="text-center mt-5">
-                            <a href="" class="btn-banner"> Cotiza aquí </a>
+                            <a href="{{route('quote')}}" class="btn-banner"> Cotiza aquí </a>
                         </div>
                     </div>
                 </div>
@@ -51,8 +51,7 @@
     <section class="about-section">
         <div class="about-text">
             <div class="marquee">
-                Más de 13 años <br>
-                <span>construyendo confianza...</span>
+                Más de {{$year}} años construyendo confianza
             </div>
             <p>
                 Desde 2012, ELSVAN desarrolla proyectos inmobiliarios que combinan
@@ -63,19 +62,21 @@
                 de vivienda que generan valor y seguridad para tu familia de hoy y
                 del futuro.
             </p>
-            <a href="#" class="btn-projects">Ver nuestros proyectos</a>
+            <a href="{{route('proyectos.index')}}" class="btn-projects">Ver nuestros proyectos</a>
         </div>
         <div class="about-image">
             <img src="{{asset('images/construyendo-confianza.webp')}}" alt="Proyecto inmobiliario ELSVAN">
         </div>
     </section>
 
+    @if(count($projects))
     <!-- Dirección -->
     <div class="text-center my-10">
         <h2 class="text-3xl  font-bold  md:text-4xl text-brown">
-                Mira nuestros departamentos en venta
+             Mira nuestros departamentos en venta
         </h2>
     </div>
+    @endif
 
     @foreach($projects as $project)
         <section class="proeyct-home-section mt-8 mb-14 py-10">
@@ -138,10 +139,10 @@
                     <!-- COLUMNA DERECHA -->
                     <div class="h-full flex items-center {{ $loop->even ? 'lg:order-1' : 'lg:order-2' }}">
                         <div>
-                             <h2 class="text-3xl text-center mb-2">    <i class="las la-map-marker text-orange "aria-hidden="true"></i> {{$project->name}} - <span class="text-brown"> Miraflores</span> </h2>
+                            <h2 class="text-3xl text-center mb-2"><i class="las la-map-marker text-orange "aria-hidden="true"></i> {{$project->name}} - <span class="text-brown"> {{$project->district}} </span> </h2>
                             <div class="inset-0 min-h-[380px] sm:min-h-[500px] object-cover object-center  mx-auto">
-                                <article class="">
-                                    <a href="">
+                                <article>
+                                    <a href="{{ route('proyectos.show', $project) }}">
                                         <div class="rounded-t-xl relative overflow-hidden bg-gray-200 shadow-lg">
                                             <div class="uppercase absolute left-0 top-0 z-20 flex h-14 w-full items-center justify-center bg-green-tranparence px-4 text-center text-xl font-extrabold text-white">
                                                 {{$project->tag}}
@@ -150,7 +151,7 @@
                                         </div>
                                     </a>
                                     <div class="rounded-b-xl bg-brown shadow-project">
-                                        <a href="#" class="btn-projects-see text-white block w-full px-5 py-6 text-center h-14">  VER PROYECTO </a>
+                                        <a href="{{ route('proyectos.show', $project) }}" class="btn-projects-see text-white block w-full px-5 py-6 text-center h-14">  VER PROYECTO </a>
                                     </div>
                                 </article>
                             </div>

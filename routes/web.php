@@ -16,7 +16,6 @@ Route::get('/contactanos',[ContactController::class,'index'])->name('contactanos
 Route::get('/cotizar',[ContactController::class,'quote'])->name('quote');
 Route::resource('noticias',ArticleController::class);
 Route::resource('proyectos',ProjectController::class)->parameters(['proyectos' => 'project']);
-
 Route::get('/brochure',[ProjectController::class,'brochure'])->name('brochure');
 Route::get('/complaintsbook',[PageController::class,'complaintsbook'])->name('complaintsbook');
 Route::get('/terminos-y-condiocnes',[PageController::class,'termsandconditions'])->name('termsandconditions');

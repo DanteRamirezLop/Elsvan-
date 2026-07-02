@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Page;
+use App\Models\RealEstateProject;
 
 class ContactController extends Controller
 {
@@ -50,6 +51,8 @@ class ContactController extends Controller
                 'image'         => $dominio.'/images/logo-seo.png',
             );
         }
+
+        $data['project'] = RealEstateProject::first();
 
         return view('quote',$data);
     }

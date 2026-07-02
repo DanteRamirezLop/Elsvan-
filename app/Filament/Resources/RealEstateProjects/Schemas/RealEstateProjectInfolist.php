@@ -14,11 +14,9 @@ class RealEstateProjectInfolist
             ->components([
                 TextEntry::make('name'),
                 TextEntry::make('slug'),
-                TextEntry::make('location')
-                    ->placeholder('-'),
-                TextEntry::make('description')
-                    ->placeholder('-')
-                    ->columnSpanFull(),
+                TextEntry::make('location')->placeholder('-'),
+                TextEntry::make('district')->placeholder('-'),
+                TextEntry::make('description')->placeholder('-')->columnSpanFull(),
                 TextEntry::make('price_from')
                     ->numeric()
                     ->placeholder('-'),
