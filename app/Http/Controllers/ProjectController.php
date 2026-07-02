@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Page;
 use App\Models\RealEstateProject;
+use Illuminate\Support\Facades\Storage;
+
 
 class ProjectController extends Controller
 {
@@ -15,6 +17,7 @@ class ProjectController extends Controller
 
         $dominio = config('app.url');
         $page = Page::where('title','projects')->first();
+        //SEO
         if($page){
             $data['seo'] = array(
                 'title'         => $page->meta_title,
@@ -35,8 +38,18 @@ class ProjectController extends Controller
         return view('projects.index', $data);
     }
 
-    public function show(){
-        return view('projects.show');
+    public function show(RealEstateProject $project){
+        $data['project'] = $project;
+        $title = $this->limpiarTitulo($project->name);
+        //SEO
+        $data['seo'] = array(
+            'title'         => $title.' | Elsvan Inmobiliaria',
+            'description'   => $project->description,
+            'keywords'      => $project->tag.','.$project->name,
+            'image'         => $project->main_image ? Storage::disk('public')->url($project->main_image) : '',
+        );
+
+        return view('projects.show',$data);
     }
 
      public function brochure(){
@@ -47,5 +60,18 @@ class ProjectController extends Controller
         return response($response->body(), 200)
             ->header('Content-Type', 'application/pdf')
             ->header('Content-Disposition', 'attachment; filename="' . $filename . '.pdf"');
+    }
+
+     private function limpiarTitulo($titulo)
+    {
+        // Eliminar caracteres no permitidos
+        // Se permiten letras, números, tildes, ñ, espacios, /, ¿ y ?
+        $titulo = preg_replace('/[^A-Za-z0-9áéíóúÁÉÍÓÚñÑ\s\/¿\?]/u', '', $titulo);
+
+        // Reemplazar múltiples espacios por uno solo
+        $titulo = preg_replace('/\s+/', ' ', $titulo);
+
+        // Quitar espacios al inicio y final
+        return trim($titulo);
     }
 }

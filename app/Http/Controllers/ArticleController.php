@@ -37,8 +37,6 @@ class ArticleController extends Controller
         $data['note'] = $noticia;
         $dominio = config('services.trading.url');
         $data['link']= url()->current();
-
-
         $title = $this->limpiarTitulo($noticia->title);
         //seo
         $data['seo'] = array(

@@ -28,7 +28,7 @@
 
 
                 </ul>
-                <a href="#" class="btn-brochure ">
+                <a href="{{route('quote')}}" class="btn-brochure ">
                    Cotizar ahora
                 </a>
 

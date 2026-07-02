@@ -42,7 +42,7 @@
         <div class="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             @foreach($projects as $project)
             <article class="project-card">
-                <a href="">
+                <a href="{{ route('proyectos.show', $project) }}">
                     <div class="rounded-t-xl project-image relative overflow-hidden bg-gray-200 shadow-lg">
                         @if($project->tag == 'vendido')
                             <div class="absolute inset-0 z-20 flex items-center justify-center">

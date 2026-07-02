@@ -28,6 +28,11 @@ class RealEstateProject extends Model
     //         ->orderBy('sort_order');
     // }
 
+    public function getRouteKeyName()
+    {
+       return 'slug';
+    }
+
     public function environments(): HasMany
     {
         return $this->hasMany(ProjectEnvironment::class);

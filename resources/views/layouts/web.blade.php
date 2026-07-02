@@ -36,7 +36,6 @@
             @include('header')
             <main class="main">
                 @yield('content')
-
            </main>
             @include('footer')
         </main>
