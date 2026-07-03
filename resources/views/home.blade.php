@@ -65,7 +65,7 @@
             <a href="{{route('proyectos.index')}}" class="btn-projects">Ver nuestros proyectos</a>
         </div>
         <div class="about-image">
-            <img src="{{asset('images/construyendo-confianza.webp')}}" alt="Proyecto inmobiliario ELSVAN">
+            <img src="{{asset('images/img-home.webp')}}" alt="Proyecto inmobiliario ELSVAN">
         </div>
     </section>
 

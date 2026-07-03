@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <!-- Layout para vistas blade - sin livewire -->
+        <!-- Etiquetas  -->
+        {!! optional(\App\Models\Setting::first())->head_scripts !!}
         <!-- Espacion para etiquetas -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,22 +32,21 @@
         @stack('css')
     </head>
     <body>
+        <!-- Etiquetas (noscript) -->
+        {!! optional(\App\Models\Setting::first())->body_scripts !!}
+        <!-- boton de whatsapp -->
         <livewire:whatsapp />
-        <main class="wrapper-main">
+        <div class="wrapper-main">
             @include('header')
             <main class="main">
                 @yield('content')
            </main>
            <livewire:footer/>
-        </main>
+        </div>
         @stack('javascript')
         <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
         <script src="{{asset('js/jquery-ui.min.js')}}"></script>
         <script src="{{asset('js/app.js')}}?v=1993.1.3"></script>
-        <script src="{{asset('js/cookies.js')}}"></script>
-         <!-- <script>
-            document.getElementById('years-in-market').textContent = '+' + (new Date().getFullYear() - 2012) + ' años';
-            document.getElementById('current-year').textContent = new Date().getFullYear();
-        </script> -->
+        <!-- <script src="{{asset('js/cookies.js')}}"></script> -->
     </body>
 </html>

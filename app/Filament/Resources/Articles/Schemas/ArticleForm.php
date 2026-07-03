@@ -70,6 +70,9 @@ class ArticleForm
                         ['attachFiles'],
                         ['undo', 'redo'],
                     ])
+                     ->extraInputAttributes([
+                        'style' => 'min-height: 250px;',
+                    ])
                     ->columnSpanFull(),
 
                 Toggle::make('is_published')

@@ -6,8 +6,8 @@ use Illuminate\Console\Command;
 use Spatie\Sitemap\Sitemap;
 use Illuminate\Support\Carbon;
 use Spatie\Sitemap\Tags\Url;
-
-// use App\Models\CmsPages;
+use App\Models\Article;
+use App\Models\RealEstateProject;
 
 class GenerateSitemap extends Command
 {
@@ -61,31 +61,34 @@ class GenerateSitemap extends Command
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
         );
 
-
         $postsitmap->add(
             Url::create("/proyectos")
                 ->setLastModificationDate(Carbon::create('2026', '7', '7'))
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
         );
-
-         //Rutas de projectos
-
+        //Rutas de proyectos
+        RealEstateProject::get()->each(function (RealEstateProject $project) use ($postsitmap) {
+            $postsitmap->add(
+                Url::create("/proyectos/{$project->slug}")
+                    ->setLastModificationDate(Carbon::create($project->created_at))
+                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
+            );
+        });
 
         $postsitmap->add(
-            Url::create("/blog")
+            Url::create("/noticias")
                 ->setLastModificationDate(Carbon::create('2026', '7', '7'))
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
         );
 
-        //Rutas de blog
-        // CmsPages::Status()->Type('blog')->get()->each(function (CmsPages $blog) use ($postsitmap) {
-        //     $postsitmap->add(
-        //         Url::create("/blog/{$blog->slug}-{$blog->id}")
-        //             ->setLastModificationDate(Carbon::create($blog->created_at))
-        //             ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
-        //     );
-        // });
-
+        //Rutas de noticias
+        Article::get()->each(function (Article $article) use ($postsitmap) {
+            $postsitmap->add(
+                Url::create("/noticias/{$article->slug}")
+                    ->setLastModificationDate(Carbon::create($article->created_at))
+                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
+            );
+        });
 
         $postsitmap->writeToFile(public_path('sitemap.xml'));
     }
