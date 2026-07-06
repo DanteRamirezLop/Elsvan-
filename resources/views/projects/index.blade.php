@@ -5,10 +5,10 @@
     <section class="banner-category container-fluid">
         <img src="{{asset('images/proyectos.webp')}}" alt="La confianza no se vende se construye" class="banner-category-img">
         <div class="banner-category-box-title">
-            <h1 class="banner-category-title"> Nuestros Proyectos</h1>
+            <h1 class="banner-category-title tracking-widest"> Nuestros Proyectos</h1>
             <p class="text-center text-white text-xl lg:text-3xl"> Elsvan Inmobiliaria</p>
             <div class="text-center mt-5">
-                <a href="" class="btn-banner"> Cotiza aquí </a>
+                <a href="{{route('quote')}}" class="btn-banner"> Cotiza aquí </a>
             </div>
         </div>
     </section>
@@ -42,7 +42,7 @@
         <div class="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             @foreach($projects as $project)
             <article class="project-card">
-                <a href="{{ route('proyectos.show', $project) }}">
+                <a href="{{$project->tag == 'vendido' ? '' : route('proyectos.show', $project) }}" class="{{ $project->tag == 'vendido' ? 'project-link-sold' : '' }}">
                     <div class="rounded-t-xl project-image relative overflow-hidden bg-gray-200 shadow-lg">
                         @if($project->tag == 'vendido')
                             <div class="absolute inset-0 z-20 flex items-center justify-center">

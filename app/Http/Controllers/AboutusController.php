@@ -10,7 +10,8 @@ class AboutusController extends Controller
 {
      public function index(){
         $dominio = config('app.url');
-        $page = Page::where('title','projects')->first();
+        $page = Page::where('title','nosotros')->first();
+        $data['page'] = $page;
         if($page){
             $data['seo'] = array(
                 'title'         => $page->meta_title,

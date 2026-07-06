@@ -11,7 +11,7 @@ class GalleryController extends Controller
      public function index(){
 
         $dominio = config('app.url');
-        $page = Page::where('title','gallery')->first();
+        $page = Page::where('title','galeria')->first();
         if($page){
             $data['seo'] = array(
                 'title'         => $page->meta_title,
@@ -22,7 +22,7 @@ class GalleryController extends Controller
 
         }else{
             $data['seo'] = array(
-                'title'         => 'Gallery | Inmobiliaria en lima',
+                'title'         => 'Galeria | Inmobiliaria en lima',
                 'description'   => 'Elsvan desarrolla proyectos inmobiliarios que combinan diseño, calidad y sostenibilidad, consolidando una trayectoria respaldada por la confianza de sus clientes y la entrega exitosa de sus proyectos',
                 'keywords'      => 'Inmobiliaria, departamentos, Lima',
                 'image'         => $dominio.'/images/logo-seo.png',

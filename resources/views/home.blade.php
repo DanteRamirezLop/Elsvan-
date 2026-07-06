@@ -1,52 +1,7 @@
 @extends('layouts.web')
 
 @section('content')
-    <div class="swiper sliderHome">
-        <div class="swiper-wrapper">
-
-
-            <div class="swiper-slide">
-                <div class="banner-category container-fluid">
-                    <img src="{{asset('images/banner-1.webp')}}" alt="La confianza no se vende se construye" class="banner-category-img">
-                    <div class="banner-category-box-title">
-                        <h1 class="banner-category-title"> La confianza no se vende</h1>
-                        <p class="text-center text-white text-xl lg:text-3xl"> se construye</p>
-                        <div class="text-center mt-5">
-                            <a href="{{route('quote')}}" class="btn-banner"> Cotiza aquí </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="swiper-slide">
-                <div class="banner-category container-fluid">
-                    <img src="{{asset('images/banner-2.webp')}}" alt="La confianza no se vende se construye" class="banner-category-img">
-                    <div class="banner-category-box-title">
-                        <h1 class="banner-category-title"> El respaldo real se nota </h1>
-                        <p class="text-center text-white text-xl lg:text-3xl"> en cada acción</p>
-                        <div class="text-center mt-5">
-                            <a href="{{route('quote')}}" class="btn-banner"> Cotiza aquí </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="swiper-slide">
-                <div class="banner-category container-fluid">
-                    <img src="{{asset('images/banner-3.webp')}}" alt="La confianza no se vende se construye" class="banner-category-img">
-                    <div class="banner-category-box-title">
-                        <h1 class="banner-category-title"> Tranquilidad y Seguridad</h1>
-                        <p class="text-center text-white text-xl lg:text-3xl">en tu hogar </p>
-                        <div class="text-center mt-5">
-                            <a href="{{route('quote')}}" class="btn-banner"> Cotiza aquí </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{-- Paginación --}}
-        <div class="swiper-pagination"></div>
-    </div>
+    <livewire:slider/>
 
     <livewire:marquee/>
 
@@ -56,19 +11,12 @@
                 Más de {{$year}} años construyendo confianza
             </div>
             <p>
-                Desde 2012, ELSVAN desarrolla proyectos inmobiliarios que combinan
-                diseño, calidad y sostenibilidad, consolidando una trayectoria
-                respaldada por la confianza de sus clientes y la entrega exitosa de
-                sus proyectos. Apostamos por ubicaciones estratégicas, espacios
-                funcionales y altos estándares de construcción, ofreciendo soluciones
-                de vivienda que generan valor y seguridad para tu familia de hoy y
-                del futuro.
+                {!! $page->content !!}
             </p>
             <a href="{{route('proyectos.index')}}" class="btn-projects">Ver nuestros proyectos</a>
         </div>
         <div class="about-image">
             <img src="{{asset('images/home.webp')}}" alt="Proyecto inmobiliario ELSVAN">
-
         </div>
     </section>
 

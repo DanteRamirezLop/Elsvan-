@@ -1,9 +1,6 @@
 @extends('layouts.web')
 
 @section('content')
-
-
-
     <section class="relative min-h-screen overflow-hidden bg-orange lg:h-[668px] lg:min-h-0">
         <div class="mx-auto flex min-h-screen w-full max-w-[1440px] flex-col lg:h-full lg:min-h-0 lg:flex-row">
             <div class="relative flex min-h-[430px] w-full items-end justify-center lg:min-h-0 lg:w-[46%] lg:justify-start">
@@ -15,12 +12,9 @@
                            lg:max-w-none xl:left-[8%]">
             </div>
             <div class="flex w-full items-center px-6 pb-12 lg:w-[54%] lg:px-10 lg:pb-0 lg:pr-[7%]">
-
                     <div class="w-full max-w-[650px]">
-                        <h1
-                            class="mb-6 text-center text-[30px] font-extrabold
-                                leading-tight text-white sm:text-[34px]"
-                        >
+                        <h1 class="mb-6 text-center text-[30px] font-extrabold
+                                leading-tight text-white sm:text-[34px]">
                             ¡CONSULTA TU PROYECTO!
                         </h1>
 
@@ -28,10 +22,8 @@
                             <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
 
                                 <div>
-                                    <label
-                                        for="nombres"
-                                        class="mb-1.5 block text-[16px] font-medium text-black"
-                                    >
+                                    <label for="nombres"
+                                        class="mb-1.5 block text-[16px] font-medium text-black">
                                         Nombres
                                     </label>
 

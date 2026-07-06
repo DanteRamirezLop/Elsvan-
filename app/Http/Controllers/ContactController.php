@@ -21,7 +21,7 @@ class ContactController extends Controller
 
         }else{
             $data['seo'] = array(
-                'title'         => 'Galeria | Inmobiliaria en lima',
+                'title'         => 'Contactanos | Inmobiliaria en lima',
                 'description'   => 'Elsvan desarrolla proyectos inmobiliarios que combinan diseño, calidad y sostenibilidad, consolidando una trayectoria respaldada por la confianza de sus clientes y la entrega exitosa de sus proyectos',
                 'keywords'      => 'Inmobiliaria, departamentos, Lima',
                 'image'         => $dominio.'/images/logo-seo.png',

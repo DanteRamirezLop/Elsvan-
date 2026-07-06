@@ -22,11 +22,15 @@
         <link rel="icon" type="image/png" sizes="32x32" href="{{env('APP_URL')}}/images/icon/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="{{env('APP_URL')}}/images/icon/favicon.ico">
         <link rel="apple-touch-icon" href="{{env('APP_URL')}}/images/icon/favicon.ico" />
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
         <!-- css -->
         <link rel="stylesheet" href="{{asset('css/line-awesome.css')}}?v=1993.1.1">
          <link rel="stylesheet" href="{{asset('css/whatsapp.css')}}?v=1993.1.1">
-        <link rel="stylesheet" href="{{asset('css/style.css')}}?v=1993.1.1">
-        <link rel="stylesheet" href="{{asset('css/responsive.css')}}?v=1993.1.1">
+        <link rel="stylesheet" href="{{asset('css/style.css')}}?v={{ filemtime(public_path('css/style.css')) }}">
+        <link rel="stylesheet" href="{{asset('css/responsive.css')}}?v={{ filemtime(public_path('css/responsive.css')) }}">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @stack('style')
         @stack('css')
