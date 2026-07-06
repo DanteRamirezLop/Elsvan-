@@ -3,9 +3,11 @@
 @section('content')
     <div class="swiper sliderHome">
         <div class="swiper-wrapper">
+
+
             <div class="swiper-slide">
                 <div class="banner-category container-fluid">
-                    <img src="{{asset('images/inicio.webp')}}" alt="La confianza no se vende se construye" class="banner-category-img">
+                    <img src="{{asset('images/banner-1.webp')}}" alt="La confianza no se vende se construye" class="banner-category-img">
                     <div class="banner-category-box-title">
                         <h1 class="banner-category-title"> La confianza no se vende</h1>
                         <p class="text-center text-white text-xl lg:text-3xl"> se construye</p>
@@ -18,10 +20,10 @@
 
             <div class="swiper-slide">
                 <div class="banner-category container-fluid">
-                    <img src="{{asset('images/inicio.webp')}}" alt="La confianza no se vende se construye" class="banner-category-img">
+                    <img src="{{asset('images/banner-2.webp')}}" alt="La confianza no se vende se construye" class="banner-category-img">
                     <div class="banner-category-box-title">
-                        <h1 class="banner-category-title"> La confianza no se vende 1</h1>
-                        <p class="text-center text-white text-xl lg:text-3xl"> se construye</p>
+                        <h1 class="banner-category-title"> El respaldo real se nota </h1>
+                        <p class="text-center text-white text-xl lg:text-3xl"> en cada acción</p>
                         <div class="text-center mt-5">
                             <a href="{{route('quote')}}" class="btn-banner"> Cotiza aquí </a>
                         </div>
@@ -31,10 +33,10 @@
 
             <div class="swiper-slide">
                 <div class="banner-category container-fluid">
-                    <img src="{{asset('images/inicio.webp')}}" alt="La confianza no se vende se construye" class="banner-category-img">
+                    <img src="{{asset('images/banner-3.webp')}}" alt="La confianza no se vende se construye" class="banner-category-img">
                     <div class="banner-category-box-title">
-                        <h1 class="banner-category-title"> La confianza no se vende 2</h1>
-                        <p class="text-center text-white text-xl lg:text-3xl"> se construye</p>
+                        <h1 class="banner-category-title"> Tranquilidad y Seguridad</h1>
+                        <p class="text-center text-white text-xl lg:text-3xl">en tu hogar </p>
                         <div class="text-center mt-5">
                             <a href="{{route('quote')}}" class="btn-banner"> Cotiza aquí </a>
                         </div>
@@ -65,7 +67,8 @@
             <a href="{{route('proyectos.index')}}" class="btn-projects">Ver nuestros proyectos</a>
         </div>
         <div class="about-image">
-            <img src="{{asset('images/img-home.webp')}}" alt="Proyecto inmobiliario ELSVAN">
+            <img src="{{asset('images/home.webp')}}" alt="Proyecto inmobiliario ELSVAN">
+
         </div>
     </section>
 
@@ -184,6 +187,38 @@
             </div>
         </section>
     @endforeach
+
+    @if($articles->count())
+    <section class="section my-14">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-bold md:text-4xl text-brown">Últimas noticias</h2>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            @foreach($articles as $article)
+                <article class="p-5 bg-white rounded-lg border border-gray-200 shadow-md">
+                    <a href="{{ route('noticias.show', $article) }}">
+                        <img class="w-full mb-4 rounded-lg" src="{{ $article->image ? Storage::disk('public')->url($article->image) : '' }}" alt="{{ $article->title }}">
+                    </a>
+                    <h3 class="mb-2 text-2xl tracking-tight text-gray-900">
+                        <a href="{{ route('noticias.show', $article) }}">{{ Str::limit($article->title, 60) }}</a>
+                    </h3>
+                    <p class="mb-5 font-light text-gray-500">{{ Str::limit($article->excerpt, 200) }}</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium text-brown">{{ $article->published_at ? date('d M Y', strtotime($article->published_at)) : '' }}</span>
+                        <a href="{{ route('noticias.show', $article) }}" class="inline-flex items-center font-medium text-orange hover:underline">
+                            Leer más <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </a>
+                    </div>
+                </article>
+            @endforeach
+        </div>
+
+        <div class="text-center mt-10">
+            <a href="{{ route('noticias.index') }}" class="btn-projects">Ver más</a>
+        </div>
+    </section>
+    @endif
 
 @endsection
 

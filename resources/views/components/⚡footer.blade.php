@@ -1,15 +1,18 @@
 <?php
 
+use App\Models\Network;
 use Livewire\Component;
 
 new class extends Component
 {
     public $year_more;
     public $year_now;
+    public $networks;
 
     public function mount(){
        $this->year_more = date('Y') - 2012;
        $this->year_now = date('Y');
+       $this->networks = Network::all();
     }
 };
 ?>
@@ -24,18 +27,11 @@ new class extends Component
           <img src="{{asset('images/logo-blanco.webp')}}" alt="Elsvan Construcciones Inmobiliarias" class="w-full max-w-xs p-6"/>
 
           <div class="flex gap-5 text-gray-300 text-lg mx-auto">
-            <a href="#" class="hover:text-orange transition ">
-              <i class="lab la-facebook text-2xl"></i>
-            </a>
-            <a href="#" class="hover:text-orange transition">
-              <i class="lab la-linkedin text-2xl"></i>
-            </a>
-            <a href="#" class="hover:text-orange transition">
-              <i class="lab la-whatsapp text-2xl"></i>
-            </a>
-            <a href="#" class="hover:text-orange transition">
-              <i class="lab la-instagram text-2xl"></i>
-            </a>
+            @foreach ($networks as $network)
+              <a href="{{ $network->link ?? '#' }}" title="{{ $network->titulo }}" target="_blank" rel="noopener noreferrer" class="hover:text-orange transition">
+                <i class="{{ $network->imagen }} text-2xl"></i>
+              </a>
+            @endforeach
           </div>
         </div>
 

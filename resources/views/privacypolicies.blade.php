@@ -2,8 +2,10 @@
 
 @section('content')
 
-    <section>
-Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam pariatur possimus fugiat alias aperiam itaque quod autem velit dolorum corporis veniam libero reprehenderit, molestiae quis, commodi expedita saepe ex! Dolores!
+    <section class="section">
+        <div class="pt-10" id="embedded-content">
+        {!! $page->content !!}
+        </div>
     </section>
 
 @endsection

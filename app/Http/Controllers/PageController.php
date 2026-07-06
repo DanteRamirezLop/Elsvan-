@@ -4,29 +4,60 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Models\Page;
 
 
 class PageController extends Controller
 {
     public function termsandconditions(){
-        $dominio = config('app.url');
-        $data['seo'] = array(
+
+     $dominio = config('app.url');
+        $page = Page::where('title','terminos')->first();
+        $data['page'] = $page;
+        if($page){
+            $data['seo'] = array(
+                'title'         => $page->meta_title,
+                'description'   => $page->meta_description,
+                'keywords'      => $page->tags,
+                'image'         => $dominio.'/uploads/cms/'.$page->feature_image,
+            );
+
+        }else{
+            $data['seo'] = array(
             'title'         => 'Términos y condiciones | Elsvan construcciones inmobiliarias',
             'description'   => 'Elsvan desarrolla proyectos inmobiliarios que combinan diseño, calidad y sostenibilidad, consolidando una trayectoria respaldada por la confianza de sus clientes y la entrega exitosa de sus proyectos',
             'keywords'      => 'Inmobiliaria, departamentos, Lima',
             'image'         => $dominio.'/images/logo-seo.png',
-        );
+            );
+        }
+
+
         return view('termsandconditions',$data);
     }
 
     public function privacypolicies(){
-    $dominio = config('app.url');
-        $data['seo'] = array(
+
+
+        $dominio = config('app.url');
+        $page = Page::where('title','politicas')->first();
+        $data['page'] = $page;
+        if($page){
+            $data['seo'] = array(
+                'title'         => $page->meta_title,
+                'description'   => $page->meta_description,
+                'keywords'      => $page->tags,
+                'image'         => $dominio.'/uploads/cms/'.$page->feature_image,
+            );
+
+        }else{
+            $data['seo'] = array(
             'title'         => 'Políticas de privacidad | Elsvan construcciones inmobiliarias',
             'description'   => 'Elsvan desarrolla proyectos inmobiliarios que combinan diseño, calidad y sostenibilidad, consolidando una trayectoria respaldada por la confianza de sus clientes y la entrega exitosa de sus proyectos',
             'keywords'      => 'Inmobiliaria, departamentos, Lima',
             'image'         => $dominio.'/images/logo-seo.png',
-        );
+            );
+        }
+
         return view('privacypolicies',$data);
     }
 

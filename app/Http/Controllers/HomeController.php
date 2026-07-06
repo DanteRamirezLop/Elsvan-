@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Page;
 use App\Models\RealEstateProject;
+use App\Models\Article;
 
 
 class HomeController extends Controller
@@ -35,6 +36,11 @@ class HomeController extends Controller
         $data['projects'] = RealEstateProject::with('blueprints')
             ->where('status', 'published')
             ->where('tag', '<>', 'vendido')
+            ->get();
+
+        $data['articles'] = Article::where('is_published', 1)
+            ->latest('published_at')
+            ->take(3)
             ->get();
 
 
