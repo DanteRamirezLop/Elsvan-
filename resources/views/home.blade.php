@@ -10,9 +10,11 @@
             <div class="marquee">
                 Más de {{$year}} años construyendo confianza
             </div>
+            @if(isset($page->content))
             <p>
                 {!! $page->content !!}
             </p>
+            @endif
             <a href="{{route('proyectos.index')}}" class="btn-projects">Ver nuestros proyectos</a>
         </div>
         <div class="about-image">
