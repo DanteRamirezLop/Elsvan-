@@ -13,6 +13,7 @@ Route::get('/',[HomeController::class,'index'])->name('inicio');
 Route::get('/galeria',[GalleryController::class,'index'])->name('galeria');
 Route::get('/nosotros',[AboutusController::class,'index'])->name('nosotros');
 Route::get('/contactanos',[ContactController::class,'index'])->name('contactanos');
+Route::post('/contactanos',[ContactController::class,'send'])->name('contactanos.send');
 Route::get('/cotizar',[ContactController::class,'quote'])->name('quote');
 Route::resource('noticias',ArticleController::class);
 Route::resource('proyectos',ProjectController::class)->parameters(['proyectos' => 'project']);

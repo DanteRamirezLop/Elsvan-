@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactFormMail;
 use App\Models\Page;
 use App\Models\RealEstateProject;
 
@@ -55,5 +57,34 @@ class ContactController extends Controller
         $data['project'] = RealEstateProject::first();
 
         return view('quote',$data);
+    }
+
+    public function send(Request $request)
+    {
+        try {
+
+            $validated = $request->validate([
+                'nombres'   => ['required', 'string', 'max:100'],
+                'apellidos' => ['required', 'string', 'max:100'],
+                'celular'   => ['required', 'string', 'max:30'],
+                'correo'    => ['required', 'email', 'max:150'],
+                'solicitud' => ['required', 'string', 'max:2000'],
+            ]);
+
+            Mail::to(config('mail.contact_to'))->send(new ContactFormMail($validated));
+
+            return response()->json([
+                'status'  => true,
+                'message' => 'Tu consulta fue enviada correctamente. Nos pondremos en contacto contigo pronto.',
+            ]);
+
+        } catch (\Throwable $th) {
+
+            return response()->json([
+                'status'  => false,
+                'message' => 'Ocurrio un error',
+            ]);
+        }
+
     }
 }

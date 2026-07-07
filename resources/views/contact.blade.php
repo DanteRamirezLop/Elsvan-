@@ -18,32 +18,31 @@
                             ¡CONSULTA TU PROYECTO!
                         </h1>
 
-                        <form action="#" method="POST" class="space-y-4">
+                        <form id="contactForm" method="POST" class="space-y-4" novalidate>
                             <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
 
                                 <div>
                                     <label for="nombres"
-                                        class="mb-1.5 block text-[16px] font-medium text-black">
+                                        class="mb-1.5 block text-[16px] font-medium text-white">
                                         Nombres
                                     </label>
 
-                                    <input
-                                        id="nombres"
+                                    <input id="nombres"
                                         name="nombres"
                                         type="text"
                                         placeholder="Jane"
                                         required
-                                        class="h-[46px] w-full rounded-md border border-gray-300
+                                        class="h-[46px] w-full rounded-2xl border border-gray-300
                                             bg-white px-3 text-sm text-gray-800 outline-none
                                             transition placeholder:text-gray-400
-                                            focus:border-black focus:ring-2 focus:ring-black/20"
+                                            focus:border-green-600 focus:ring-2 focus:ring-green-600/20"
                                     >
                                 </div>
 
                                 <div>
                                     <label
                                         for="apellidos"
-                                        class="mb-1.5 block text-[16px] font-medium text-black"
+                                        class="mb-1.5 block text-[16px] font-medium text-white"
                                     >
                                         Apellidos
                                     </label>
@@ -54,10 +53,10 @@
                                         type="text"
                                         placeholder="Smitherton"
                                         required
-                                        class="h-[46px] w-full rounded-md border border-gray-300
+                                        class="h-[46px] w-full rounded-2xl border border-gray-300
                                             bg-white px-3 text-sm text-gray-800 outline-none
                                             transition placeholder:text-gray-400
-                                            focus:border-black focus:ring-2 focus:ring-black/20"
+                                            focus:border-green-600 focus:ring-2 focus:ring-green-600/20"
                                     >
                                 </div>
 
@@ -67,7 +66,7 @@
                             <div>
                                 <label
                                     for="celular"
-                                    class="mb-1.5 block text-[16px] font-medium text-black"
+                                    class="mb-1.5 block text-[16px] font-medium text-white"
                                 >
                                     Celular
                                 </label>
@@ -78,10 +77,10 @@
                                     type="tel"
                                     placeholder="+51 123 123 123"
                                     required
-                                    class="h-[46px] w-full rounded-md border border-gray-300
+                                    class="h-[46px] w-full rounded-2xl border border-gray-300
                                         bg-white px-3 text-sm text-gray-800 outline-none
                                         transition placeholder:text-gray-400
-                                        focus:border-black focus:ring-2 focus:ring-black/20"
+                                        focus:border-green-600 focus:ring-2 focus:ring-green-600/20"
                                 >
                             </div>
 
@@ -89,7 +88,7 @@
                             <div>
                                 <label
                                     for="correo"
-                                    class="mb-1.5 block text-[16px] font-medium text-black"
+                                    class="mb-1.5 block text-[16px] font-medium text-white"
                                 >
                                     Correo electrónico
                                 </label>
@@ -100,59 +99,50 @@
                                     type="email"
                                     placeholder="email@dominio.com"
                                     required
-                                    class="h-[46px] w-full rounded-md border border-gray-300
+                                    class="h-[46px] w-full rounded-2xl border border-gray-300
                                         bg-white px-3 text-sm text-gray-800 outline-none
                                         transition placeholder:text-gray-400
-                                        focus:border-black focus:ring-2 focus:ring-black/20"
+                                        focus:border-green-600 focus:ring-2 focus:ring-green-600/20"
                                 >
                             </div>
 
-
                             <div>
-                                <label
-                                    for="solicitud"
-                                    class="mb-1.5 block text-[16px] font-medium text-black"
-                                >
+                                <label for="solicitud"
+                                    class="mb-1.5 block text-[16px] font-medium text-white">
                                     Tu solicitud
                                 </label>
-
                                 <textarea
                                     id="solicitud"
                                     name="solicitud"
                                     rows="5"
                                     placeholder="Escribe tu consulta o mensaje"
                                     required
-                                    class="min-h-[154px] w-full resize-none rounded-md
+                                    class="min-h-[154px] w-full resize-none rounded-2xl
                                         border border-gray-300 bg-white px-3 py-3
                                         text-sm text-gray-800 outline-none transition
-                                        placeholder:text-gray-400 focus:border-black
-                                        focus:ring-2 focus:ring-black/20"
+                                        placeholder:text-gray-400 focus:border-green-600
+                                        focus:ring-2 focus:ring-green-600/20"
                                 ></textarea>
                             </div>
-
                             <!-- Botón -->
                             <button
+                                id="contactFormSubmit"
                                 type="submit"
                                 class="flex h-[45px] w-full items-center justify-center
-                                    rounded-md bg-black px-6 text-[16px] font-bold
+                                    rounded-2xl bg-brown px-6 text-[16px] font-bold
                                     text-white transition duration-200
-                                    hover:bg-zinc-800 focus:outline-none
-                                    focus:ring-2 focus:ring-black
+                                    hover:scale-[1.02] hover:bg-zinc-800 hover:shadow-lg
+                                    focus:outline-none
+                                    focus:ring-2 focus:bg-black
                                     focus:ring-offset-2 focus:ring-offset-[#fb6200]"
                             >
                                 Enviar
                             </button>
-
                         </form>
-
                     </div>
-
             </div>
-
         </div>
     </section>
-
-
 @endsection
 
 @push('seo')
@@ -160,4 +150,120 @@
     <meta name="description" content="{{$seo['description']}}">
     <meta name="keywords" content="{{$seo['keywords']}}">
     <meta property="og:image" itemprop="image" content="{{$seo['image']}}" />
+@endpush
+
+@push('javascript')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        (function () {
+            const form = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('contactFormSubmit');
+            const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 2800,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                 }
+                });
+
+            const requiredFields = [
+                { field: form.nombres, label: 'Nombres' },
+                { field: form.apellidos, label: 'Apellidos' },
+                { field: form.celular, label: 'Celular' },
+                { field: form.correo, label: 'Correo electrónico' },
+                { field: form.solicitud, label: 'Tu solicitud' },
+            ];
+
+            function validateForm() {
+                for (const { field, label } of requiredFields) {
+                    if (!field.value.trim()) {
+                        Toast.fire({
+                            icon: 'warning',
+                            title: 'Revisa el formulario',
+                            text: `El campo "${label}" es obligatorio.`,
+                        });
+                        field.focus();
+                        return false;
+                    }
+                }
+
+                if (!form.correo.checkValidity()) {
+                    Toast.fire({
+                        icon: 'warning',
+                        title: 'Revisa el formulario',
+                        text: 'Ingresa un correo electrónico válido.',
+                    });
+                    form.correo.focus();
+                    return false;
+                }
+
+                return true;
+            }
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                if (!validateForm()) {
+                    return;
+                }
+
+                const payload = {
+                    nombres: form.nombres.value,
+                    apellidos: form.apellidos.value,
+                    celular: form.celular.value,
+                    correo: form.correo.value,
+                    solicitud: form.solicitud.value,
+                };
+
+                submitBtn.disabled = true;
+
+                fetch('{{ route('contactanos.send') }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': token,
+                    },
+                    body: JSON.stringify(payload),
+                })
+                    .then(async (response) => {
+                        const data = await response.json();
+
+                        if (response.ok) {
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'Consulta enviada',
+                                text: data.message,
+                            });
+                            form.reset();
+                        } else if (response.status === 422) {
+                            const firstError = Object.values(data.errors)[0][0];
+                            Toast.fire({
+                                icon: 'warning',
+                                title: 'Revisa el formulario',
+                                text: firstError,
+                            });
+                        } else {
+                            throw new Error(data.message || 'Error al enviar');
+                        }
+                    })
+                    .catch(function () {
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Ocurrió un error',
+                            text: 'No pudimos enviar tu consulta. Inténtalo nuevamente.',
+                        });
+                    })
+                    .finally(function () {
+                        submitBtn.disabled = false;
+                    });
+            });
+        })();
+    </script>
 @endpush
