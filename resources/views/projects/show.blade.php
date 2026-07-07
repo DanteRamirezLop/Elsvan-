@@ -234,10 +234,10 @@
                                 Consulta ahora
                             </h1>
                             <form action="#" method="POST" class="space-y-4">
-                                <!-- Tipo de departamento -->
+                                <!-- Plano del proyecto -->
                                 <div>
                                     <label for="departamento" class="mb-1.5 block text-sm font-medium sm:text-base">
-                                        Selecciona el tipo de departamento
+                                        Selecciona el plano
                                     </label>
 
                                     <select
@@ -247,11 +247,11 @@
                                         class="h-12 w-full appearance-none rounded-full border-2 border-[#FF8A48] bg-white px-5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-orange-100"
                                     >
                                         <option value="" selected disabled>
-                                            Seleccionar departamento
+                                            Seleccionar plano
                                         </option>
-                                        <option value="flat">Flat</option>
-                                        <option value="duplex">Dúplex</option>
-                                        <option value="penthouse">Penthouse</option>
+                                        @foreach($project->blueprints as $blueprint)
+                                            <option value="{{ $blueprint->name }}">{{ $blueprint->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 

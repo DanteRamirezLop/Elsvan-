@@ -3,52 +3,39 @@
 @section('content')
     <section class="relative min-h-screen overflow-hidden bg-orange lg:h-[668px] lg:min-h-0">
         <div class="mx-auto flex min-h-screen w-full max-w-[1440px] flex-col lg:h-full lg:min-h-0 lg:flex-row">
-            <div class="relative flex min-h-[430px] w-full items-end justify-center lg:min-h-0 lg:w-[46%] lg:justify-start">
-                <img src="{{asset('images/ingeniero-elsvan.png')}}"
-                    alt="Ingeniero revisando un proyecto"
+            <div class="relative hidden min-h-[430px] w-full items-end justify-center min-[1021px]:flex lg:min-h-0 lg:w-[46%] lg:justify-start">
+                <img src="{{asset('images/ingeniero-elsvan.png')}}" alt="Ingeniero revisando un proyecto"
                     class="relative z-10 h-auto max-h-[480px] w-auto max-w-[90%]
                            object-contain drop-shadow-[0_6px_7px_rgba(0,0,0,0.22)]
                            lg:absolute lg:bottom-0 lg:left-[5%] lg:max-h-[92%]
                            lg:max-w-none xl:left-[8%]">
             </div>
-            <div class="flex w-full items-center px-6 pb-12 lg:w-[54%] lg:px-10 lg:pb-0 lg:pr-[7%]">
-                    <div class="w-full max-w-[650px]">
-                        <h1 class="mb-6 text-center text-[30px] font-extrabold
-                                leading-tight text-white sm:text-[34px]">
-                            ¡CONSULTA TU PROYECTO!
+            <div class="flex justify-center w-full items-center px-6 pb-12 lg:w-[54%] lg:px-10 lg:pb-0 lg:pr-[7%]">
+                    <div class="w-full max-w-[650px] my-12">
+
+                        <h1 class="mb-6 text-center text-[30px] font-extrabold leading-tight text-white sm:text-[34px]">
+                            CONTÁCTANOS AHORA
                         </h1>
 
                         <form id="contactForm" method="POST" class="space-y-4" novalidate>
                             <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
-
                                 <div>
-                                    <label for="nombres"
-                                        class="mb-1.5 block text-[16px] font-medium text-white">
+                                    <label for="nombres" class="mb-1.5 block text-[16px] font-medium text-white">
                                         Nombres
                                     </label>
 
-                                    <input id="nombres"
-                                        name="nombres"
-                                        type="text"
-                                        placeholder="Jane"
-                                        required
-                                        class="h-[46px] w-full rounded-2xl border border-gray-300
+                                    <input id="nombres" name="nombres" type="text" placeholder="Jane" required class="h-[46px] w-full rounded-2xl border border-gray-300
                                             bg-white px-3 text-sm text-gray-800 outline-none
                                             transition placeholder:text-gray-400
-                                            focus:border-green-600 focus:ring-2 focus:ring-green-600/20"
-                                    >
+                                            focus:border-green-600 focus:ring-2 focus:ring-green-600/20">
                                 </div>
 
                                 <div>
-                                    <label
-                                        for="apellidos"
-                                        class="mb-1.5 block text-[16px] font-medium text-white"
-                                    >
+                                    <label for="apellidos" class="mb-1.5 block text-[16px] font-medium text-white">
                                         Apellidos
                                     </label>
 
-                                    <input
-                                        id="apellidos"
+                                    <input id="apellidos"
                                         name="apellidos"
                                         type="text"
                                         placeholder="Smitherton"
@@ -56,45 +43,30 @@
                                         class="h-[46px] w-full rounded-2xl border border-gray-300
                                             bg-white px-3 text-sm text-gray-800 outline-none
                                             transition placeholder:text-gray-400
-                                            focus:border-green-600 focus:ring-2 focus:ring-green-600/20"
-                                    >
+                                            focus:border-green-600 focus:ring-2 focus:ring-green-600/20">
                                 </div>
-
                             </div>
 
-
                             <div>
-                                <label
-                                    for="celular"
-                                    class="mb-1.5 block text-[16px] font-medium text-white"
-                                >
+                                <label for="celular" class="mb-1.5 block text-[16px] font-medium text-white">
                                     Celular
                                 </label>
 
-                                <input
-                                    id="celular"
-                                    name="celular"
-                                    type="tel"
+                                <input id="celular" name="celular" type="tel"
                                     placeholder="+51 123 123 123"
                                     required
                                     class="h-[46px] w-full rounded-2xl border border-gray-300
                                         bg-white px-3 text-sm text-gray-800 outline-none
                                         transition placeholder:text-gray-400
-                                        focus:border-green-600 focus:ring-2 focus:ring-green-600/20"
-                                >
+                                        focus:border-green-600 focus:ring-2 focus:ring-green-600/20">
                             </div>
-
                             <!-- Correo -->
                             <div>
-                                <label
-                                    for="correo"
-                                    class="mb-1.5 block text-[16px] font-medium text-white"
-                                >
+                                <label for="correo" class="mb-1.5 block text-[16px] font-medium text-white">
                                     Correo electrónico
                                 </label>
 
-                                <input
-                                    id="correo"
+                                <input id="correo"
                                     name="correo"
                                     type="email"
                                     placeholder="email@dominio.com"
@@ -102,10 +74,8 @@
                                     class="h-[46px] w-full rounded-2xl border border-gray-300
                                         bg-white px-3 text-sm text-gray-800 outline-none
                                         transition placeholder:text-gray-400
-                                        focus:border-green-600 focus:ring-2 focus:ring-green-600/20"
-                                >
+                                        focus:border-green-600 focus:ring-2 focus:ring-green-600/20">
                             </div>
-
                             <div>
                                 <label for="solicitud"
                                     class="mb-1.5 block text-[16px] font-medium text-white">
@@ -134,8 +104,7 @@
                                     hover:scale-[1.02] hover:bg-zinc-800 hover:shadow-lg
                                     focus:outline-none
                                     focus:ring-2 focus:bg-black
-                                    focus:ring-offset-2 focus:ring-offset-[#fb6200]"
-                            >
+                                    focus:ring-offset-2 focus:ring-offset-[#fb6200]" >
                                 Enviar
                             </button>
                         </form>
@@ -172,6 +141,8 @@
                  }
                 });
 
+            const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
             const requiredFields = [
                 { field: form.nombres, label: 'Nombres' },
                 { field: form.apellidos, label: 'Apellidos' },
@@ -193,7 +164,7 @@
                     }
                 }
 
-                if (!form.correo.checkValidity()) {
+                if (!emailRegex.test(form.correo.value.trim())) {
                     Toast.fire({
                         icon: 'warning',
                         title: 'Revisa el formulario',
@@ -202,7 +173,6 @@
                     form.correo.focus();
                     return false;
                 }
-
                 return true;
             }
 

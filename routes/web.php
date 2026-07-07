@@ -15,6 +15,7 @@ Route::get('/nosotros',[AboutusController::class,'index'])->name('nosotros');
 Route::get('/contactanos',[ContactController::class,'index'])->name('contactanos');
 Route::post('/contactanos',[ContactController::class,'send'])->name('contactanos.send');
 Route::get('/cotizar',[ContactController::class,'quote'])->name('quote');
+Route::post('/cotizar',[ContactController::class,'sendQuote'])->name('quote.send');
 Route::resource('noticias',ArticleController::class);
 Route::resource('proyectos',ProjectController::class)->parameters(['proyectos' => 'project']);
 Route::get('/brochure',[ProjectController::class,'brochure'])->name('brochure');
