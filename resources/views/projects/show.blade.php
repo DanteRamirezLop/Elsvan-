@@ -233,7 +233,7 @@
                             <h1 class="mb-6 text-3xl font-bold uppercase text-primary sm:text-[40px] sm:leading-tight">
                                 Consulta ahora
                             </h1>
-                            <form action="#" method="POST" class="space-y-4">
+                            <form id="quoteForm" method="POST" class="space-y-4" novalidate>
                                 <!-- Plano del proyecto -->
                                 <div>
                                     <label for="departamento" class="mb-1.5 block text-sm font-medium sm:text-base">
@@ -250,7 +250,7 @@
                                             Seleccionar plano
                                         </option>
                                         @foreach($project->blueprints as $blueprint)
-                                            <option value="{{ $blueprint->name }}">{{ $blueprint->name }}</option>
+                                            <option value="{{ $blueprint->number_departments }}">{{ $blueprint->number_departments }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -271,6 +271,7 @@
                                             name="nombre"
                                             type="text"
                                             autocomplete="name"
+                                            required
                                             class="h-12 w-full rounded-full border-2 border-[#FF8A48] px-5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-orange-100"
                                         >
                                     </div>
@@ -309,6 +310,7 @@
                                         <select
                                             id="tipo_documento"
                                             name="tipo_documento"
+                                            required
                                             class="h-12 w-full appearance-none rounded-full border-2 border-[#FF8A48] bg-white px-5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-orange-100"
                                         >
                                             <option value="" selected disabled>Seleccione</option>
@@ -331,6 +333,7 @@
                                             name="numero_documento"
                                             type="text"
                                             inputmode="numeric"
+                                            required
                                             class="h-12 w-full rounded-full border-2 border-[#FF8A48] px-5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-orange-100"
                                         >
                                     </div>
@@ -376,6 +379,7 @@
                                 <!-- Términos -->
                                 <label class="flex cursor-pointer items-start gap-2 text-sm sm:items-center sm:text-base">
                                     <input
+                                        id="terminos"
                                         type="checkbox"
                                         name="terminos"
                                         required
@@ -396,9 +400,15 @@
                                 <!-- Botón -->
                                 <div class="flex justify-center pt-2">
                                     <button
+                                        id="quoteFormSubmit"
                                         type="submit"
-                                        class="min-w-[125px] rounded-full bg-primary px-8 py-3 text-base font-bold uppercase text-white shadow-sm transition duration-300 hover:-translate-y-0.5 hover:bg-[#e95000] hover:shadow-md focus:outline-none focus:ring-4 focus:ring-orange-200"
-                                    >
+                                        class="flex h-[45px] w-full items-center justify-center
+                                        rounded-2xl bg-brown px-6 text-[16px] font-bold
+                                        text-white transition duration-200
+                                        hover:scale-[1.02] hover:bg-zinc-800 hover:shadow-lg
+                                        focus:outline-none
+                                        focus:ring-2 focus:bg-black
+                                        focus:ring-offset-2 focus:ring-offset-[#fb6200]">
                                         Enviar
                                     </button>
                                 </div>
@@ -426,7 +436,140 @@
 
 
 @push('javascript')
+
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('quoteForm');
+            if (!form) return;
+
+            const submitBtn = document.getElementById('quoteFormSubmit');
+            const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            const proyectoNombre = @json($project->name);
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 2800,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+
+            const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+            const requiredFields = [
+                { field: form.departamento, label: 'Plano del proyecto' },
+                { field: form.nombre, label: 'Nombre' },
+                { field: form.celular, label: 'Celular' },
+                { field: form.tipo_documento, label: 'Tipo de documento' },
+                { field: form.numero_documento, label: 'Número de documento' },
+                { field: form.email, label: 'Email' },
+            ];
+
+            function validateForm() {
+                for (const { field, label } of requiredFields) {
+                    if (!field.value.trim()) {
+                        Toast.fire({
+                            icon: 'warning',
+                            title: 'Revisa el formulario',
+                            text: `El campo "${label}" es obligatorio.`,
+                        });
+                        field.focus();
+                        return false;
+                    }
+                }
+
+                if (!emailRegex.test(form.email.value.trim())) {
+                    Toast.fire({
+                        icon: 'warning',
+                        title: 'Revisa el formulario',
+                        text: 'Ingresa un correo electrónico válido.',
+                    });
+                    form.email.focus();
+                    return false;
+                }
+
+                if (!form.terminos.checked) {
+                    Toast.fire({
+                        icon: 'warning',
+                        title: 'Revisa el formulario',
+                        text: 'Debes aceptar los términos y condiciones.',
+                    });
+                    form.terminos.focus();
+                    return false;
+                }
+                return true;
+            }
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                if (!validateForm()) {
+                    return;
+                }
+
+                const departamentoOption = form.departamento.options[form.departamento.selectedIndex];
+
+                const payload = {
+                    proyecto: proyectoNombre,
+                    departamento: departamentoOption ? departamentoOption.text : form.departamento.value,
+                    nombre: form.nombre.value,
+                    celular: form.celular.value,
+                    tipo_documento: form.tipo_documento.value,
+                    numero_documento: form.numero_documento.value,
+                    email: form.email.value,
+                    mensaje: form.mensaje.value,
+                    terminos: form.terminos.checked,
+                };
+
+                submitBtn.disabled = true;
+
+                fetch('{{ route('quote.send') }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': token,
+                    },
+                    body: JSON.stringify(payload),
+                })
+                    .then(async (response) => {
+                        const data = await response.json();
+
+                        if (response.ok) {
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'Cotización enviada',
+                                text: data.message,
+                            });
+                            form.reset();
+                        } else if (response.status === 422) {
+                            const firstError = Object.values(data.errors)[0][0];
+                            Toast.fire({
+                                icon: 'warning',
+                                title: 'Revisa el formulario',
+                                text: firstError,
+                            });
+                        } else {
+                            throw new Error(data.message || 'Error al enviar');
+                        }
+                    })
+                    .catch(function () {
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Ocurrió un error',
+                            text: 'No pudimos enviar tu cotización. Inténtalo nuevamente.',
+                        });
+                    })
+                    .finally(function () {
+                        submitBtn.disabled = false;
+                    });
+            });
+        });
+
         const buttons = document.querySelectorAll(".category-btn");
 
         buttons.forEach((button) => {

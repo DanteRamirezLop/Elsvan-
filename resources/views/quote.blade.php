@@ -238,7 +238,7 @@
 @endpush
 
 @push('javascript')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const select = document.getElementById('proyecto');
@@ -296,7 +296,7 @@
             }
         });
 
-        (function () {
+        document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('quoteForm');
             const submitBtn = document.getElementById('quoteFormSubmit');
             const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -425,6 +425,6 @@
                         submitBtn.disabled = false;
                     });
             });
-        })();
+        });
     </script>
 @endpush

@@ -19,6 +19,11 @@ import '../css/app.css';
 
 import lightbox from 'lightbox2';
 
+//SweeAlert2
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+window.Swal = Swal;
+
 document.addEventListener('DOMContentLoaded', () => {
     const sliderHome = document.querySelector('.sliderHome');
     const sliderBlueprints = document.querySelectorAll('.sliderBlueprint');

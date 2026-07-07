@@ -35,7 +35,6 @@ class ContactController extends Controller
         return view('contact',$data);
     }
 
-
     public function quote(){
         $dominio = config('app.url');
         $page = Page::where('title','quote')->first();

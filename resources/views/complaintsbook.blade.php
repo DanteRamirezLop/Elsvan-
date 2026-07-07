@@ -2,210 +2,210 @@
 
 @section('content')
 
-        <!-- <section class="banner-category container-fluid">
-       </section> -->
+    <div>
+        <section class="section page-title">
+            <h1 class="mt-32 font-bold text-center text-5xl">Libro de reclamaciones</h1>
+            <h2 class="text-center my-5 text-2xl">Construcciones Inmobiliarias Elsvan S.A.C.</h2>
+            <h3 class="text-center  mt-5 leading-normal">Calle Los Antares 320, Torre B, Oficina 407, Urb. La Alborada, Distrito de Santiago de Surco</h3>
+            <span class="">Conforme a lo establecido en el código de protección y defensa del
+                consumidor, esta institución cuenta con un libro de reclamaciones
+                a su disposición.
+            </span>
+        </section>
 
-
-        <div>
-            <section class="section page-title">
-                <h1 class="mt-32 font-bold text-center text-5xl">Libro de reclamaciones</h1>
-                <h2 class="text-center my-5 text-2xl">Construcciones Inmobiliarias Elsvan S.A.C.</h2>
-                <h3 class="text-center  mt-5 leading-normal">Calle Los Antares 320, Torre B, Oficina 407, Urb. La Alborada, Distrito de Santiago de Surco</h3>
-                <span class="">Conforme a lo establecido en el código de protección y defensa del
-                    consumidor, esta institución cuenta con un libro de reclamaciones
-                    a su disposición.
-                </span>
-            </section>
-
-            <section class="section">
-                    <div class="grid grid-cols-12 gap-4">
-                        <div class="col-span-12">
-                            <!-- <form action=""> -->
-                                <div class="grid grid-cols-12 gap-4">
-                                    <div class="col-span-12 mb-4">
-                                        <h4 class="text-orange text-xl">HOJA DE RECLAMO</h4>
-                                        <div class="flex justify-between">
-                                            <strong class="">N° 00{{$number +1}}-{{$anioActual}}</strong>
-                                            <input id="numberReclamo" type="hidden" value="N° 00{{$number +1}}-{{$anioActual}}">
-                                            <strong class="ml-5 ">Fecha del reclamo: {{$fechaActual}}</strong>
-                                            <input id="fechaReclamo" type="hidden" value="{{$fechaActual}}">
-                                        </div>
-                                    </div>
-                                    <div class="col-span-12 mb-2">
-                                        <h4 class="text-orange text-xl">1. Identificación del Consumidor reclamante:</h4>
-                                    </div>
-
-                                    <div class="col-span-12 mb-1">
-                                        <div class="flex items-center m-[5px]">
-                                            <input id="persona" type="radio" value="persona" name="empresaPersona" checked class="h-5 w-5">
-                                            <label for="persona" class="ml-2 ">Persona natural</label>
-                                            <input id="empresa" type="radio" value="empresa" name="empresaPersona" class="h-5 w-5 ml-[10px]">
-                                            <label for="empresa" class="ml-2 ">Empresa</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-span-12" id="isPerson">
-                                        <div class="grid grid-cols-12 gap-4">
-                                            <div class="col-span-12 md:col-span-6">
-                                                <input id="nombre" class=" border border-default-medium text-heading text-sm rounded-md focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" type="text" placeholder="Nombre" required>
-                                            </div>
-                                            <div class="col-span-12 md:col-span-6">
-                                                <input id="apellidos" class=" border border-default-medium text-heading text-sm rounded-md focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  type="text" placeholder="Apellidos" required>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-span-12" id="isBusiness" style="display:none">
-                                        <input id="business" class=" border border-default-medium text-heading text-sm rounded-md focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  type="text" placeholder="Razón Social" required>
-                                    </div>
-
-                                    <div class="col-span-12">
-                                        <input id="direccion" class=" border border-default-medium text-heading text-sm rounded-md focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  type="text" placeholder="Dirección" required>
-                                    </div>
-
-                                    <div class="col-span-12 md:col-span-6">
-                                        <input id="correo" class=" border border-default-medium text-heading text-sm rounded-md focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  type="text" placeholder="Correo" required>
-                                    </div>
-
-                                    <div class="col-span-12 md:col-span-6">
-                                        <input id="telefono" class=" border border-default-medium text-heading text-sm rounded-md focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  type="text" placeholder="Teléfono" required>
-                                    </div>
-
-                                    <div class="col-span-12 md:col-span-6">
-                                        <select name="Tipo de Documento" id="tipodoc" value="" class="border border-default-medium text-heading text-sm rounded-md focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" >
-                                            <option value="" selected disabled >Tipo de Documento</option>
-                                            <option value="DNI" class="text-black">DNI</option>
-                                            <option value="PASAPORTE">PASAPORTE</option>
-                                            <option value="RUC">RUC</option>
-                                        </select>
-
-                                    </div>
-
-                                    <div class="col-span-12 md:col-span-6">
-                                        <input id="documento" class=" border border-default-medium text-heading text-sm rounded-md focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  type="text" placeholder="N° de Documento" required>
-                                    </div>
-
-                                    <div id="questionEdad" class="col-span-12">
-                                        <strong class=" ml-2 mb-2">
-                                            ¿El reclamante es menor de edad?
-                                        </strong>
-                                        <div class="flex items-center m-[5px]">
-                                            <input id="mayor" type="radio" value="mayor" name="mayoriaEdad" checked class="h-5 w-5">
-                                            <label for="mayor" class="ml-2 ">No</label>
-                                            <input id="menor" type="radio" value="menor" name="mayoriaEdad" class="h-5 w-5 ml-[10px]">
-                                            <label for="menor" class="ml-2 ">Si</label>
-                                        </div>
-                                    </div>
-
-                                    <div id="menorEdad" class="col-span-12" style="display: none;">
-                                        <div class="grid grid-cols-12 gap-4">
-                                            <div class="col-span-12 md:col-span-6">
-                                                <input id="nombre_padre" placeholder="Nombre del padre o de la madre" class=" border border-default-medium text-heading text-sm rounded-md focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  type="text" >
-                                            </div>
-
-                                            <div class="col-span-12 md:col-span-6">
-                                                <input id="documento_padre" placeholder="Documento del padre o de la madre" class=" border border-default-medium text-heading text-sm rounded-md focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  type="text" >
-                                            </div>
-
-                                            <div class="col-span-12 md:col-span-6">
-                                                <input id="telefono_padre" placeholder="Teléfono del padre o de la madre" class=" border border-default-medium text-heading text-sm rounded-md focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  type="text" >
-                                            </div>
-
-                                            <div class="col-span-12 md:col-span-6">
-                                                <input id="correo_padre" placeholder="Correo del padre o de la madre" class=" border border-default-medium text-heading text-sm rounded-md focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  type="text" >
-                                            </div>
-
-                                            <div class="col-span-12">
-                                                <input id="direccion_padre" placeholder="Dirección del padre o de la madre" class=" border border-default-medium text-heading text-sm rounded-md focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  type="text" >
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-span-12 mb-2 mt-4">
-                                        <h4 class="text-orange">2. Identificación del Bien contratado:</h4>
-                                    </div>
-
-                                    <div class="col-span-12">
-                                        <div class="flex items-center mb-[10px]">
-                                            <input id="servicio" type="radio" value="Servicio" name="serviceProduct" checked class="h-5 w-5">
-                                            <label for="servicio" class="ml-2 ">Servicio</label>
-                                            <input id="producto" type="radio" value="Producto" name="serviceProduct" class="h-5 w-5 ml-[10px]">
-                                            <label for="producto" class="ml-2 ">Producto</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-span-12">
-                                        <textarea id="bienContratado" class=" border border-default-medium text-heading text-sm rounded-md focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  rows="5" placeholder="Descrición"></textarea>
-                                    </div>
-
-
-
-                                    <div class="col-span-12 mb-2 mt-4">
-                                        <h4 class="text-orange">3. Detalle de la Reclamación y Pedido del consumidor:</h4>
-                                    </div>
-
-                                    <div class="col-span-12">
-                                        <div class="flex items-center mb-[10px]">
-                                            <input id="default-radio-1" type="radio" value="Queja" name="quejaReclamo" checked class="h-5 w-5">
-                                            <label for="default-radio-1" class="ml-2 ">Queja</label>
-                                            <input id="default-radio-2" type="radio" value="Reclamo" name="quejaReclamo" class="h-5 w-5 ml-[10px]">
-                                            <label for="default-radio-2" class="ml-2 ">Reclamo</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-span-12">
-                                        <textarea id="description" class=" border border-default-medium text-heading text-sm rounded-md focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  rows="5" placeholder="Descrición"></textarea>
-                                    </div>
-
-                                    <div class="col-span-12 mb-2 mt-4">
-                                        <h4 class="text-orange">4. Observaciones y acciones adoptadas por el Proveedor:</h4>
-                                    </div>
-
-                                    <div class="col-span-12 mb-2 mt-2">
-                                        <p class="">Al ser un reclamo virtual su caso será derivado al área de atención al cliente, a fin de dar respuesta dentro del plazo legalmente establecido.* <p>
-                                    </div>
-
-                                    <div class="col-span-12 mb-2 mt-4">
-                                        <h4 class="text-orange">5. Autorizo notificación del resultado del reclamo al e-mail consignado:</h4>
-                                    </div>
-
-                                    <div class="col-span-12">
-                                        <div class="flex items-center mb-[10px]">
-                                            <input id="default-radio1" type="radio" value="Si" name="autorizo" checked class="h-5 w-5">
-                                            <label for="default-radio1" class="ml-2 ">Si</label>
-                                            <input id="default-radio2" type="radio" value="No" name="autorizo" class="h-5 w-5 ml-[10px]">
-                                            <label for="default-radio2" class="ml-2 ">No</label>
-                                        </div>
-                                        <p class=" mb-4">Todos los campos son obligatorios (*)</p>
-                                        <div>
-                                            <label class=""><input type="checkbox" id="politicas" class="h-[15px] w-[15px]"> He leído las <a href="{{route('privacypolicies')}}" target="_blank"> <strong> políticas de privacidad.</a></strong> </label>
-                                        </div>
-                                        <div>
-                                            <label class=""><input type="checkbox" id="terminos" class="h-[15px] w-[15px]"> He leído los <a href="{{route('termsandconditions')}}" target="_blank"> <strong> Términos y condiciones.</a></strong> </label>
-                                        </div>
-                                        <div class=" mt-2">*La formulación del reclamo no impide acudir a otras vías de solución de controversias ni es requisito previo.</div>
-                                        <div class=" mt-2 mb-2"> *El proveedor deberá dar respuesta al reclamo en un plazo no mayor a quince (15) días hábiles.</div>
-                                    </div>
-
-                                    <!-- Submit Button -->
-                                    <div class="col-span-12 text-right mb-5">
-                                        <input type="button" class="btn btn--md Enviarconsulta font-bold bg-transparent rounded-[20px] " value="ENVIAR">
-
+        <section class="section">
+                <div class="grid grid-cols-12 gap-4">
+                    <div class="col-span-12">
+                        <!-- <form action=""> -->
+                            <div class="grid grid-cols-12 gap-4">
+                                <div class="col-span-12 mb-4">
+                                    <h4 class="text-orange text-xl">HOJA DE RECLAMO</h4>
+                                    <div class="flex justify-between">
+                                        <strong class="">N° 00{{$number}}-{{$anioActual}}</strong>
+                                        <input id="numberReclamo" type="hidden" value="N° 00{{$number +1}}-{{$anioActual}}">
+                                        <strong class="ml-5 ">Fecha del reclamo: {{$fechaActual}}</strong>
+                                        <input id="fechaReclamo" type="hidden" value="{{$fechaActual}}">
                                     </div>
                                 </div>
-                            <!-- </form> -->
+                                <div class="col-span-12 mb-2">
+                                    <h4 class="text-orange text-xl">1. Identificación del Consumidor reclamante:</h4>
+                                </div>
 
-                        </div>
+                                <div class="col-span-12 mb-1">
+                                    <div class="flex items-center m-[5px]">
+                                        <input id="persona" type="radio" value="persona" name="empresaPersona" checked class="h-5 w-5">
+                                        <label for="persona" class="ml-2 ">Persona natural</label>
+                                        <input id="empresa" type="radio" value="empresa" name="empresaPersona" class="h-5 w-5 ml-[10px]">
+                                        <label for="empresa" class="ml-2 ">Empresa</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-span-12" id="isPerson">
+                                    <div class="grid grid-cols-12 gap-4">
+                                        <div class="col-span-12 md:col-span-6">
+                                            <input id="nombre" class=" border border-default-medium text-heading text-sm rounded-lg focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" type="text" placeholder="Nombre" required>
+                                        </div>
+                                        <div class="col-span-12 md:col-span-6">
+                                            <input id="apellidos" class=" border border-default-medium text-heading text-sm rounded-lg focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  type="text" placeholder="Apellidos" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-span-12" id="isBusiness" style="display:none">
+                                    <input id="business" class=" border border-default-medium text-heading text-sm rounded-lg focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  type="text" placeholder="Razón Social" required>
+                                </div>
+
+                                <div class="col-span-12">
+                                    <input id="direccion" class=" border border-default-medium text-heading text-sm rounded-lg focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  type="text" placeholder="Dirección" required>
+                                </div>
+
+                                <div class="col-span-12 md:col-span-6">
+                                    <input id="correo" class=" border border-default-medium text-heading text-sm rounded-lg focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  type="text" placeholder="Correo" required>
+                                </div>
+
+                                <div class="col-span-12 md:col-span-6">
+                                    <input id="telefono" class=" border border-default-medium text-heading text-sm rounded-lg focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  type="text" placeholder="Teléfono" required>
+                                </div>
+
+                                <div class="col-span-12 md:col-span-6">
+                                    <select name="Tipo de Documento" id="tipodoc" value="" class="border border-default-medium text-heading text-sm rounded-lg focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" >
+                                        <option value="" selected disabled >Tipo de Documento</option>
+                                        <option value="DNI" class="text-black">DNI</option>
+                                        <option value="PASAPORTE">PASAPORTE</option>
+                                        <option value="RUC">RUC</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-span-12 md:col-span-6">
+                                    <input id="documento" class=" border border-default-medium text-heading text-sm rounded-lg focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  type="text" placeholder="N° de Documento" required>
+                                </div>
+
+                                <div id="questionEdad" class="col-span-12">
+                                    <strong class=" ml-2 mb-2">
+                                        ¿El reclamante es menor de edad?
+                                    </strong>
+                                    <div class="flex items-center m-[5px]">
+                                        <input id="mayor" type="radio" value="mayor" name="mayoriaEdad" checked class="h-5 w-5">
+                                        <label for="mayor" class="ml-2 ">No</label>
+                                        <input id="menor" type="radio" value="menor" name="mayoriaEdad" class="h-5 w-5 ml-[10px]">
+                                        <label for="menor" class="ml-2 ">Si</label>
+                                    </div>
+                                </div>
+
+                                <div id="menorEdad" class="col-span-12" style="display: none;">
+                                    <div class="grid grid-cols-12 gap-4">
+                                        <div class="col-span-12 md:col-span-6">
+                                            <input id="nombre_padre" placeholder="Nombre del padre o de la madre" class=" border border-default-medium text-heading text-sm rounded-lg focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  type="text" >
+                                        </div>
+                                        <div class="col-span-12 md:col-span-6">
+                                            <input id="documento_padre" placeholder="Documento del padre o de la madre" class=" border border-default-medium text-heading text-sm rounded-lg focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  type="text" >
+                                        </div>
+                                        <div class="col-span-12 md:col-span-6">
+                                            <input id="telefono_padre" placeholder="Teléfono del padre o de la madre" class=" border border-default-medium text-heading text-sm rounded-lg focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  type="text" >
+                                        </div>
+                                        <div class="col-span-12 md:col-span-6">
+                                            <input id="correo_padre" placeholder="Correo del padre o de la madre" class=" border border-default-medium text-heading text-sm rounded-lg focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  type="text" >
+                                        </div>
+                                        <div class="col-span-12">
+                                            <input id="direccion_padre" placeholder="Dirección del padre o de la madre" class=" border border-default-medium text-heading text-sm rounded-lg focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  type="text" >
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-span-12 mb-2 mt-4">
+                                    <h4 class="text-orange">2. Identificación del Bien contratado:</h4>
+                                </div>
+
+                                <div class="col-span-12">
+                                    <div class="flex items-center mb-[10px]">
+                                        <input id="servicio" type="radio" value="Servicio" name="serviceProduct" checked class="h-5 w-5">
+                                        <label for="servicio" class="ml-2 ">Servicio</label>
+                                        <input id="producto" type="radio" value="Producto" name="serviceProduct" class="h-5 w-5 ml-[10px]">
+                                        <label for="producto" class="ml-2 ">Producto</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-span-12">
+                                    <textarea id="bienContratado" class=" border border-default-medium text-heading text-sm rounded-lg focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  rows="5" placeholder="Descrición"></textarea>
+                                </div>
+
+                                <div class="col-span-12 mb-2 mt-4">
+                                    <h4 class="text-orange">3. Detalle de la Reclamación y Pedido del consumidor:</h4>
+                                </div>
+
+                                <div class="col-span-12">
+                                    <div class="flex items-center mb-[10px]">
+                                        <input id="default-radio-1" type="radio" value="Queja" name="quejaReclamo" checked class="h-5 w-5">
+                                        <label for="default-radio-1" class="ml-2 ">Queja</label>
+                                        <input id="default-radio-2" type="radio" value="Reclamo" name="quejaReclamo" class="h-5 w-5 ml-[10px]">
+                                        <label for="default-radio-2" class="ml-2 ">Reclamo</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-span-12">
+                                    <textarea id="description" class=" border border-default-medium text-heading text-sm rounded-lg focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"  rows="5" placeholder="Descrición"></textarea>
+                                </div>
+
+                                <div class="col-span-12 mb-2 mt-4">
+                                    <h4 class="text-orange">4. Observaciones y acciones adoptadas por el Proveedor:</h4>
+                                </div>
+
+                                <div class="col-span-12 mb-2 mt-2">
+                                    <p class="">Al ser un reclamo virtual su caso será derivado al área de atención al cliente, a fin de dar respuesta dentro del plazo legalmente establecido.* <p>
+                                </div>
+
+                                <div class="col-span-12 mb-2 mt-4">
+                                    <h4 class="text-orange">5. Autorizo notificación del resultado del reclamo al e-mail consignado:</h4>
+                                </div>
+
+                                <div class="col-span-12">
+                                    <div class="flex items-center mb-[10px]">
+                                        <input id="default-radio1" type="radio" value="Si" name="autorizo" checked class="h-5 w-5">
+                                        <label for="default-radio1" class="ml-2 ">Si</label>
+                                        <input id="default-radio2" type="radio" value="No" name="autorizo" class="h-5 w-5 ml-[10px]">
+                                        <label for="default-radio2" class="ml-2 ">No</label>
+                                    </div>
+                                    <p class=" mb-4">Todos los campos son obligatorios (*)</p>
+                                    <div>
+                                        <label class=""><input type="checkbox" id="politicas" class="h-[15px] w-[15px]"> He leído las <a href="{{route('privacypolicies')}}" target="_blank"> <strong> políticas de privacidad.</a></strong> </label>
+                                    </div>
+                                    <div>
+                                        <label class=""><input type="checkbox" id="terminos" class="h-[15px] w-[15px]"> He leído los <a href="{{route('termsandconditions')}}" target="_blank"> <strong> Términos y condiciones.</a></strong> </label>
+                                    </div>
+                                    <div class=" mt-2">*La formulación del reclamo no impide acudir a otras vías de solución de controversias ni es requisito previo.</div>
+                                    <div class=" mt-2 mb-2"> *El proveedor deberá dar respuesta al reclamo en un plazo no mayor a quince (15) días hábiles.</div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="col-span-12 text-right mb-5">
+
+                                    <button
+
+                                        type="button"
+                                        class=" enviarconsulta flex h-[45px] items-center justify-center
+                                            rounded-2xl bg-brown px-6 text-[16px] font-bold
+                                            text-white transition duration-200
+                                            hover:scale-[1.02] hover:bg-zinc-800 hover:shadow-lg
+                                            focus:outline-none
+                                            focus:ring-2 focus:bg-black
+                                            focus:ring-offset-2 focus:ring-offset-[#fb6200]" >
+                                        Enviar
+                                    </button>
+
+                                </div>
+                            </div>
+                        <!-- </form> -->
                     </div>
+                </div>
 
-            </section>
+        </section>
 
 
-        </div>
+    </div>
 
-        <div class="scroll-top-to">
-            <i class="ti-angle-up mr-0 leading-none"></i>
-        </div>
+    <div class="scroll-top-to">
+        <i class="ti-angle-up mr-0 leading-none"></i>
+    </div>
 
 
 @endsection
@@ -217,7 +217,7 @@
     <meta property="og:image" itemprop="image" content="{{$seo['image']}}" />
 @endpush
 
-   @push('script')
+   @push('javascript')
         <script>
             $(document).ready(function() {
             $('input[name="empresaPersona"]').change(function() {
@@ -225,7 +225,6 @@
                     $("#isBusiness").hide();
                      $("#isPerson").show();
                      $("#questionEdad").show();
-
                     $("#business").val('');
                    $("#tipodoc").val("DNI");
 
@@ -254,11 +253,11 @@
             });
         });
         </script>
-	    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	    <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
         <script>
 			let token = $('meta[name="csrf-token"]').attr('content');
 			$(function() {
-				$(".Enviarconsulta").on('click',function () {
+				$(".enviarconsulta").on('click',function () {
 					var nombre = $("#nombre").val();
 					var apellidos = $("#apellidos").val();
 					var business = $("#business").val();

@@ -122,9 +122,9 @@
 @endpush
 
 @push('javascript')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
     <script>
-        (function () {
+        document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('contactForm');
             const submitBtn = document.getElementById('contactFormSubmit');
             const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -234,6 +234,6 @@
                         submitBtn.disabled = false;
                     });
             });
-        })();
+        });
     </script>
 @endpush

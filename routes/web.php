@@ -20,6 +20,8 @@ Route::resource('noticias',ArticleController::class);
 Route::resource('proyectos',ProjectController::class)->parameters(['proyectos' => 'project']);
 Route::get('/brochure',[ProjectController::class,'brochure'])->name('brochure');
 Route::get('/complaintsbook',[PageController::class,'complaintsbook'])->name('complaintsbook');
+Route::post('/reclamos',[PageController::class,'reclamos']);
+
 Route::get('/terminos-y-condiciones',[PageController::class,'termsandconditions'])->name('termsandconditions');
 Route::get('/politicas-de-privacidad',[PageController::class,'privacypolicies'])->name('privacypolicies');
 

@@ -47,10 +47,10 @@
            </main>
            <livewire:footer/>
         </div>
-        @stack('javascript')
         <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
         <script src="{{asset('js/jquery-ui.min.js')}}"></script>
         <script src="{{asset('js/app.js')}}?v=1993.1.3"></script>
+        @stack('javascript')
         <!-- <script src="{{asset('js/cookies.js')}}"></script> -->
     </body>
 </html>
