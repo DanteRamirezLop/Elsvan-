@@ -25,6 +25,22 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 window.Swal = Swal;
 
 document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuToggle = document.querySelector('#mobile-menu-toggle');
+    const mobileMenu = document.querySelector('#mobile-menu-2');
+    const mobileMenuIconOpen = document.querySelector('#mobile-menu-icon-open');
+    const mobileMenuIconClose = document.querySelector('#mobile-menu-icon-close');
+
+    if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('hidden') === false;
+
+            mobileMenu.classList.toggle('flex', isOpen);
+            mobileMenuIconOpen.classList.toggle('hidden', isOpen);
+            mobileMenuIconClose.classList.toggle('hidden', !isOpen);
+            mobileMenuToggle.setAttribute('aria-expanded', isOpen);
+        });
+    }
+
     const sliderHome = document.querySelector('.sliderHome');
     const sliderBlueprints = document.querySelectorAll('.sliderBlueprint');
     const sliderContact = document.querySelector('.sliderContact');
