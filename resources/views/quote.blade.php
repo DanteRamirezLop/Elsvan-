@@ -32,7 +32,7 @@
                                     value="{{ $item->slug }}"
                                     data-name="{{ $item->name }}"
                                     data-image="{{ $item->main_image ? Storage::disk('public')->url($item->main_image) : '' }}"
-                                    data-blueprints="{{ $item->blueprints->pluck('name')->toJson() }}"
+                                    data-blueprints="{{ $item->blueprints->pluck('number_departments')->toJson() }}"
                                     {{ $project && $project->id === $item->id ? 'selected' : '' }}
                                 >
                                     {{ $item->name }}
