@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactFormMail;
 use App\Models\Page;
@@ -79,6 +80,10 @@ class ContactController extends Controller
             ]);
 
         } catch (\Throwable $th) {
+
+            Log::error('Error al enviar formulario de contacto: '.$th->getMessage(), [
+                'exception' => $th,
+            ]);
 
             return response()->json([
                 'status'  => false,
