@@ -11,9 +11,7 @@
                 Más de {{$year}} años construyendo confianza
             </div>
             @if(isset($page->content))
-            <p>
-                {!! $page->content !!}
-            </p>
+                <p>{!! $page->content !!}</p>
             @endif
             <a href="{{route('proyectos.index')}}" class="btn-projects">Ver nuestros proyectos</a>
         </div>
@@ -34,7 +32,7 @@
     @foreach($projects as $project)
         <section class="proeyct-home-section mt-8  mb-8 lg:mb-14 py-10">
             <div class="section">
-                <div class="grid w-full items-start gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16" aria-label="Departamentos disponibles">
+                <div class="grid w-full items-start gap-10 md:grid-cols-[1fr_1fr] lg:gap-16" aria-label="Departamentos disponibles">
                     <!-- COLUMNA IZQUIERDA -->
                     <div class="min-w-0 {{ $loop->even ? 'lg:order-2' : 'lg:order-1' }}">
                         <div class="swiper sliderBlueprint">
