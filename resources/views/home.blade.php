@@ -189,15 +189,25 @@
             const mapImage = card.querySelector(".mapImage");
             const newImage = button.getAttribute("data-image");
 
+            if (!newImage || newImage === mapImage.src) return;
+
             card.querySelectorAll(".category-btn").forEach((btn) => btn.classList.remove("active"));
             button.classList.add("active");
             mapImage.classList.add("fade");
 
-            setTimeout(() => {
-            mapImage.src = newImage;
-            mapImage.alt = `Mapa de ${button.innerText}`;
-            mapImage.classList.remove("fade");
-            }, 250);
+            const preload = new Promise((resolve) => {
+                const img = new Image();
+                img.onload = resolve;
+                img.onerror = resolve;
+                img.src = newImage;
+            });
+            const minFadeOut = new Promise((resolve) => setTimeout(resolve, 250));
+
+            Promise.all([preload, minFadeOut]).then(() => {
+                mapImage.src = newImage;
+                mapImage.alt = `Mapa de ${button.innerText}`;
+                mapImage.classList.remove("fade");
+            });
         });
         });
     </script>
