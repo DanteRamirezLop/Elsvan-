@@ -27,10 +27,10 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
         <!-- css -->
-        <link rel="stylesheet" href="{{asset('css/line-awesome.css')}}?v=1993.1.1">
-         <link rel="stylesheet" href="{{asset('css/whatsapp.css')}}?v=1993.1.1">
-        <link rel="stylesheet" href="{{asset('css/style.css')}}?v=1993.1.1">
-        <link rel="stylesheet" href="{{asset('css/responsive.css')}}?v=1993.1.1">
+        <link rel="stylesheet" href="{{asset('css/line-awesome.css')}}?v=1993.1.2">
+         <link rel="stylesheet" href="{{asset('css/whatsapp.css')}}?v=1993.1.2">
+        <link rel="stylesheet" href="{{asset('css/style.css')}}?v=1993.1.2">
+        <link rel="stylesheet" href="{{asset('css/responsive.css')}}?v=1993.1.2">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @stack('style')
         @stack('css')
