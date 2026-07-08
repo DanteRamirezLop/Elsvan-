@@ -29,7 +29,7 @@ new class extends Component
                                 onerror="this.previousElementSibling.remove()">
                         @endif
                         <div class="banner-category-box-title">
-                            <h1 class="banner-category-title tracking-wider"> {{ $banner->titulo }}</h1>
+                            <h1 class="banner-category-title "> {{ $banner->titulo }}</h1>
                             @if($banner->subtitulo)
                                 <p class="text-center text-white text-xl lg:text-3xl"> {{ $banner->subtitulo }} </p>
                             @endif
