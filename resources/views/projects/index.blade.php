@@ -19,7 +19,7 @@
         <!-- Grid de proyectos -->
         <div class="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             @foreach($projects as $project)
-            <article class="project-card">
+            <article class="project-card p-5 lg:p-1">
                 <a href="{{$project->tag == 'vendido' ? '' : route('proyectos.show', $project) }}" class="{{ $project->tag == 'vendido' ? 'project-link-sold' : '' }}">
                     <div class="rounded-t-xl project-image relative overflow-hidden bg-gray-200 shadow-lg">
                         @if($project->tag == 'vendido')
@@ -33,7 +33,6 @@
                                 {{$project->tag}}
                             </div>
                         @endif
-
                         <img src="{{ $project->main_image ? Storage::disk('public')->url($project->main_image) : '' }}" alt="{{$project->name}}" class="h-full w-full object-cover">
                     </div>
                 </a>

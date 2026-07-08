@@ -168,7 +168,7 @@
         </div>
     </section>
 
-        <!-- <section class="proeyct-home-section mt-8 mb-14 py-10"> -->
+
          <section class="location-section">
                 <div class="grid w-full items-start gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16" aria-label="Departamentos disponibles">
                     <!-- COLUMNA IZQUIERDA -->

@@ -17,19 +17,19 @@
             <div class="hidden justify-between items-start w-full lg:flex lg:flex-row lg:items-center lg:w-auto lg:order-1 lg:ml-auto" id="mobile-menu-2">
                 <ul class="flex flex-col w-full mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0 text-lg ">
                     <li>
-                        <a href="{{route('inicio')}}" class="block py-2 pr-4 pl-3 text-gray-700 hover:text-orange-500 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0">Inicio</a>
+                        <a href="{{route('inicio')}}" class="block py-2 pr-4 pl-3 text-gray-700 hover:text-orange-500 border-b border-gray-100 [@media(hover:hover)_and_(max-width:1023px)]:hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0">Inicio</a>
                     </li>
                      <li>
-                        <a href="{{route('proyectos.index')}}" class="block py-2 pr-4 pl-3 text-gray-700 hover:text-orange-500 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0">Proyectos</a>
+                        <a href="{{route('proyectos.index')}}" class="block py-2 pr-4 pl-3 text-gray-700 hover:text-orange-500 border-b border-gray-100 [@media(hover:hover)_and_(max-width:1023px)]:hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0">Proyectos</a>
                     </li>
                      <li>
-                        <a href="{{route('nosotros')}}" class="block py-2 pr-4 pl-3 text-gray-700 hover:text-orange-500 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0">Nosotros</a>
+                        <a href="{{route('nosotros')}}" class="block py-2 pr-4 pl-3 text-gray-700 hover:text-orange-500 border-b border-gray-100 [@media(hover:hover)_and_(max-width:1023px)]:hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0">Nosotros</a>
                     </li>
                     <li>
-                        <a href="{{route('galeria')}}" class="block py-2 pr-4 pl-3 text-gray-700 hover:text-orange-500 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0">Galeria</a>
+                        <a href="{{route('galeria')}}" class="block py-2 pr-4 pl-3 text-gray-700 hover:text-orange-500 border-b border-gray-100 [@media(hover:hover)_and_(max-width:1023px)]:hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0">Galeria</a>
                     </li>
                     <li>
-                        <a href="{{route('noticias.index')}}" class="block py-2 pr-4 pl-3 text-gray-700 hover:text-orange-500 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0">Blog</a>
+                        <a href="{{route('noticias.index')}}" class="block py-2 pr-4 pl-3 text-gray-700 hover:text-orange-500 border-b border-gray-100 [@media(hover:hover)_and_(max-width:1023px)]:hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0">Blog</a>
                     </li>
                      <!-- <li>
                         <a href="{{route('quote')}}" class="ms-0 lg:ms-5 btn-brochure ">Cotizar ahora</a>

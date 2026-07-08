@@ -101,32 +101,34 @@ new class extends Component
 
       </div>
 
-      <!-- Métricas inferiores -->
-      <div class="flex flex-col sm:flex-row justify-center items-center gap-10 mt-8 lg:gap-16">
-        <!-- 100% cumplimiento -->
-        <div class="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
-          <i class="la la-calendar text-orange text-7xl"></i>
-          <div class="flex items-center gap-2 lg:gap-5">
-            <span class="text-4xl sm:text-6xl lg:text-7xl font-bold leading-none">100%</span>
-            <p class="text-sm lg:text-base font-semibold leading-tight">
-              Cumplimiento de<br />
-              fechas de entrega
-            </p>
-          </div>
-        </div>
+      <div class="hidden sm:block">
+        <!-- Métricas inferiores -->
+        <div class=" flex flex-col sm:flex-row justify-center items-center gap-10 mt-8 lg:gap-16">
+            <!-- 100% cumplimiento -->
+            <div class="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
+            <i class="la la-calendar text-orange text-7xl"></i>
+            <div class="flex items-center gap-2 lg:gap-5">
+                <span class="text-4xl sm:text-6xl lg:text-7xl font-bold leading-none">100%</span>
+                <p class="text-sm lg:text-base font-semibold leading-tight">
+                Cumplimiento de<br />
+                fechas de entrega
+                </p>
+            </div>
+            </div>
 
-        <!-- Línea separadora -->
-        <div class="hidden sm:block h-24 w-px bg-white/80"></div>
+            <!-- Línea separadora -->
+            <div class="hidden sm:block h-24 w-px bg-white/80"></div>
 
-        <!-- +14 años -->
-        <div class="flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
-          <i class="la la-shield-alt text-orange text-7xl"></i>
-          <div>
-            <span class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-none">+{{$year_more}} años </span>
-            <p class="text-sm lg:text-base font-semibold">
-              en el mercado inmobiliario
-            </p>
-          </div>
+            <!-- +14 años -->
+            <div class="flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+            <i class="la la-shield-alt text-orange text-7xl"></i>
+            <div>
+                <span class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-none">+{{$year_more}} años </span>
+                <p class="text-sm lg:text-base font-semibold">
+                en el mercado inmobiliario
+                </p>
+            </div>
+            </div>
         </div>
       </div>
     </div>

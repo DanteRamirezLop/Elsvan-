@@ -32,7 +32,7 @@
     @endif
 
     @foreach($projects as $project)
-        <section class="proeyct-home-section mt-8 mb-14 py-10">
+        <section class="proeyct-home-section mt-8  mb-8 lg:mb-14 py-10">
             <div class="section">
                 <div class="grid w-full items-start gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16" aria-label="Departamentos disponibles">
                     <!-- COLUMNA IZQUIERDA -->
@@ -92,7 +92,7 @@
                     <!-- COLUMNA DERECHA -->
                     <div class="h-full flex items-center {{ $loop->even ? 'lg:order-1' : 'lg:order-2' }}">
                         <div>
-                            <h2 class="text-3xl text-center mb-2"><i class="las la-map-marker text-orange "aria-hidden="true"></i> {{$project->name}} - <span class="text-brown"> {{$project->district}} </span> </h2>
+                            <h2 class="text-2xl lg:text-3xl text-center mb-2"><i class="las la-map-marker text-orange "aria-hidden="true"></i> {{$project->name}} - <span class="text-brown"> {{$project->district}} </span> </h2>
                             <div class="inset-0 min-h-[380px] sm:min-h-[500px] object-cover object-center  mx-auto">
                                 <article>
                                     <a href="{{ route('proyectos.show', $project) }}">
