@@ -5,7 +5,7 @@
     <section class="banner-category container-fluid">
         <img src="{{asset('images/proyectos.webp')}}" alt="La confianza no se vende se construye" class="banner-category-img">
         <div class="banner-category-box-title">
-            <h1 class="banner-category-title tracking-widest"> Nuestros Proyectos</h1>
+            <h1 class="banner-category-title tracking-wider"> Nuestros Proyectos</h1>
             <p class="text-center text-white text-xl lg:text-3xl"> Elsvan Inmobiliaria</p>
             <div class="text-center mt-5">
                 <a href="{{route('quote')}}" class="btn-banner"> Cotiza aquí </a>
@@ -13,29 +13,7 @@
         </div>
     </section>
 
-    <section class="contact-bar">
-        <div class="contact-content ">
-            <strong class="text-brown text-lg">¡CONTÁCTANOS AHORA!</strong>
-            <span class="text-sm md:text-lg">
-                <svg class="w-6 h-6 text-white inline" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.427 14.768 17.2 13.542a1.733 1.733 0 0 0-2.45 0l-.613.613a1.732 1.732 0 0 1-2.45 0l-1.838-1.84a1.735 1.735 0 0 1 0-2.452l.612-.613a1.735 1.735 0 0 0 0-2.452L9.237 5.572a1.6 1.6 0 0 0-2.45 0c-3.223 3.2-1.702 6.896 1.519 10.117 3.22 3.221 6.914 4.745 10.12 1.535a1.601 1.601 0 0 0 0-2.456Z"/>
-                </svg>
-                (+51) 967-344-992
-            </span>
-            <span class="text-sm md:text-lg">
-                <svg class="w-6 h-6 text-white inline" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.427 14.768 17.2 13.542a1.733 1.733 0 0 0-2.45 0l-.613.613a1.732 1.732 0 0 1-2.45 0l-1.838-1.84a1.735 1.735 0 0 1 0-2.452l.612-.613a1.735 1.735 0 0 0 0-2.452L9.237 5.572a1.6 1.6 0 0 0-2.45 0c-3.223 3.2-1.702 6.896 1.519 10.117 3.22 3.221 6.914 4.745 10.12 1.535a1.601 1.601 0 0 0 0-2.456Z"/>
-                </svg>
-                (+51) 969-389-863
-            </span>
-            <span class="text-sm md:text-lg">
-                <svg class="w-6 h-6 text-white inline" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.427 14.768 17.2 13.542a1.733 1.733 0 0 0-2.45 0l-.613.613a1.732 1.732 0 0 1-2.45 0l-1.838-1.84a1.735 1.735 0 0 1 0-2.452l.612-.613a1.735 1.735 0 0 0 0-2.452L9.237 5.572a1.6 1.6 0 0 0-2.45 0c-3.223 3.2-1.702 6.896 1.519 10.117 3.22 3.221 6.914 4.745 10.12 1.535a1.601 1.601 0 0 0 0-2.456Z"/>
-                </svg>
-                (+51) 986-369-350
-            </span>
-        </div>
-    </section>
+    <livewire:marquee/>
 
     <section class="section-projects py-12" >
         <!-- Grid de proyectos -->
@@ -60,11 +38,13 @@
                     </div>
                 </a>
                 <div class=" rounded-b-xl bg-brown px-5 py-4 text-center shadow-project">
-                    <h2 class="text-xl font-extrabold uppercase text-green">
-                        {{$project->name}}
-                    </h2>
+                     <a href="{{$project->tag == 'vendido' ? '' : route('proyectos.show', $project) }}" class="{{ $project->tag == 'vendido' ? 'project-link-sold' : '' }}">
+                        <h2 class="text-xl font-extrabold uppercase text-green">
+                            {{$project->name}}
+                        </h2>
+                    </a>
                     <p class="text-white">
-                        {{$project->location}}
+                        {{ Str::limit($project->location, 72) }}
                     </p>
                     <div class="project-list-details">
                         <div class="project-list-detail-box ">

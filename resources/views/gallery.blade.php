@@ -4,7 +4,7 @@
   <section class="banner-category container-fluid">
         <img src="{{asset('images/sobre-nosotros.webp')}}" alt="La confianza no se vende se construye" class="banner-category-img">
         <div class="banner-category-box-title">
-            <h1 class="banner-category-title tracking-widest"> Galeria</h1>
+            <h1 class="banner-category-title tracking-wider"> Galeria</h1>
             <p class="text-center text-white text-xl lg:text-3xl"> Elsvan Inmobiliaria </p>
             <div class="text-center mt-5">
                 <a href="{{route('quote')}}" class="btn-banner"> Cotiza aquí </a>

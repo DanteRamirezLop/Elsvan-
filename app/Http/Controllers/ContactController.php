@@ -20,7 +20,7 @@ class ContactController extends Controller
                 'title'         => $page->meta_title,
                 'description'   => $page->meta_description,
                 'keywords'      => $page->tags,
-                'image'         => $dominio.'/uploads/cms/'.$page->feature_image,
+                'image'         => $dominio.'/images/logo-seo.png',
             );
 
         }else{
@@ -43,7 +43,7 @@ class ContactController extends Controller
                 'title'         => $page->meta_title,
                 'description'   => $page->meta_description,
                 'keywords'      => $page->tags,
-                'image'         => $dominio.'/uploads/cms/'.$page->feature_image,
+                'image'         => $dominio.'/images/logo-seo.png',
             );
 
         }else{

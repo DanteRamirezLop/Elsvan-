@@ -4,7 +4,7 @@
     <section class=" banner-category container-fluid">
         <img src="{{asset('images/nosotros.webp')}}" alt="La confianza no se vende se construye" class="banner-category-img">
         <div class="banner-category-box-title">
-            <h1 class="banner-category-title tracking-widest"> Expertos en proyectos</h1>
+            <h1 class="banner-category-title tracking-wider"> Expertos en proyectos</h1>
             <p class="text-center text-white text-xl lg:text-3xl"> de construcción </p>
             <div class="text-center mt-5">
                 <a href="{{route('quote')}}" class="btn-banner"> Cotiza aquí </a>
@@ -80,11 +80,11 @@
 
         <!-- Dirección -->
         <div class="text-center my-8">
-            <h2 class="text-3xl font-bold leading-tight md:text-4xl ">
+            <h2 class="text-2xl font-bold leading-tight md:text-3xl ">
                 <i class="las la-map-marker text-3xl text-orange md:text-4xl "aria-hidden="true"></i>
                 Visítanos nuestras oficionas en <br>
                 <span class="text-green">
-                    Av. principales (Javier Prado, Salaverry y Ejército).
+                    Cal. los Antares Nro. 320, Torre B Dpto. 407 Santiago de Surco
                 </span>
             </h2>
         </div>

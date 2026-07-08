@@ -501,8 +501,8 @@ header>nav{
     justify-content: center;
     color: #364152;
     text-decoration: none;
-    padding: 7px 16px;
-    border-radius: 12px;
+    padding: 6px 12px;
+    border-radius: 10px;
     font-size: 1.125rem;
     font-weight: 500;
     transition: 0.3s ease;
@@ -643,112 +643,4 @@ header>nav{
     line-height: 2.8rem;
     margin-bottom: 15px;
 
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .location-section {
-    padding: 30px;
-  }
-
-  .location-card {
-    grid-template-columns: 1fr;
-  }
-
-  .info-panel {
-    padding: 40px 28px;
-  }
-
-  .map-panel {
-    height: 420px;
-  }
-}
-
-@media (max-width: 600px) {
-  .location-section {
-    padding: 20px;
-  }
-
-  .info-panel h1 {
-    font-size: 24px;
-  }
-
-  .category-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .category-btn:nth-child(5) {
-    grid-column: auto;
-  }
-
-  .category-btn {
-    height: 74px;
-    font-size: 18px;
-  }
-
-  .map-panel {
-    height: 360px;
-  }
-}
-
-@media (max-width: 900px) {
-    .contact-bar {
-        padding: 16px 24px;
-    }
-
-    .contact-content {
-        flex-wrap: wrap;
-        font-size: 18px;
-        gap: 8px;
-    }
-
-    .about-section {
-        grid-template-columns: 1fr;
-        gap: 35px;
-        padding: 45px 24px;
-    }
-
-    .about-text {
-        max-width: 100%;
-    }
-
-    .about-text h1 {
-        font-size: 32px;
-    }
-
-    .about-text h1 span {
-        font-size: 26px;
-    }
-
-    .about-image {
-        height: 360px;
-    }
-}
-
-@media (max-width: 480px) {
-    .contact-content {
-        font-size: 16px;
-    }
-
-    .about-text h1 {
-        font-size: 29px;
-    }
-
-    .about-text h1 span {
-        font-size: 23px;
-    }
-
-    .about-text p {
-        font-size: 15px;
-        text-align: left;
-    }
-
-    .btn-projects {
-        font-size: 16px;
-        padding: 12px 28px;
-    }
-
-    .about-image {
-        height: 300px;
-    }
 }

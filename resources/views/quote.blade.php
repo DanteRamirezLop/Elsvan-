@@ -208,7 +208,7 @@
                             hover:scale-[1.02] hover:bg-zinc-800 hover:shadow-lg
                             focus:outline-none
                             focus:ring-2 focus:bg-black
-                            focus:ring-offset-2 focus:ring-offset-[#fb6200]" >
+                            focus:ring-offset-2 focus:ring-offset-[#fb6200] cursor-pointer" >
                         Enviar
                     </button>
 

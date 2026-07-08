@@ -2,17 +2,20 @@
 
 use App\Models\Network;
 use Livewire\Component;
+use App\Models\Phone;
 
 new class extends Component
 {
     public $year_more;
     public $year_now;
     public $networks;
+    public $phones;
 
     public function mount(){
        $this->year_more = date('Y') - 2012;
        $this->year_now = date('Y');
        $this->networks = Network::all();
+       $this->phones = Phone::all();
     }
 };
 ?>
@@ -23,9 +26,7 @@ new class extends Component
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-10 lg:gap-14 items-start pb-8 border-footer">
         <!-- Logo + redes -->
         <div class="flex flex-col items-center lg:items-start">
-
           <img src="{{asset('images/logo-blanco.webp')}}" alt="Elsvan Construcciones Inmobiliarias" class="w-full max-w-xs p-6"/>
-
           <div class="flex gap-5 text-gray-300 text-lg mx-auto">
             @foreach ($networks as $network)
               <a href="{{ $network->link ?? '#' }}" title="{{ $network->titulo }}" target="_blank" rel="noopener noreferrer" class="hover:text-orange transition">
@@ -46,9 +47,7 @@ new class extends Component
 
         <!-- Información de contacto -->
         <div class="space-y-7 text-[15px] leading-relaxed min-w-xs">
-
           <div class="flex gap-5">
-             <!-- <i class="las la-home text-orange text-4xl w-8 mt-1"></i> -->
             <div class="flex items-center">
                 <svg class="w-10 h-10 text-orange inline " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                 <path fill-rule="evenodd" d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z" clip-rule="evenodd"/>
@@ -80,24 +79,18 @@ new class extends Component
                 </svg>
             </div>
             <p>
-                <span>(+51) 967-344-992</span><br/>
-                <span>(+51) 969-389-863</span><br/>
-                <span>(+51) 986-369-350</span><br/>
+                @foreach($phones as $phone)
+                <span>{{ $phone->formatted_number}} </span><br/>
+                @endforeach
             </p>
           </div>
-
         </div>
 
         <!-- Miembro -->
         <div class="flex flex-col items-center lg:items-start">
-          <!-- <p class="text-[15px] font-medium mb-5">Miembro de:</p> -->
-
-          <img
-            src="{{asset('images/codip_white.webp')}}"
+          <img src="{{asset('images/codip_white.webp')}}"
             alt="Miembros de CODIP"
-            class="w-52 mb-5"
-          />
-
+            class="w-52 mb-5"/>
           <a href="{{route('complaintsbook')}}">
             <img src="{{asset('images/libro-reclamaciones.webp')}}" alt="Libro de Reclamaciones" class="w-52 bg-white rounded-sm"/>
           </a>
@@ -106,14 +99,13 @@ new class extends Component
       </div>
 
       <!-- Métricas inferiores -->
-      <div class="flex flex-col lg:flex-row justify-center items-center gap-10 mt-8 lg:gap-16">
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-10 mt-8 lg:gap-16">
         <!-- 100% cumplimiento -->
         <div class="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
           <i class="la la-calendar text-orange text-7xl"></i>
-
-          <div class="flex items-center gap-5">
-            <span class="text-6xl lg:text-7xl font-bold leading-none">100%</span>
-            <p class="text-base font-semibold leading-tight">
+          <div class="flex items-center gap-2 lg:gap-5">
+            <span class="text-4xl sm:text-6xl lg:text-7xl font-bold leading-none">100%</span>
+            <p class="text-sm lg:text-base font-semibold leading-tight">
               Cumplimiento de<br />
               fechas de entrega
             </p>
@@ -121,14 +113,14 @@ new class extends Component
         </div>
 
         <!-- Línea separadora -->
-        <div class="hidden lg:block h-24 w-px bg-white/80"></div>
+        <div class="hidden sm:block h-24 w-px bg-white/80"></div>
 
         <!-- +14 años -->
         <div class="flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
           <i class="la la-shield-alt text-orange text-7xl"></i>
           <div>
-            <span class="text-5xl lg:text-6xl font-bold leading-none">+{{$year_more}} años </span>
-            <p class="text-base font-semibold">
+            <span class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-none">+{{$year_more}} años </span>
+            <p class="text-sm lg:text-base font-semibold">
               en el mercado inmobiliario
             </p>
           </div>

@@ -91,7 +91,7 @@
                                         border border-gray-300 bg-white px-3 py-3
                                         text-sm text-gray-800 outline-none transition
                                         placeholder:text-gray-400 focus:border-green-600
-                                        focus:ring-2 focus:ring-green-600/20"
+                                        focus:ring-2 focus:ring-green-600/20 "
                                 ></textarea>
                             </div>
                             <!-- Botón -->
@@ -104,7 +104,7 @@
                                     hover:scale-[1.02] hover:bg-zinc-800 hover:shadow-lg
                                     focus:outline-none
                                     focus:ring-2 focus:bg-black
-                                    focus:ring-offset-2 focus:ring-offset-[#fb6200]" >
+                                    focus:ring-offset-2 focus:ring-offset-[#fb6200] cursor-pointer" >
                                 Enviar
                             </button>
                         </form>

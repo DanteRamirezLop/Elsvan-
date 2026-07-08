@@ -1,14 +1,13 @@
 /* Extra Extra large devices (large desktops, 1600px and up) */
 @media (min-width: 1600px) {
- .banner-category-title {
+  .banner-category-title {
     font-size: 52px;
   }
 }
 
 /* Extra large devices (large desktops, 1300px and up) */
 @media (min-width: 1300px) and (max-width: 1599.98px) {
-
- .banner-category-title {
+  .banner-category-title {
     font-size: 36px;
   }
 }
@@ -22,13 +21,13 @@
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 995px) and (max-width: 1199.98px) {
-    .banner-category-title {
+  .banner-category-title {
     font-size: 32px;
   }
 }
 
 @media (min-width: 800px) and (max-width: 994.98px) {
- .banner-category-title {
+  .banner-category-title {
     font-size: 28px;
   }
 }
@@ -36,9 +35,124 @@
 @media (min-width: 768px) and (max-width: 799.98px) {
 
 }
+
 /* Extra small devices (portrait phones, less than 768px) */
 @media (max-width: 767.98px) {
 
 }
 
+@media (max-width: 1024px) {
+  .location-section {
+    padding: 30px;
+  }
 
+  .location-card {
+    grid-template-columns: 1fr;
+  }
+
+  .info-panel {
+    padding: 40px 28px;
+  }
+
+  .map-panel {
+    height: 420px;
+  }
+}
+
+@media (max-width: 900px) {
+  .btn-brochure {
+    padding: 8px;
+    font-size: 0.9rem;
+    background: #53484B;
+    color: #fff;
+    border-color: #53484B;
+    margin: 1px;
+  }
+
+  .contact-bar {
+    padding: 16px 24px;
+  }
+
+  .contact-content {
+    flex-wrap: wrap;
+    font-size: 18px;
+    gap: 8px;
+  }
+
+  .about-section {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding: 45px 24px;
+  }
+
+  .about-text {
+    max-width: 100%;
+  }
+
+  .about-text h1 {
+    font-size: 32px;
+  }
+
+  .about-text h1 span {
+    font-size: 26px;
+  }
+
+  .about-image {
+    height: 360px;
+  }
+}
+
+@media (max-width: 600px) {
+  .location-section {
+    padding: 20px;
+  }
+
+  .info-panel h1 {
+    font-size: 24px;
+  }
+
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-btn:nth-child(5) {
+    grid-column: auto;
+  }
+
+  .category-btn {
+    height: 74px;
+    font-size: 18px;
+  }
+
+  .map-panel {
+    height: 360px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-content {
+    font-size: 16px;
+  }
+
+  .about-text h1 {
+    font-size: 29px;
+  }
+
+  .about-text h1 span {
+    font-size: 23px;
+  }
+
+  .about-text p {
+    font-size: 15px;
+    text-align: left;
+  }
+
+  .btn-projects {
+    font-size: 16px;
+    padding: 12px 28px;
+  }
+
+  .about-image {
+    height: 300px;
+  }
+}

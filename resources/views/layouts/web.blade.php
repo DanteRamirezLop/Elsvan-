@@ -29,8 +29,8 @@
         <!-- css -->
         <link rel="stylesheet" href="{{asset('css/line-awesome.css')}}?v=1993.1.1">
          <link rel="stylesheet" href="{{asset('css/whatsapp.css')}}?v=1993.1.1">
-        <link rel="stylesheet" href="{{asset('css/style.css')}}?v={{ filemtime(public_path('css/style.css')) }}">
-        <link rel="stylesheet" href="{{asset('css/responsive.css')}}?v={{ filemtime(public_path('css/responsive.css')) }}">
+        <link rel="stylesheet" href="{{asset('css/style.css')}}?v=1993.1.1">
+        <link rel="stylesheet" href="{{asset('css/responsive.css')}}?v=1993.1.1">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @stack('style')
         @stack('css')
