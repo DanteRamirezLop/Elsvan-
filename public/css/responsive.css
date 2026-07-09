@@ -112,7 +112,7 @@
 
 @media (max-width: 800px) {
     .btn-download {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
     }
  .about-section {
     grid-template-columns: 1fr;
@@ -123,7 +123,7 @@
 
 @media (max-width: 600px) {
     .btn-download {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 
   .location-section {
@@ -154,7 +154,7 @@
 
 @media (max-width: 480px) {
     .btn-download {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
   .contact-content {
