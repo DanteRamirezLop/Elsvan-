@@ -475,6 +475,27 @@ header>nav{
 
 /* Boton banner */
 
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-size: 1.125rem;
+    font-weight: 500;
+    transition: 0.3s ease;
+    border-width: 1.5px;
+    border-style: solid;
+    border-color: #fff;
+    border-image: initial;
+}
+
+.btn-download:hover {
+    transform: translateY(-2px);
+}
+
 .btn-banner {
     display: inline-flex;
     align-items: center;

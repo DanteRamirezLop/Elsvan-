@@ -19,6 +19,7 @@ use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
+
 class RealEstateProjectResource extends Resource
 {
     protected static ?string $model = RealEstateProject::class;

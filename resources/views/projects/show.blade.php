@@ -2,10 +2,10 @@
 
 @section('content')
     <section class="relative overflow-hidden bg-orange">
-        <div class="grid min-h-[420px] grid-cols-1 lg:grid-cols-[39.2%_60.8%]">
+        <div class="grid min-h-[420px] grid-cols-1 md:grid-cols-[39.2%_60.8%]">
             <!-- Imagen del edificio -->
              <div class="relative min-h-[430px] bg-escudero lg:min-h-[420px]">
-              <div class="absolute inset-y-0 right-0 w-full overflow-hidden sm:w-[86%] lg:w-[72%]">
+              <div class="absolute inset-y-0 right-0 w-full overflow-hidden w-full md:w-[86%] lg:w-[72%]">
                      <img src="{{$project->main_image ? Storage::disk('public')->url($project->main_image) : ''}}" alt="{{$project->name}}" class="h-full w-full object-cover object-center">
                 </div>
             </div>
@@ -13,10 +13,10 @@
             <div class="flex items-center bg-escudero px-6 py-12 sm:px-12 lg:px-16 xl:px-24">
                 <div class="mx-auto w-full max-w-[780px]">
                     <!-- Ubicación -->
-                    <article class="grid grid-cols-[70px_1fr] items-start gap-6 border-b-2 border-white pb-9 sm:grid-cols-[120px_1fr] sm:gap-10">
+                    <article class="grid grid-cols-[70px_1fr] items-start border-b-2 border-white  pb-4 md:pb-5 lg:pb-9 md:grid-cols-[120px_1fr] gap-2 sm:gap-4 md:gap-6 lg:gap-10">
                         <div class="flex justify-center pt-1">
                             <!-- Ícono ubicación -->
-                            <svg class="h-[70px] w-[70px] text-white sm:h-[62px] sm:w-[62px]" viewBox="0 0 100 100"  fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg  class="h-[64px] w-[64px] text-white sm:h-[62px] sm:w-[62px]" viewBox="0 0 100 100"  fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M50 8C35.8 8 24 19.7 24 34.2C24 54.3 50 76 50 76C50 76 76 54.3 76 34.2C76 19.7 64.2 8 50 8Z" fill="currentColor"/>
                                 <circle cx="50" cy="34" r="10" fill="#ff6800"/>
                                 <path d="M32 72C19 75 11 80 11 86C11 94 28 98 50 98C72 98 89 94 89 86C89 80 81 75 68 72"
@@ -30,15 +30,15 @@
                             </svg>
                         </div>
 
-                        <p class="text-lg font-light leading-[1.45] text-white sm:text-xl lg:text-xl">
+                        <p class="text-base sm:text-lg lg:text-xl font-light leading-[1.45] text-white ">
                             {{$project->location}}
                         </p>
                     </article>
 
                     <!-- Acabados -->
-                    <article class="grid grid-cols-[70px_1fr] items-center gap-6
+                    <article class="grid grid-cols-[70px_1fr] items-center
                                border-b-2 border-white py-8
-                               sm:grid-cols-[120px_1fr] sm:gap-10">
+                               sm:grid-cols-[120px_1fr] gap-2 sm:gap-4 md:gap-6 lg:gap-10">
                         <div class="flex justify-center">
                             <!-- Ícono rodillo -->
                             <svg
@@ -81,15 +81,15 @@
 
                         </div>
 
-                        <p class="text-lg font-light leading-[1.45] text-white sm:text-xl lg:text-xl">
+                         <p class="text-base sm:text-lg lg:text-xl font-light leading-[1.45] text-white ">
                             Acabados y equipamiento de primera calidad.
                         </p>
                     </article>
 
                     <!-- Seguridad y áreas comunes -->
                     <article
-                        class="grid grid-cols-[70px_1fr] items-start gap-6 pt-8
-                               sm:grid-cols-[120px_1fr] sm:gap-10"
+                        class="grid grid-cols-[70px_1fr] items-start  pt-8
+                               sm:grid-cols-[120px_1fr] gap-2 sm:gap-4 md:gap-6 lg:gap-10"
                     >
                         <div class="flex justify-center pt-1">
 
@@ -131,7 +131,7 @@
 
                         </div>
 
-                        <p class="text-lg font-light leading-[1.45] text-white sm:text-xl lg:text-xl">
+                         <p class="text-base sm:text-lg lg:text-xl font-light leading-[1.45] text-white ">
                              {{$project->description}}
                         </p>
                     </article>
@@ -141,7 +141,14 @@
         </div>
     </section>
 
-
+    <!-- Brochure -->
+    @if($project->file)
+    <section id="brochure" class="bg-brown pt-6">
+        <div class="section flex items-center justify-center">
+         <span class="text-white text-lg lg:text-xl me-1 lg:me-3">Mira nuestro Brochure:</span>  <a href="{{ Storage::disk('public')->url($project->file) }}" target="_blank" class="btn-download"> Descargar archivo <i class="las la-download text-xl ml-2"></i> </a>
+        </div>
+    </section>
+    @endif
 
     <section class="proeyct-home-section mb-14 py-12">
         <div class="section">
@@ -389,7 +396,8 @@
                                     <span>
                                         He leído y acepto los
                                         <a
-                                            href="#"
+                                            href="{{route('termsandconditions')}}"
+                                            target="_blank"
                                             class="font-medium transition hover:text-primary hover:underline"
                                         >
                                             Términos y condiciones

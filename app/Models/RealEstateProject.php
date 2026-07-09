@@ -17,6 +17,7 @@ class RealEstateProject extends Model
         'area_from',
         'main_image',
         'status',
+        'file',
         'tag',
         'rooms_from',
         'bathrooms_from',

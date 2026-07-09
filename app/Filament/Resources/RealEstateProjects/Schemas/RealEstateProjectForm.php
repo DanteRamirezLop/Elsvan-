@@ -7,8 +7,6 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
-
-
 use Filament\Forms;
 use Filament\Forms\Form;
 use Illuminate\Support\Str;
@@ -47,6 +45,19 @@ class RealEstateProjectForm
                 TextInput::make('rooms_from'),
                 TextInput::make('bathrooms_from'),
                 TextInput::make('delivery_date'),
+
+                FileUpload::make('file')
+                ->label('Archivo')
+                ->directory('real-estate-projects/files')
+                ->disk('public')
+                ->visibility('public')
+                ->acceptedFileTypes([
+                    'application/pdf',
+                    'image/*',
+                ])
+                ->maxSize(10240)
+                ->downloadable()
+                ->openable(),
 
             ]);
     }
