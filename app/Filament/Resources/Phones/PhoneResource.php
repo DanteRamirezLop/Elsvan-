@@ -20,7 +20,7 @@ class PhoneResource extends Resource
 {
     protected static ?string $model = Phone::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-phone';
 
     protected static ?string $recordTitleAttribute = 'Phone';
 

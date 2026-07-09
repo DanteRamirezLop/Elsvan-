@@ -20,7 +20,7 @@ class NetworkResource extends Resource
 {
     protected static ?string $model = Network::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-hashtag';
 
     protected static ?string $recordTitleAttribute = 'Network';
 

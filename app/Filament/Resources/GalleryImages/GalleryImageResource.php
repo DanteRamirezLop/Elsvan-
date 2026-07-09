@@ -20,7 +20,7 @@ class GalleryImageResource extends Resource
 {
     protected static ?string $model = GalleryImage::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-photo';
 
     protected static ?string $recordTitleAttribute = 'GalleryImage';
 

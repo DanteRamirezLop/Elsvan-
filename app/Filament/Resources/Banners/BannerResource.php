@@ -20,7 +20,7 @@ class BannerResource extends Resource
 {
     protected static ?string $model = Banner::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-square-3-stack-3d';
 
     protected static ?string $recordTitleAttribute = 'Banner';
 
