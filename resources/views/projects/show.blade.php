@@ -145,7 +145,7 @@
     @if($project->file)
     <section id="brochure" class="bg-brown pt-6">
         <div class="section flex items-center justify-center">
-         <span class="text-white text-sm sm:text-lg lg:text-xl me-1 lg:me-3">Mira nuestro Brochure:</span>  <a href="{{ Storage::disk('public')->url($project->file) }}" target="_blank" class="btn-download"> Descargar archivo <i class="las la-download text-lg lg:text-xl ml-2"></i> </a>
+         <span class="text-white text-sm sm:text-lg lg:text-xl me-0 md:me-1 lg:me-3">Mira nuestro Brochure: &nbsp</span>  <a href="{{ Storage::disk('public')->url($project->file) }}" target="_blank" class="btn-download"> Descargar archivo <i class="las la-download text-lg lg:text-xl ml-2"></i> </a>
         </div>
     </section>
     @endif
