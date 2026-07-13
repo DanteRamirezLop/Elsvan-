@@ -20,8 +20,8 @@
     </section>
 
     @if(count($projects))
-    <section>
-        <div class="mx-auto flex flex-col justify-center gap-10 px-6 pt-16 md:px-12 lg:flex-row lg:items-center lg:justify-between lg:px-20 xl:px-24">
+     <section class="section-projects">
+        <div class="mx-auto flex flex-col justify-center gap-10  pt-8  lg:flex-row lg:items-center lg:justify-between">
             <!-- Contenido -->
             <div>
                 <span class="mb-2 block text-[12px] font-semibold uppercase text-[#292929]
@@ -48,8 +48,7 @@
             </div>
         </div>
 
-
-        <section class="section-projects py-12" >
+        <div class=" py-12" >
         <!-- Grid de proyectos -->
         <div class="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             @foreach($projects as $project)
@@ -101,18 +100,16 @@
             @endforeach
         </div>
 
-</div>
+        </div>
 
 
     </section>
-
-
     @endif
 
 
 
-        <section>
-          <div class="mb-8 mx-auto flex flex-col justify-center gap-10 px-6 pt-16 md:px-12 lg:flex-row lg:items-center lg:justify-between lg:px-20 xl:px-24">
+    <section class="section-projects">
+          <div class="mb-8 mx-auto flex flex-col justify-center gap-10 pt-2 lg:flex-row lg:items-center lg:justify-between">
             <!-- Contenido -->
             <div>
                 <span
