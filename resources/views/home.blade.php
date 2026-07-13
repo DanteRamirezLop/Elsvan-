@@ -15,7 +15,7 @@
             @endif
         </div>
         <div class="about-image">
-            <img src="{{ $page->image ? Storage::disk('public')->url($page->image) : '' }}" alt="Proyecto inmobiliario ELSVAN">
+            <img src="{{ isset($page) &&  $page->image ? Storage::disk('public')->url($page->image) : '' }}" alt="Proyecto inmobiliario ELSVAN">
         </div>
     </section>
 

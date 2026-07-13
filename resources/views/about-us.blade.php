@@ -3,7 +3,7 @@
 @section('content')
     <section class=" banner-category container-fluid">
         <img
-        src="{{ $page->image ? Storage::disk('public')->url($page->image) : asset('images/nosotros.webp') }}"
+        src="{{ isset($page) && $page->image ? Storage::disk('public')->url($page->image) : asset('images/nosotros.webp') }}"
          alt="Expertos en proyectos de construcción" class="banner-category-img">
         <div class="banner-category-box-title">
             <h1 class="banner-category-title tracking-wider"> Expertos en proyectos</h1>

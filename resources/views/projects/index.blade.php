@@ -4,7 +4,7 @@
 
     <section class="banner-category container-fluid">
         <img
-        src="{{ $page->image ? Storage::disk('public')->url($page->image) : asset('images/proyectos.webp') }}"
+        src="{{ isset($page) &&  $page->image ? Storage::disk('public')->url($page->image) : asset('images/proyectos.webp') }}"
         alt="La confianza no se vende se construye" class="banner-category-img">
         <div class="banner-category-box-title">
             <h1 class="banner-category-title tracking-wider"> Nuestros Proyectos</h1>

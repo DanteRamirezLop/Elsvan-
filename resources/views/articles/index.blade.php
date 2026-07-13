@@ -4,7 +4,7 @@
 
     <section class="banner-category container-fluid">
         <img
-         src="{{ $page->image ? Storage::disk('public')->url($page->image) : asset('images/ultimas-noticias.webp') }}"
+         src="{{ isset($page) && $page->image ? Storage::disk('public')->url($page->image) : asset('images/ultimas-noticias.webp') }}"
          alt="Últimas noticias" class="banner-category-img">
         <div class="banner-category-box-title">
             <h1 class="banner-category-title tracking-wider"> Últimas noticias</h1>
