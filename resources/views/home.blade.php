@@ -21,7 +21,7 @@
 
     @if(count($projects))
      <section class="section-projects">
-        <div class="mx-auto flex flex-col justify-center gap-10  pt-8  lg:flex-row lg:items-center lg:justify-between">
+        <div class="mx-auto flex flex-col justify-center gap-5 md:gap-10 pt-6  lg:flex-row lg:items-center lg:justify-between p-6 md:p-0">
             <!-- Contenido -->
             <div>
                 <span class="mb-2 block text-[12px] font-semibold uppercase text-[#292929]
@@ -48,7 +48,7 @@
             </div>
         </div>
 
-        <div class=" py-12" >
+        <div class="pt-1 sm:pt-6 md:pt-10" >
         <!-- Grid de proyectos -->
         <div class="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             @foreach($projects as $project)
@@ -107,7 +107,7 @@
 
 
     <section class="section-projects">
-          <div class="mb-8 mx-auto flex flex-col justify-center gap-10 pt-2 lg:flex-row lg:items-center lg:justify-between">
+        <div class="mb-8 mx-auto flex flex-col justify-center gap-5 md:gap-10 pt-2 lg:flex-row lg:items-center lg:justify-between p-6 md:p-0">
             <!-- Contenido -->
             <div>
                 <span
@@ -117,7 +117,7 @@
                 </span>
 
                 <h2 class="text-3xl  font-bold  md:text-4xl text-brown">
-                     Visítanos nuestros proyectos
+                     Visita nuestros proyectos
                 </h2>
             </div>
 
@@ -134,7 +134,9 @@
             </div>
         </div>
 
-       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.7875888482818!2d-76.98794409999999!3d-12.126681000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c7f53709d4c5%3A0xa2cad75c27a0e021!2sCentro%20Empresarial%20nuevo%20Trigal%2C%20C.%20Los%20Antares%20320%2C%20Santiago%20de%20Surco%20LIMA%2033!5e0!3m2!1ses-419!2spe!4v1783372585297!5m2!1ses-419!2spe" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        @if(isset($page->info_1))
+         {!! $page->info_1 !!}
+        @endif
     </section>
 
      <section class="relative min-h-screen overflow-hidden bg-orange lg:h-[668px] lg:min-h-0">

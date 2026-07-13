@@ -63,6 +63,8 @@
         --swiper-navigation-sides-offset: 5px;
     }
 
+
+
     .banner-slider {
         height: 350px;
     }
@@ -145,6 +147,11 @@
 }
 
 @media (max-width: 600px) {
+
+     .section-projects{
+        padding-block: calc(var(--spacing) * 8);
+    }
+
     .btn-download {
         font-size: 0.85rem;
     }
@@ -176,6 +183,11 @@
 }
 
 @media (max-width: 480px) {
+
+    .section-projects{
+        padding-block: calc(var(--spacing) * 10);
+    }
+
     .btn-download {
         font-size: 0.8rem;
     }
