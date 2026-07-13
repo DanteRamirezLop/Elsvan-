@@ -110,8 +110,7 @@
         <div class="mb-8 mx-auto flex flex-col justify-center gap-5 md:gap-10 pt-2 lg:flex-row lg:items-center lg:justify-between p-6 md:p-0">
             <!-- Contenido -->
             <div>
-                <span
-                    class="mb-2 block text-[12px] font-semibold uppercase text-[#292929]
+                <span class="mb-2 block text-[12px] font-semibold uppercase text-[#292929]
                         md:text-[14px] lg:text-[18px]">
                        Elsvan Inmobiliaria
                 </span>
@@ -142,11 +141,11 @@
      <section class="relative min-h-screen overflow-hidden bg-orange lg:h-[668px] lg:min-h-0">
         <div class="mx-auto flex min-h-screen w-full max-w-[1440px] flex-col lg:h-full lg:min-h-0 lg:flex-row">
             <div class="relative hidden min-h-[430px] w-full items-end justify-center min-[1021px]:flex lg:min-h-0 lg:w-[46%] lg:justify-start">
-                <img src="{{asset('images/ingeniero-elsvan.png')}}" alt="Ingeniero revisando un proyecto"
+                <img src="{{asset('images/ventas.webp')}}" alt="Contactanos"
                     class="relative z-10 h-auto max-h-[480px] w-auto max-w-[90%]
                            object-contain drop-shadow-[0_6px_7px_rgba(0,0,0,0.22)]
-                           lg:absolute lg:bottom-0 lg:left-[5%] lg:max-h-[92%]
-                           lg:max-w-none xl:left-[8%]">
+                           lg:absolute lg:bottom-0 lg:left-1/2 lg:-translate-x-1/2
+                           lg:max-h-[92%] lg:max-w-none">
             </div>
             <div class="flex justify-center w-full items-center px-6 pb-12 lg:w-[54%] lg:px-10 lg:pb-0 lg:pr-[7%]">
                     <div class="w-full max-w-[650px] my-12">
