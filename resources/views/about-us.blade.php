@@ -21,20 +21,22 @@
     </section>
     @endif
 
+
     <div class="iframe-center">
-        <div class="w-5/6 lg:w-1/2">
+        <div class="w-5/6 lg:w-3/5">
             @if(isset($page->info_1))
                 <div class="iframe-container">
                     {!! $page->info_1 !!}
                 </div>
             @endif
         </div>
+
     </div>
     <!-- Misión y visión -->
     <div class="section">
         <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
             <!-- Misión -->
-            <article class="flex min-h-[290px] flex-col items-center rounded-2xl bg-[#f45b00] px-8 py-7 text-center text-white shadow-lg">
+            <article class="mission-vision-card flex min-h-[290px] flex-col items-center rounded-2xl bg-[#f45b00] px-8 py-7 text-center text-white shadow-lg">
                 <div class="mb-2">
                     <img src="{{ asset('images/mision.webp') }}" alt="Misión" class="h-16 w-16 object-contain">
                 </div>
@@ -46,7 +48,7 @@
                 </p>
             </article>
             <!-- Visión -->
-            <article class="flex min-h-[290px] flex-col items-center rounded-2xl bg-[#92c509] px-8 py-7 text-center text-white shadow-lg">
+            <article class="mission-vision-card flex min-h-[290px] flex-col items-center rounded-2xl bg-[#92c509] px-8 py-7 text-center text-white shadow-lg">
                 <div class="mb-2">
                     <img src="{{ asset('images/vision.webp') }}" alt="Visión" class="h-16 w-16 object-contain">
                 </div>

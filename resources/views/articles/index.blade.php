@@ -12,13 +12,13 @@
         </div>
     </section>
 
-     <livewire:marquee/>
+    <livewire:marquee/>
 
 
     <section class="section">
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 my-5">
             @foreach($articles as $article)
-                <article class="p-5 bg-white rounded-lg border border-gray-200 shadow-md ">
+                <article class="article-card p-5 bg-white rounded-lg border border-gray-200 shadow-md ">
                     <a href="{{ route('noticias.show', $article) }}">
                         <img class="w-full mb-4 rounded-lg" src="{{ $article->image ? Storage::disk('public')->url($article->image) : '' }}" alt="">
                     </a>

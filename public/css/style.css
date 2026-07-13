@@ -154,6 +154,7 @@ header>nav{
     border-radius: 12px;
     min-width: 180px;
 }
+
 .bg-green{
     background-color: #94c80f;
 }
@@ -168,6 +169,18 @@ header>nav{
 }
 .bg-green-tranparence{
     background-color: #94c80fc7;
+}
+
+.bg-contact{
+    background-image: linear-gradient(#ea6109eb 40%, #ea6109f0 60%), url(/images/bg-contact.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-video {
+    background-image: linear-gradient(rgba(148, 200, 14, 0.98), rgba(148 200 14 / 85%)), url(/images/bg-contact.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .text-brown{
@@ -290,6 +303,39 @@ header>nav{
         aspect-ratio: 7 / 8;
     }
 
+    .project-card {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .project-card.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .article-card {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .article-card.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .mission-vision-card {
+        opacity: 0;
+        transition: opacity 1.2s ease, transform 1.2s ease;
+        transform: scale(1.04);
+    }
+
+    .mission-vision-card.is-visible {
+        opacity: 1;
+        transform: scale(1);
+    }
+
     .project-link-sold {
         cursor: default;
         pointer-events: none;
@@ -377,6 +423,34 @@ header>nav{
     font-weight: 800;
     margin-bottom: 28px;
     color: #52484b;
+}
+
+#estadisticas {
+    display: flex;
+    gap: 40px;
+    margin: 28px 0;
+}
+
+.estadistica-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.estadistica-numero {
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #EA6109;
+}
+
+.estadistica-numero::before {
+    content: "+";
+}
+
+.estadistica-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #53484B;
 }
 
 
@@ -607,6 +681,28 @@ header>nav{
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+.fade-zoom-img {
+    opacity: 0;
+    transition: opacity 1.2s ease, transform 1.2s ease;
+    transform: scale(1.04);
+}
+
+.fade-zoom-img.is-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.info-fade {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.info-fade.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Blog - Articulos */

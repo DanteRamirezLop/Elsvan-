@@ -8,14 +8,28 @@
     <section class="about-section">
         <div class="about-text">
             <div class="marquee">
-                Más de {{$year}} años construyendo confianza
+                Elsvan Inmobiliaria construyendo confianza
             </div>
             @if(isset($page->content))
                 <p>{!! $page->content !!}</p>
             @endif
+            <div id="estadisticas">
+                <div class="estadistica-item">
+                    <span class="estadistica-numero" data-count-target="{{ $year }}">0</span>
+                    <span class="estadistica-label">Años de experiencia</span>
+                </div>
+                <div class="estadistica-item">
+                    <span class="estadistica-numero" data-count-target="{{ $projectsCount }}">0</span>
+                    <span class="estadistica-label">Proyectos entregados</span>
+                </div>
+                <div class="estadistica-item">
+                    <span class="estadistica-numero" data-count-target="2000">0</span>
+                    <span class="estadistica-label">Familias Felices</span>
+                </div>
+            </div>
         </div>
         <div class="about-image">
-            <img src="{{ isset($page) &&  $page->image ? Storage::disk('public')->url($page->image) : '' }}" alt="Proyecto inmobiliario ELSVAN">
+            <img src="{{ isset($page) &&  $page->image ? Storage::disk('public')->url($page->image) : '' }}" alt="Proyecto inmobiliario ELSVAN" class="fade-zoom-img">
         </div>
     </section>
 
@@ -41,8 +55,7 @@
                         border-2 border-[#EA6109] px-8 text-[18px] font-bold text-[#EA6109]
                         transition duration-300 hover:bg-[#EA6109] hover:text-white
                         focus:outline-none focus:ring-4 focus:ring-[#EA6109]/20
-                        md:text-[20px]"
-                >
+                        md:text-[20px]">
                     Ver Proyectos
                 </a>
             </div>
@@ -138,7 +151,7 @@
         @endif
     </section>
 
-     <section class="relative min-h-screen overflow-hidden bg-orange lg:h-[668px] lg:min-h-0">
+     <section class="relative min-h-screen overflow-hidden bg-contact lg:h-[668px] lg:min-h-0">
         <div class="mx-auto flex min-h-screen w-full max-w-[1440px] flex-col lg:h-full lg:min-h-0 lg:flex-row">
             <div class="relative hidden min-h-[430px] w-full items-end justify-center min-[1021px]:flex lg:min-h-0 lg:w-[46%] lg:justify-start">
                 <img src="{{asset('images/ventas.webp')}}" alt="Contactanos"

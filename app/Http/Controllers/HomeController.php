@@ -39,6 +39,7 @@ class HomeController extends Controller
         ->take(6)
         ->get();
         $data['projects'] = $projects;
+        $data['projectsCount'] = RealEstateProject::where('status', 'published')->count();
 
         $data['articles'] = Article::where('is_published', 1)
             ->latest('published_at')

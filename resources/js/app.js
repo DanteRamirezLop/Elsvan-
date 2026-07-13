@@ -125,6 +125,70 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const estadisticaNumeros = document.querySelectorAll('.estadistica-numero');
+
+    if (estadisticaNumeros.length) {
+        const animateCount = (el) => {
+            const target = parseInt(el.dataset.countTarget, 10) || 0;
+            const duration = 1500;
+            const start = performance.now();
+
+            const step = (now) => {
+                const progress = Math.min((now - start) / duration, 1);
+                el.textContent = Math.floor(progress * target);
+
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    el.textContent = target;
+                }
+            };
+
+            requestAnimationFrame(step);
+        };
+
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    animateCount(entry.target);
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        estadisticaNumeros.forEach((numero) => observer.observe(numero));
+    }
+
+    const observeFadeIn = (selector, { threshold = 0.15, staggerStep = 0, staggerSize = 1 } = {}) => {
+        const elements = document.querySelectorAll(selector);
+
+        if (!elements.length) {
+            return;
+        }
+
+        const fadeInObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    if (staggerStep) {
+                        const index = [...elements].indexOf(entry.target);
+                        entry.target.style.transitionDelay = `${(index % staggerSize) * staggerStep}s`;
+                    }
+
+                    entry.target.classList.add('is-visible');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold });
+
+        elements.forEach((el) => fadeInObserver.observe(el));
+    };
+
+    observeFadeIn('.fade-zoom-img', { threshold: 0.2 });
+    observeFadeIn('.project-card', { staggerStep: 0.15, staggerSize: 3 });
+    observeFadeIn('.article-card', { staggerStep: 0.15, staggerSize: 3 });
+    observeFadeIn('.mission-vision-card', { threshold: 0.2, staggerStep: 0.15, staggerSize: 2 });
+    observeFadeIn('.info-fade', { threshold: 0.2 });
+
     sliderBlueprints.forEach((sliderBlueprint) => {
         new Swiper(sliderBlueprint, {
             modules: [
@@ -160,33 +224,3 @@ lightbox.option({
     albumLabel: 'Imagen %1 de %2',
 
 });
-
-// function colocarDescripcionArriba() {
-//     const descripcion = document.querySelector(
-//         '#lightbox .lb-dataContainer'
-//     );
-
-//     const imagen = document.querySelector(
-//         '#lightbox .lb-outerContainer'
-//     );
-
-//     if (!descripcion || !imagen) {
-//         return;
-//     }
-
-//     imagen.parentNode.insertBefore(descripcion, imagen);
-// }
-
-// /*
-//  * Lightbox crea su HTML cuando el documento carga.
-//  */
-// document.addEventListener('DOMContentLoaded', () => {
-//     setTimeout(colocarDescripcionArriba, 100);
-// });
-
-// /*
-//  * Se ejecuta cuando Lightbox abre o cambia de imagen.
-//  */
-// $(document).on('lightbox:open lightbox:change', () => {
-//     colocarDescripcionArriba();
-// });

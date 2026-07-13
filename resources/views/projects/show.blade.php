@@ -6,12 +6,12 @@
             <!-- Imagen del edificio -->
              <div class="relative min-h-[430px] bg-escudero lg:min-h-[420px]">
               <div class="absolute inset-y-0 right-0 w-full overflow-hidden w-full md:w-[86%] lg:w-[72%]">
-                     <img src="{{$project->main_image ? Storage::disk('public')->url($project->main_image) : ''}}" alt="{{$project->name}}" class="h-full w-full object-cover object-center">
+                     <img src="{{$project->main_image ? Storage::disk('public')->url($project->main_image) : ''}}" alt="{{$project->name}}" class="fade-zoom-img h-full w-full object-cover object-center">
                 </div>
             </div>
             <!-- Información -->
             <div class="flex items-center bg-escudero px-6 py-12 sm:px-12 lg:px-16 xl:px-24">
-                <div class="mx-auto w-full max-w-[780px]">
+                <div class="info-fade mx-auto w-full max-w-[780px]">
                     <!-- Ubicación -->
                     <article class="grid grid-cols-[70px_1fr] items-start border-b-2 border-white  pb-4 md:pb-5 lg:pb-9 md:grid-cols-[120px_1fr] gap-2 sm:gap-4 md:gap-6 lg:gap-10">
                         <div class="flex justify-center pt-1">
@@ -162,7 +162,7 @@
                     <h1 class="text-center">Áreas internas</h1>
                     <div class="category-grid">
                         @foreach($project->environments as $environment)
-                        <button class="category-btn" data-image="{{ $environment->image ? Storage::disk('public')->url($environment->image) : '' }}">
+                        <button class="category-btn {{ $loop->first ? 'active' : '' }}" data-image="{{ $environment->image ? Storage::disk('public')->url($environment->image) : '' }}">
                             <span class="icon">
                                 <img src="{{ asset('images/item-icon').'/'.$environment->type.'.webp' }}" class="h-8" alt="{{$environment->title}}">
                             </span>
