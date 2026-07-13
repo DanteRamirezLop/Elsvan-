@@ -11,6 +11,7 @@ use App\Models\Article;
 class HomeController extends Controller
 {
     public function index(){
+
         $dominio = config('app.url');
         $page = Page::where('title','home')->first();
         if($page){
@@ -33,10 +34,11 @@ class HomeController extends Controller
         $data['page'] = $page;
         $data['year'] = date('Y') - 2012;
 
-        $data['projects'] = RealEstateProject::with('blueprints')
-            ->where('status', 'published')
-            ->where('tag', '<>', 'vendido')
-            ->get();
+       $projects = RealEstateProject::where('status', 'published')
+        ->orderBy('created_at', 'asc')
+        ->take(6)
+        ->get();
+        $data['projects'] = $projects;
 
         $data['articles'] = Article::where('is_published', 1)
             ->latest('published_at')

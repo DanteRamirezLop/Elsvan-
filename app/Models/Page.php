@@ -19,6 +19,7 @@ class Page extends Model
         'info_1',
         'info_2',
         'info_3',
+        'image',
     ];
 
     protected function casts(): array

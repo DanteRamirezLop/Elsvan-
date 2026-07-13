@@ -12,6 +12,7 @@ class GalleryController extends Controller
 
         $dominio = config('app.url');
         $page = Page::where('title','galeria')->first();
+        $data['page'] = $page;
         if($page){
             $data['seo'] = array(
                 'title'         => $page->meta_title,

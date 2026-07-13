@@ -18,7 +18,7 @@ new class extends Component
         <div class="swiper-wrapper">
             @foreach($banners as $banner)
                 <div class="swiper-slide">
-                    <div class="banner-category container-fluid">
+                    <div class="banner-slider container-fluid">
                         @if($banner->imagen)
                             <div class="absolute inset-0 z-10 animate-pulse bg-gray-300"></div>
                             <img src="{{ Storage::disk('public')->url($banner->imagen) }}"
@@ -29,9 +29,9 @@ new class extends Component
                                 onerror="this.previousElementSibling.remove()">
                         @endif
                         <div class="banner-category-box-title">
-                            <h1 class="banner-category-title "> {{ $banner->titulo }}</h1>
+                             <h1 class="banner-category-title "> {{ $banner->titulo }}</h1>
                             @if($banner->subtitulo)
-                                <p class="text-center text-white text-xl lg:text-3xl"> {{ $banner->subtitulo }} </p>
+                                <p class="text-center text-white text-xl md:text-3xl lg:text-4xl xl:text-5xl"> {{ $banner->subtitulo }} </p>
                             @endif
                             @if($banner->link)
                                 <div class="text-center mt-5">

@@ -1,21 +1,21 @@
 /* Extra Extra large devices (large desktops, 1600px and up) */
 @media (min-width: 1600px) {
   .banner-category-title {
-    font-size: 52px;
+    font-size: 56px;
   }
 }
 
 /* Extra large devices (large desktops, 1300px and up) */
 @media (min-width: 1300px) and (max-width: 1599.98px) {
   .banner-category-title {
-    font-size: 36px;
+    font-size: 48px;
   }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) and (max-width: 1299.98px) {
   .banner-category-title {
-    font-size: 34px;
+    font-size: 38px;
   }
 }
 

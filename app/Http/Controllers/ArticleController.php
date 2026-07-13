@@ -11,6 +11,7 @@ class ArticleController extends Controller
     public function index(){
         $dominio = config('app.url');
         $page = Page::where('title','blog')->first();
+        $data['page'] = $page;
         if($page){
             $data['seo'] = array(
                 'title'         => $page->meta_title,

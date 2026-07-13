@@ -17,6 +17,7 @@ class ProjectController extends Controller
 
         $dominio = config('app.url');
         $page = Page::where('title','projectos')->first();
+        $data['page'] = $page;
         //SEO
         if($page){
             $data['seo'] = array(

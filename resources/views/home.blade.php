@@ -13,160 +13,246 @@
             @if(isset($page->content))
                 <p>{!! $page->content !!}</p>
             @endif
-            <a href="{{route('proyectos.index')}}" class="btn-projects">Ver nuestros proyectos</a>
         </div>
         <div class="about-image">
-            <img src="{{asset('images/home.webp')}}" alt="Proyecto inmobiliario ELSVAN">
+            <img src="{{ $page->image ? Storage::disk('public')->url($page->image) : '' }}" alt="Proyecto inmobiliario ELSVAN">
         </div>
     </section>
 
     @if(count($projects))
-    <!-- Dirección -->
-    <div class="text-center my-10">
-        <h2 class="text-3xl  font-bold  md:text-4xl text-brown">
-             Mira nuestros departamentos en venta
-        </h2>
-    </div>
-    @endif
-
-    @foreach($projects as $project)
-        <section class="proeyct-home-section mt-8  mb-8 lg:mb-14 py-10">
-            <div class="section">
-                <div class="grid w-full items-start gap-10 md:grid-cols-[1fr_1fr] lg:gap-16" aria-label="Departamentos disponibles">
-                    <!-- COLUMNA IZQUIERDA -->
-                    <div class="min-w-0 {{ $loop->even ? 'lg:order-2' : 'lg:order-1' }}">
-                        <div class="swiper sliderBlueprint">
-                            <div class="swiper-wrapper">
-                                @foreach($project->blueprints as $blueprint)
-                                    <div class="swiper-slide ">
-                                        <article id="property-card" class="overflow-hidden rounded-[26px] bg-orange ">
-                                        <!-- Ficha blanca -->
-                                        <div class="m-[5px] mb-0 rounded-t-[22px] rounded-br-[22px] bg-white px-5 pb-7 pt-4 sm:px-9 sm:pb-8 sm:pt-5">
-                                            <!-- Plano -->
-                                            <div class="mt-6 overflow-hidden rounded-xl bg-white sm:mt-8">
-                                                <img id="floor-plan"
-                                                    src="{{ $blueprint->image ? Storage::disk('public')->url($blueprint->image) : '' }}"
-                                                    alt="Plano del departamento del Residencial Escudero"
-                                                    class=" w-full object-contain"/>
-                                                </div>
-                                            </div>
-                                            <!-- Franja naranja -->
-                                            <div class="grid gap-5 px-5 py-5 text-white sm:grid-cols-[1fr_auto] sm:px-9 sm:py-6">
-                                                <div>
-                                                    <p id="property-type" class="text-xl font-black uppercase leading-none sm:text-2xl">
-                                                        {{$blueprint->name}}
-                                                    </p>
-                                                    <p id="apartment-number" class="mt-2 text-lg font-medium sm:text-xl"> {{$blueprint->number_departments}}</p>
-                                                </div>
-                                                <ul class="grid grid-cols-4 items-center gap-4 sm:gap-5" aria-label="Características">
-                                                <li class="text-center">
-                                                    <img src="{{ asset('images/item-icon/dormitorio.webp') }}" alt="Dormitorios" class="mx-auto w-7 h-7">
-                                                    <span class="mt-1 block text-base font-semibold">{{ $blueprint->bedrooms }}</span>
-                                                </li>
-                                                <li class="text-center">
-                                                    <img src="{{ asset('images/item-icon/bano.webp') }}" alt="Baños" class="mx-auto w-7 h-7">
-                                                    <span class="mt-1 block text-base font-semibold">{{$blueprint->bathrooms}}</span>
-                                                </li>
-                                                <li class="text-center">
-                                                    <img src="{{ asset('images/item-icon/jardin.webp') }}" alt="Jardín" class="mx-auto w-7 h-7">
-                                                    <span class="mt-1 block text-base font-semibold">{{$blueprint->garden}}</span>
-                                                </li>
-                                                <li class="text-center">
-                                                    <img src="{{ asset('images/item-icon/balcon.webp') }}" alt="Balcón" class="mx-auto w-7 h-7">
-                                                    <span class="mt-1 block text-base font-semibold">{{$blueprint->balcony}}</span>
-                                                </li>
-                                                </ul>
-                                            </div>
-
-                                    </article>
-                                </div>
-                                @endforeach
-                            </div>
-                            {{-- Flechas --}}
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
-                        </div>
-                    </div>
-                    <!-- COLUMNA DERECHA -->
-                    <div class="h-full flex items-center {{ $loop->even ? 'lg:order-1' : 'lg:order-2' }}">
-                        <div>
-                            <h2 class="text-2xl lg:text-3xl text-center mb-2"><i class="las la-map-marker text-orange "aria-hidden="true"></i> {{$project->name}} - <span class="text-brown"> {{$project->district}} </span> </h2>
-                            <div class="inset-0 min-h-[380px] sm:min-h-[500px] object-cover object-center  mx-auto">
-                                <article>
-                                    <a href="{{ route('proyectos.show', $project) }}">
-                                        <div class="rounded-t-xl relative overflow-hidden bg-gray-200 shadow-lg">
-                                            <div class="uppercase absolute left-0 top-0 z-20 flex h-14 w-full items-center justify-center bg-green-tranparence px-4 text-center text-xl font-extrabold text-white">
-                                                {{$project->tag}}
-                                            </div>
-                                            <img src="{{ $project->main_image ? Storage::disk('public')->url($project->main_image) : '' }}" alt="{{$project->name}}" class="h-full w-full object-cover">
-                                        </div>
-                                    </a>
-                                    <div class="rounded-b-xl bg-brown shadow-project">
-                                        <a href="{{ route('proyectos.show', $project) }}" class="btn-projects-see text-white block w-full px-5 py-6 text-center h-14">  VER PROYECTO </a>
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <section>
+        <div class="mx-auto flex flex-col justify-center gap-10 px-6 pt-16 md:px-12 lg:flex-row lg:items-center lg:justify-between lg:px-20 xl:px-24">
+            <!-- Contenido -->
+            <div>
+                <span class="mb-2 block text-[12px] font-semibold uppercase text-[#292929]
+                        md:text-[14px] lg:text-[18px]">
+                     Mira nuestros departamentos en venta
+                </span>
+                <h2 class="text-3xl  font-bold  md:text-4xl text-brown">
+                    Tu nuevo hogar te espera
+                </h2>
             </div>
-        </section>
 
-        <section class="location-section">
-            <div class="location-card">
-                <div class="map-panel">
-                    @if($project->environments->first())
-                    <img class="mapImage" src="{{Storage::disk('public')->url($project->environments->first()->image)}}" alt="Image de portada"/>
-                    @endif
-                </div>
-                <div class="info-panel">
-                    <h1 class="text-center">Áreas internas</h1>
-                    <div class="category-grid">
-                        @foreach($project->environments as $environment)
-                        <button class="category-btn" data-image="{{ $environment->image ? Storage::disk('public')->url($environment->image) : '' }}">
-                            <span class="icon">
-                                <img src="{{ asset('images/item-icon').'/'.$environment->type.'.webp' }}" class="h-8" alt="{{$environment->title}}">
-                            </span>
-                            <span class="min-w-24">{{$environment->title}}</span>
-                        </button>
-                        @endforeach
-                    </div>
-                </div>
+            <!-- Botón -->
+            <div class="shrink-0">
+                <a
+                    href="{{route('proyectos.index')}}"
+                    class="inline-flex min-h-[55px] min-w-[240px] items-center justify-center rounded-[16px]
+                        border-2 border-[#EA6109] px-8 text-[18px] font-bold text-[#EA6109]
+                        transition duration-300 hover:bg-[#EA6109] hover:text-white
+                        focus:outline-none focus:ring-4 focus:ring-[#EA6109]/20
+                        md:text-[20px]"
+                >
+                    Ver Proyectos
+                </a>
             </div>
-        </section>
-    @endforeach
-
-    @if($articles->count())
-    <section class="section my-14">
-        <div class="text-center mb-10">
-            <h2 class="text-3xl font-bold md:text-4xl text-brown">Últimas noticias</h2>
         </div>
 
-        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            @foreach($articles as $article)
-                <article class="p-5 bg-white rounded-lg border border-gray-200 shadow-md">
-                    <a href="{{ route('noticias.show', $article) }}">
-                        <img class="w-full mb-4 rounded-lg" src="{{ $article->image ? Storage::disk('public')->url($article->image) : '' }}" alt="{{ $article->title }}">
-                    </a>
-                    <h3 class="mb-2 text-2xl tracking-tight text-gray-900">
-                        <a href="{{ route('noticias.show', $article) }}">{{ Str::limit($article->title, 60) }}</a>
-                    </h3>
-                    <p class="mb-5 font-light text-gray-500">{{ Str::limit($article->excerpt, 200) }}</p>
-                    <div class="flex justify-between items-center">
-                        <span class="font-medium text-brown">{{ $article->published_at ? date('d M Y', strtotime($article->published_at)) : '' }}</span>
-                        <a href="{{ route('noticias.show', $article) }}" class="inline-flex items-center font-medium text-orange hover:underline">
-                            Leer más <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                        </a>
+
+        <section class="section-projects py-12" >
+        <!-- Grid de proyectos -->
+        <div class="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+            @foreach($projects as $project)
+            <article class="project-card p-5 lg:p-1">
+                <a href="{{$project->tag == 'vendido' ? '' : route('proyectos.show', $project) }}" class="{{ $project->tag == 'vendido' ? 'project-link-sold' : '' }}">
+                    <div class="rounded-t-xl project-image relative overflow-hidden bg-gray-200 shadow-lg">
+                        @if($project->tag == 'vendido')
+                            <div class="absolute inset-0 z-20 flex items-center justify-center">
+                                <span class="rounded-lg bg-white px-10 py-3 text-2xl font-extrabold uppercase text-orange shadow-lg">
+                                     {{$project->tag}}
+                                </span>
+                            </div>
+                        @else
+                            <div class="uppercase absolute left-0 top-0 z-20 flex h-14 w-full items-center justify-center bg-green-tranparence px-4 text-center text-xl font-extrabold text-white">
+                                {{$project->tag}}
+                            </div>
+                        @endif
+                        <img src="{{ $project->main_image ? Storage::disk('public')->url($project->main_image) : '' }}" alt="{{$project->name}}" class="h-full w-full object-cover">
                     </div>
-                </article>
+                </a>
+                <div class=" rounded-b-xl bg-brown px-5 py-4 text-center shadow-project">
+                     <a href="{{$project->tag == 'vendido' ? '' : route('proyectos.show', $project) }}" class="{{ $project->tag == 'vendido' ? 'project-link-sold' : '' }}">
+                        <h2 class="text-xl font-extrabold uppercase text-green">
+                            {{$project->name}}
+                        </h2>
+                    </a>
+                    <p class="text-white">
+                        {{ Str::limit($project->location, 72) }}
+                    </p>
+                    <div class="project-list-details">
+                        <div class="project-list-detail-box ">
+                            <i class="la la-bed text-2xl text-gray-200 mr-1" aria-hidden="true"></i>
+                            <span class="project-list-detail-text">{{$project->rooms_from}} </span>
+                        </div>
+                        <div class="project-list-detail-box ">
+                            <i class="la la-bath text-2xl text-gray-200 mr-1" aria-hidden="true"></i>
+                            <span class="project-list-detail-text">{{$project->bathrooms_from}} </span>
+                        </div>
+                        <div class="project-list-detail-box ">
+                            <i class="la la-ruler-combined text-2xl text-gray-200 mr-2" aria-hidden="true"></i>
+                            <span class="project-list-detail-text">Desde {{ number_format($project->area_from,0)}} m² </span>
+                        </div>
+                    </div>
+                    <p class="mt-1 text-sm">
+                        <span class="text-gray-200"> Entrega: </span> <strong class="text-white"> {{$project->delivery_date}}  </strong>
+                    </p>
+                </div>
+            </article>
             @endforeach
         </div>
 
-        <div class="text-center mt-10">
-            <a href="{{ route('noticias.index') }}" class="btn-projects">Ver más</a>
+</div>
+
+
+    </section>
+
+
+    @endif
+
+
+
+        <section>
+          <div class="mb-8 mx-auto flex flex-col justify-center gap-10 px-6 pt-16 md:px-12 lg:flex-row lg:items-center lg:justify-between lg:px-20 xl:px-24">
+            <!-- Contenido -->
+            <div>
+                <span
+                    class="mb-2 block text-[12px] font-semibold uppercase text-[#292929]
+                        md:text-[14px] lg:text-[18px]">
+                       Elsvan Inmobiliaria
+                </span>
+
+                <h2 class="text-3xl  font-bold  md:text-4xl text-brown">
+                     Visítanos nuestros proyectos
+                </h2>
+            </div>
+
+            <!-- Botón -->
+             <div class="shrink-0">
+                <a href="{{route('proyectos.index')}}"
+                    class="inline-flex min-h-[55px] min-w-[240px] items-center justify-center rounded-[16px]
+                        border-2 border-[#EA6109] px-8 text-[18px] font-bold text-[#EA6109]
+                        transition duration-300 hover:bg-[#EA6109] hover:text-white
+                        focus:outline-none focus:ring-4 focus:ring-[#EA6109]/20
+                        md:text-[20px]">
+                    Ver Proyectos
+                </a>
+            </div>
+        </div>
+
+       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.7875888482818!2d-76.98794409999999!3d-12.126681000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c7f53709d4c5%3A0xa2cad75c27a0e021!2sCentro%20Empresarial%20nuevo%20Trigal%2C%20C.%20Los%20Antares%20320%2C%20Santiago%20de%20Surco%20LIMA%2033!5e0!3m2!1ses-419!2spe!4v1783372585297!5m2!1ses-419!2spe" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </section>
+
+     <section class="relative min-h-screen overflow-hidden bg-orange lg:h-[668px] lg:min-h-0">
+        <div class="mx-auto flex min-h-screen w-full max-w-[1440px] flex-col lg:h-full lg:min-h-0 lg:flex-row">
+            <div class="relative hidden min-h-[430px] w-full items-end justify-center min-[1021px]:flex lg:min-h-0 lg:w-[46%] lg:justify-start">
+                <img src="{{asset('images/ingeniero-elsvan.png')}}" alt="Ingeniero revisando un proyecto"
+                    class="relative z-10 h-auto max-h-[480px] w-auto max-w-[90%]
+                           object-contain drop-shadow-[0_6px_7px_rgba(0,0,0,0.22)]
+                           lg:absolute lg:bottom-0 lg:left-[5%] lg:max-h-[92%]
+                           lg:max-w-none xl:left-[8%]">
+            </div>
+            <div class="flex justify-center w-full items-center px-6 pb-12 lg:w-[54%] lg:px-10 lg:pb-0 lg:pr-[7%]">
+                    <div class="w-full max-w-[650px] my-12">
+
+                        <h1 class="mb-6 text-center text-[30px] font-extrabold leading-tight text-white sm:text-[34px]">
+                            CONTÁCTANOS AHORA
+                        </h1>
+
+                        <form id="contactForm" method="POST" class="space-y-4" novalidate>
+                            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                                <div>
+                                    <label for="nombres" class="mb-1.5 block text-[16px] font-medium text-white">
+                                        Nombres
+                                    </label>
+
+                                    <input id="nombres" name="nombres" type="text" placeholder="Jane" required class="h-[46px] w-full rounded-2xl border border-gray-300
+                                            bg-white px-3 text-sm text-gray-800 outline-none
+                                            transition placeholder:text-gray-400
+                                            focus:border-green-600 focus:ring-2 focus:ring-green-600/20">
+                                </div>
+
+                                <div>
+                                    <label for="apellidos" class="mb-1.5 block text-[16px] font-medium text-white">
+                                        Apellidos
+                                    </label>
+
+                                    <input id="apellidos"
+                                        name="apellidos"
+                                        type="text"
+                                        placeholder="Smitherton"
+                                        required
+                                        class="h-[46px] w-full rounded-2xl border border-gray-300
+                                            bg-white px-3 text-sm text-gray-800 outline-none
+                                            transition placeholder:text-gray-400
+                                            focus:border-green-600 focus:ring-2 focus:ring-green-600/20">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="celular" class="mb-1.5 block text-[16px] font-medium text-white">
+                                    Celular
+                                </label>
+
+                                <input id="celular" name="celular" type="tel"
+                                    placeholder="+51 123 123 123"
+                                    required
+                                    class="h-[46px] w-full rounded-2xl border border-gray-300
+                                        bg-white px-3 text-sm text-gray-800 outline-none
+                                        transition placeholder:text-gray-400
+                                        focus:border-green-600 focus:ring-2 focus:ring-green-600/20">
+                            </div>
+                            <!-- Correo -->
+                            <div>
+                                <label for="correo" class="mb-1.5 block text-[16px] font-medium text-white">
+                                    Correo electrónico
+                                </label>
+
+                                <input id="correo"
+                                    name="correo"
+                                    type="email"
+                                    placeholder="email@dominio.com"
+                                    required
+                                    class="h-[46px] w-full rounded-2xl border border-gray-300
+                                        bg-white px-3 text-sm text-gray-800 outline-none
+                                        transition placeholder:text-gray-400
+                                        focus:border-green-600 focus:ring-2 focus:ring-green-600/20">
+                            </div>
+                            <div>
+                                <label for="solicitud"
+                                    class="mb-1.5 block text-[16px] font-medium text-white">
+                                    Tu solicitud
+                                </label>
+                                <textarea
+                                    id="solicitud"
+                                    name="solicitud"
+                                    rows="5"
+                                    placeholder="Escribe tu consulta o mensaje"
+                                    required
+                                    class="min-h-[154px] w-full resize-none rounded-2xl
+                                        border border-gray-300 bg-white px-3 py-3
+                                        text-sm text-gray-800 outline-none transition
+                                        placeholder:text-gray-400 focus:border-green-600
+                                        focus:ring-2 focus:ring-green-600/20 "
+                                ></textarea>
+                            </div>
+                            <!-- Botón -->
+                            <button
+                                id="contactFormSubmit"
+                                type="submit"
+                                class="flex h-[45px] w-full items-center justify-center
+                                    rounded-2xl bg-brown px-6 text-[16px] font-bold
+                                    text-white transition duration-200
+                                    hover:scale-[1.02] hover:bg-zinc-800 hover:shadow-lg
+                                    focus:outline-none
+                                    focus:ring-2 focus:bg-black
+                                    focus:ring-offset-2 focus:ring-offset-[#fb6200] cursor-pointer" >
+                                Enviar
+                            </button>
+                        </form>
+                    </div>
+            </div>
         </div>
     </section>
-    @endif
 
 @endsection
 
@@ -177,36 +263,3 @@
     <meta property="og:image" itemprop="image" content="{{$seo['image']}}" />
 @endpush
 
-@push('javascript')
-    <script>
-        const buttons = document.querySelectorAll(".category-btn");
-
-        buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-            const card = button.closest(".location-card");
-            const mapImage = card.querySelector(".mapImage");
-            const newImage = button.getAttribute("data-image");
-
-            if (!newImage || newImage === mapImage.src) return;
-
-            card.querySelectorAll(".category-btn").forEach((btn) => btn.classList.remove("active"));
-            button.classList.add("active");
-            mapImage.classList.add("fade");
-
-            const preload = new Promise((resolve) => {
-                const img = new Image();
-                img.onload = resolve;
-                img.onerror = resolve;
-                img.src = newImage;
-            });
-            const minFadeOut = new Promise((resolve) => setTimeout(resolve, 250));
-
-            Promise.all([preload, minFadeOut]).then(() => {
-                mapImage.src = newImage;
-                mapImage.alt = `Mapa de ${button.innerText}`;
-                mapImage.classList.remove("fade");
-            });
-        });
-        });
-    </script>
-@endpush

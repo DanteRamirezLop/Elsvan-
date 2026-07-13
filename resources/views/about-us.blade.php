@@ -2,13 +2,12 @@
 
 @section('content')
     <section class=" banner-category container-fluid">
-        <img src="{{asset('images/nosotros.webp')}}" alt="La confianza no se vende se construye" class="banner-category-img">
+        <img
+        src="{{ $page->image ? Storage::disk('public')->url($page->image) : asset('images/nosotros.webp') }}"
+         alt="Expertos en proyectos de construcción" class="banner-category-img">
         <div class="banner-category-box-title">
             <h1 class="banner-category-title tracking-wider"> Expertos en proyectos</h1>
             <p class="text-center text-white text-xl lg:text-3xl"> de construcción </p>
-            <div class="text-center mt-5">
-                <a href="{{route('quote')}}" class="btn-banner"> Cotiza aquí </a>
-            </div>
         </div>
     </section>
 

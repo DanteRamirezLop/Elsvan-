@@ -8,6 +8,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\FileUpload;
 
 class PageForm
 {
@@ -54,6 +55,15 @@ class PageForm
                 Textarea::make('info_3')
                     ->label('Información 3')
                     ->rows(4),
+
+                FileUpload::make('image')
+                    ->label('Imagen')
+                    ->image()
+                    ->disk('public')
+                    ->directory('pages')
+                    ->visibility('public')
+                    ->imageEditor()
+                    ->maxSize(2048),
 
                 Toggle::make('is_published')
                     ->required(),
