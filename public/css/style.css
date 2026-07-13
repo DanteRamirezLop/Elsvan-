@@ -12,13 +12,18 @@
 
 }
 
-
-
-
 body {
   margin: 0;
   background-color: #fff;
   font-family: 'Inter', sans-serif;
+}
+
+.iframe-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top:  1rem;
+  padding-bottom:  2.5rem;
 }
 
 .sliderHome {
@@ -546,15 +551,10 @@ header>nav{
     font-weight: 500;
     transition: 0.3s ease;
     background: #ea6109;
-    /* border-width: 1.5px;
-    border-style: solid;
-    border-color: #fff;
-    border-image: initial; */
 }
 
 .btn-brochure:hover {
-    background: #575757;
-    border-color: #575757;
+    background: #e05d0c;
     color: #fff;
     transform: translateY(-2px);
 }

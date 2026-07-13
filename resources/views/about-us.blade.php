@@ -15,19 +15,21 @@
     <!-- Descripción -->
      @if(isset($page->content))
     <section class="section">
-        <p class="text-justify text-sm leading-6 md:text-lg md:leading-7 mt-8">
+        <div class="text-justify text-lg leading-6 md:leading-7 mt-8">
             {!! $page->content !!}
-        </p>
+        </div>
     </section>
     @endif
-    <!-- Reproductor -->
-    <section class="section">
-        @if(isset($page->info_1))
-            <div class="iframe-container">
-                {!! $page->info_1 !!}
-            </div>
-        @endif
-    </section>
+
+    <div class="iframe-center">
+        <div class="w-5/6 lg:w-1/2">
+            @if(isset($page->info_1))
+                <div class="iframe-container">
+                    {!! $page->info_1 !!}
+                </div>
+            @endif
+        </div>
+    </div>
     <!-- Misión y visión -->
     <div class="section">
         <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
