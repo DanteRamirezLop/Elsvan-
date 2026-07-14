@@ -35,7 +35,7 @@ class ContactController extends Controller
         return view('contact',$data);
     }
 
-    public function quote(){
+    public function quote(?RealEstateProject $project = null){
         $dominio = config('app.url');
         $page = Page::where('title','quote')->first();
         if($page){
@@ -56,7 +56,7 @@ class ContactController extends Controller
         }
 
         $data['projects'] = RealEstateProject::with('blueprints')->where('tag','<>','vendido')->orderBy('name')->get();
-        $data['project'] = $data['projects']->first();
+        $data['project'] = $project ?? $data['projects']->first();
 
         return view('quote',$data);
     }

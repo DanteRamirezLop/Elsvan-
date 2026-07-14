@@ -63,7 +63,7 @@
 
         <div class="pt-1 sm:pt-6 md:pt-10" >
         <!-- Grid de proyectos -->
-        <div class="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="grid grid-cols-1 gap-x-8 gap-y-2 sm:gap-y-8 md:gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             @foreach($projects as $project)
             <article class="project-card p-5 md:p-1">
                 <a href="{{$project->tag == 'vendido' ? '' : route('proyectos.show', $project) }}" class="{{ $project->tag == 'vendido' ? 'project-link-sold' : '' }}">

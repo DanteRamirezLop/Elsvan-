@@ -6,6 +6,7 @@
             <!-- Imagen del edificio -->
              <div class="relative min-h-[430px] bg-escudero lg:min-h-[420px]">
               <div class="absolute inset-y-0 right-0 w-full overflow-hidden w-full md:w-[86%] lg:w-[72%]">
+
                      <img src="{{$project->main_image ? Storage::disk('public')->url($project->main_image) : ''}}" alt="{{$project->name}}" class="fade-zoom-img h-full w-full object-cover object-center">
                 </div>
             </div>

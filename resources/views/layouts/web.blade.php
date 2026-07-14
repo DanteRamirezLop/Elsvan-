@@ -12,8 +12,6 @@
         <meta name="author" content="Onfleek Media S.A.C">
          <!-- META -->
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <!-- <meta property="og:title" itemprop="headline" content="Elsvan" />
-        <meta property="og:description" itemprop="description" content="Expertos en proyectos de construcción" /> -->
         <meta property="og:url" itemprop="url" content="{{env('APP_URL')}}" />
         <meta property="og:type" content="website" />
         <!-- Google icons-->

@@ -32,7 +32,10 @@
                                     value="{{ $item->slug }}"
                                     data-name="{{ $item->name }}"
                                     data-image="{{ $item->main_image ? Storage::disk('public')->url($item->main_image) : '' }}"
-                                    data-blueprints="{{ $item->blueprints->pluck('number_departments')->toJson() }}"
+                                    data-blueprints="{{ $item->blueprints->map(fn ($blueprint) => [
+                                        'number_departments' => $blueprint->number_departments,
+                                        'image' => $blueprint->image ? Storage::disk('public')->url($blueprint->image) : '',
+                                    ])->toJson() }}"
                                     {{ $project && $project->id === $item->id ? 'selected' : '' }}
                                 >
                                     {{ $item->name }}
@@ -47,12 +50,7 @@
                             Selecciona el plano
                         </label>
 
-                        <select
-                            id="departamento"
-                            name="departamento"
-                            required
-                            class="h-12 w-full appearance-none rounded-2xl border-2 border-[#FF8A48] bg-white px-5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-orange-100"
-                        >
+                        <select id="departamento" name="departamento" required class="h-12 w-full appearance-none rounded-2xl border-2 border-[#FF8A48] bg-white px-5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-orange-100">
                             <option value="" selected disabled>
                                 Seleccionar plano
                             </option>
@@ -220,13 +218,65 @@
         <!-- COLUMNA IZQUIERDA -->
         <div class="min-w-0 self-center">
             <div class="rounded-xl relative overflow-hidden bg-gray-200 shadow-lg">
-                <img id="proyecto-imagen" src="{{ $project->main_image ? Storage::disk('public')->url($project->main_image) : '' }}" alt="{{$project->name}}" class="h-full w-full object-cover">
+
+                <div class="min-w-0">
+                        <div class="swiper sliderBlueprint">
+                            <div class="swiper-wrapper">
+                                @foreach($project->blueprints as $blueprint)
+                                    <div class="swiper-slide ">
+                                        <article id="property-card" class="overflow-hidden rounded-[26px] bg-orange ">
+                                        <!-- Ficha blanca -->
+                                        <div class="m-[5px] mb-0 rounded-t-[22px] rounded-br-[22px] bg-white px-5 pb-7 pt-4 sm:px-9 sm:pb-8 sm:pt-5">
+                                            <!-- Plano -->
+                                            <div class="mt-6 overflow-hidden rounded-xl bg-white sm:mt-8">
+                                                <img id="floor-plan"
+                                                    src="{{ $blueprint->image ? Storage::disk('public')->url($blueprint->image) : '' }}"
+                                                    alt="Plano del departamento del Residencial Escudero"
+                                                    class=" w-full object-contain"/>
+                                                </div>
+                                            </div>
+                                            <!-- Franja naranja -->
+                                            <div class="grid gap-5 px-5 py-5 text-white sm:grid-cols-[1fr_auto] sm:px-9 sm:py-6">
+                                                <div>
+                                                    <p id="property-type" class="text-xl font-black uppercase leading-none sm:text-2xl">
+                                                        {{$blueprint->name}}
+                                                    </p>
+                                                    <p id="apartment-number" class="mt-2 text-lg font-medium sm:text-xl"> {{$blueprint->number_departments}}</p>
+                                                </div>
+                                                <ul class="grid grid-cols-4 items-center gap-4 sm:gap-5" aria-label="Características">
+                                                <li class="text-center">
+                                                    <img src="{{ asset('images/item-icon/dormitorio.webp') }}" alt="Dormitorios" class="mx-auto w-7 h-7">
+                                                    <span class="mt-1 block text-base font-semibold">{{ $blueprint->bedrooms }}</span>
+                                                </li>
+                                                <li class="text-center">
+                                                    <img src="{{ asset('images/item-icon/bano.webp') }}" alt="Baños" class="mx-auto w-7 h-7">
+                                                    <span class="mt-1 block text-base font-semibold">{{$blueprint->bathrooms}}</span>
+                                                </li>
+                                                <li class="text-center">
+                                                    <img src="{{ asset('images/item-icon/jardin.webp') }}" alt="Jardín" class="mx-auto w-7 h-7">
+                                                    <span class="mt-1 block text-base font-semibold">{{$blueprint->garden}}</span>
+                                                </li>
+                                                <li class="text-center">
+                                                    <img src="{{ asset('images/item-icon/balcon.webp') }}" alt="Balcón" class="mx-auto w-7 h-7">
+                                                    <span class="mt-1 block text-base font-semibold">{{$blueprint->balcony}}</span>
+                                                </li>
+                                                </ul>
+                                            </div>
+
+                                    </article>
+                                </div>
+                                @endforeach
+                            </div>
+                            {{-- Flechas --}}
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        </div>
+                    </div>
+
             </div>
         </div>
     </div>
-
 </section>
-
 
 @endsection
 
@@ -250,6 +300,12 @@
 
             if (!select) return;
 
+            function updateFloorPlan(image) {
+                document.querySelectorAll('#floor-plan').forEach((img) => {
+                    img.src = image || '';
+                });
+            }
+
             function updatePlanos(option) {
                 if (!departamento) return;
 
@@ -269,10 +325,11 @@
                 placeholder.textContent = blueprints.length ? 'Seleccionar plano' : 'No hay planos disponibles';
                 departamento.appendChild(placeholder);
 
-                blueprints.forEach((name) => {
+                blueprints.forEach((blueprint) => {
                     const opt = document.createElement('option');
-                    opt.value = name;
-                    opt.textContent = name;
+                    opt.value = blueprint.number_departments;
+                    opt.textContent = blueprint.number_departments;
+                    opt.dataset.image = blueprint.image || '';
                     departamento.appendChild(opt);
                 });
             }
@@ -291,6 +348,13 @@
 
                 updatePlanos(option);
             });
+
+            if (departamento) {
+                departamento.addEventListener('change', () => {
+                    const option = departamento.options[departamento.selectedIndex];
+                    updateFloorPlan(option ? option.dataset.image : '');
+                });
+            }
 
             const initialOption = select.options[select.selectedIndex];
             if (initialOption) {
