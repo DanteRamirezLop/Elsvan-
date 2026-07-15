@@ -22,10 +22,6 @@
                     <span class="estadistica-numero" data-count-target="{{ $projectsCount }}">0</span>
                     <span class="estadistica-label">Proyectos entregados</span>
                 </div>
-                <div class="estadistica-item">
-                    <span class="estadistica-numero" data-count-target="2000">0</span>
-                    <span class="estadistica-label">Familias Felices</span>
-                </div>
             </div>
         </div>
         <div class="about-image">

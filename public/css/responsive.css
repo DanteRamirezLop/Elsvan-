@@ -166,7 +166,7 @@
 
 @media (max-width: 800px) {
      .estadistica-numero{
-        font-size: 36px;
+        font-size: 44px;
     }
     .btn-download {
         font-size: 0.9rem;
@@ -180,8 +180,12 @@
 
 @media (max-width: 600px) {
 
+      .estadistica-label {
+        font-size: 15px;
+    }
+
      .estadistica-numero{
-        font-size: 34px;
+        font-size: 40px;
     }
      .section-projects{
         padding-block: calc(var(--spacing) * 8);
@@ -219,8 +223,11 @@
 
 @media (max-width: 480px) {
 
+    .estadistica-label {
+        font-size: 14px;
+    }
     .estadistica-numero{
-        font-size: 30px;
+        font-size: 36px;
     }
     .section-projects{
         padding-block: calc(var(--spacing) * 10);

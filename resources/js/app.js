@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (estadisticaNumeros.length) {
         const animateCount = (el) => {
             const target = parseInt(el.dataset.countTarget, 10) || 0;
-            const duration = 1500;
+            const duration = 800;
             const start = performance.now();
 
             const step = (now) => {
