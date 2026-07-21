@@ -1,102 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
     <url>
-    <loc>http://127.0.0.1:8000</loc>
+    <loc>https://elsvan.pe</loc>
     <lastmod>2026-07-07T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
             </url>
     <url>
-    <loc>http://127.0.0.1:8000/nosotros</loc>
+    <loc>https://elsvan.pe/nosotros</loc>
     <lastmod>2026-07-07T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
             </url>
     <url>
-    <loc>http://127.0.0.1:8000/galeria</loc>
+    <loc>https://elsvan.pe/galeria</loc>
     <lastmod>2026-07-07T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
             </url>
     <url>
-    <loc>http://127.0.0.1:8000/contactanos</loc>
+    <loc>https://elsvan.pe/contactanos</loc>
     <lastmod>2026-07-07T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
             </url>
     <url>
-    <loc>http://127.0.0.1:8000/cotizar</loc>
+    <loc>https://elsvan.pe/cotizar</loc>
     <lastmod>2026-07-07T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
             </url>
     <url>
-    <loc>http://127.0.0.1:8000/proyectos</loc>
+    <loc>https://elsvan.pe/proyectos</loc>
     <lastmod>2026-07-07T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
             </url>
     <url>
-    <loc>http://127.0.0.1:8000/proyectos/escudero</loc>
+    <loc>https://elsvan.pe/proyectos/escudero</loc>
     <lastmod>2026-06-16T19:38:46+00:00</lastmod>
     <changefreq>daily</changefreq>
             </url>
     <url>
-    <loc>http://127.0.0.1:8000/proyectos/calera-ix</loc>
+    <loc>https://elsvan.pe/proyectos/calera-ix</loc>
     <lastmod>2026-06-19T17:50:47+00:00</lastmod>
     <changefreq>daily</changefreq>
             </url>
     <url>
-    <loc>http://127.0.0.1:8000/proyectos/calera-viii</loc>
+    <loc>https://elsvan.pe/proyectos/calera-viii</loc>
     <lastmod>2026-06-19T19:10:12+00:00</lastmod>
     <changefreq>daily</changefreq>
             </url>
     <url>
-    <loc>http://127.0.0.1:8000/proyectos/calera-vii</loc>
+    <loc>https://elsvan.pe/proyectos/calera-vii</loc>
     <lastmod>2026-06-19T19:34:03+00:00</lastmod>
     <changefreq>daily</changefreq>
             </url>
     <url>
-    <loc>http://127.0.0.1:8000/proyectos/calera-vi</loc>
+    <loc>https://elsvan.pe/proyectos/calera-vi</loc>
     <lastmod>2026-06-19T19:34:22+00:00</lastmod>
     <changefreq>daily</changefreq>
             </url>
     <url>
-    <loc>http://127.0.0.1:8000/proyectos/calera-v</loc>
+    <loc>https://elsvan.pe/proyectos/calera-v</loc>
     <lastmod>2026-06-19T19:37:55+00:00</lastmod>
     <changefreq>daily</changefreq>
             </url>
     <url>
-    <loc>http://127.0.0.1:8000/proyectos/calera iv</loc>
+    <loc>https://elsvan.pe/proyectos/calera iv</loc>
     <lastmod>2026-06-19T19:38:20+00:00</lastmod>
     <changefreq>daily</changefreq>
             </url>
     <url>
-    <loc>http://127.0.0.1:8000/proyectos/calera-iii</loc>
+    <loc>https://elsvan.pe/proyectos/calera-iii</loc>
     <lastmod>2026-06-19T20:02:42+00:00</lastmod>
     <changefreq>daily</changefreq>
             </url>
     <url>
-    <loc>http://127.0.0.1:8000/proyectos/calera-ii</loc>
+    <loc>https://elsvan.pe/proyectos/calera-ii</loc>
     <lastmod>2026-06-19T20:28:46+00:00</lastmod>
     <changefreq>daily</changefreq>
             </url>
     <url>
-    <loc>http://127.0.0.1:8000/proyectos/calera</loc>
+    <loc>https://elsvan.pe/proyectos/calera</loc>
     <lastmod>2026-06-19T20:29:00+00:00</lastmod>
     <changefreq>daily</changefreq>
             </url>
     <url>
-    <loc>http://127.0.0.1:8000/proyectos/mirador</loc>
+    <loc>https://elsvan.pe/proyectos/mirador</loc>
     <lastmod>2026-06-19T20:30:03+00:00</lastmod>
     <changefreq>daily</changefreq>
             </url>
     <url>
-    <loc>http://127.0.0.1:8000/proyectos/cesar-diaz</loc>
+    <loc>https://elsvan.pe/proyectos/cesar-diaz</loc>
     <lastmod>2026-06-19T20:30:33+00:00</lastmod>
     <changefreq>daily</changefreq>
             </url>
     <url>
-    <loc>http://127.0.0.1:8000/noticias</loc>
+    <loc>https://elsvan.pe/noticias</loc>
     <lastmod>2026-07-07T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
             </url>
     <url>
-    <loc>http://127.0.0.1:8000/noticias/que-revisar-antes-de-comprar-una-retroexcavadora</loc>
+    <loc>https://elsvan.pe/noticias/que-revisar-antes-de-comprar-una-retroexcavadora</loc>
     <lastmod>2026-07-03T21:31:07+00:00</lastmod>
     <changefreq>daily</changefreq>
             </url>

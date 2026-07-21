@@ -1,0 +1,181 @@
+/*
+ * Equivalentes en CSS plano de las clases de Tailwind con sintaxis de
+ * valor arbitrario (ej. border-[#EA6109], min-w-[240px]) usadas en las
+ * vistas. El build de Vite (public/build) está desactualizado respecto a
+ * las vistas, así que estas reglas cubren el hueco mientras no se corra
+ * `npm run build` de nuevo. Cada bloque respeta el mismo prefijo
+ * (hover:, focus:, dark:, sm:/md:/lg:) con el que la clase aparece en las
+ * vistas — si una clase solo se usa como "lg:w-[438px]", NO se define sin
+ * el media query, porque en Tailwind tampoco aplicaría sin él.
+ */
+
+/* ============ Clases sin variante (aplican siempre) ============ */
+.-mt-\[4\.9rem\] { margin-top: -4.9rem; }
+.aspect-\[16\/9\] { aspect-ratio: 16/9; }
+.aspect-\[335\/376\] { aspect-ratio: 335/376; }
+.aspect-\[4\/3\] { aspect-ratio: 4/3; }
+.bg-\[\#1b1b18\] { background-color: #1b1b18; }
+.bg-\[\#92c509\] { background-color: #92c509; }
+.bg-\[\#FDFDFC\] { background-color: #FDFDFC; }
+.bg-\[\#dbdbd7\] { background-color: #dbdbd7; }
+.bg-\[\#f45b00\] { background-color: #f45b00; }
+.bg-\[\#fff2f2\] { background-color: #fff2f2; }
+.border-\[\#19140035\] { border-color: #19140035; }
+.border-\[\#EA6109\] { border-color: #EA6109; }
+.border-\[\#FF8A48\] { border-color: #FF8A48; }
+.border-\[\#e3e3e0\] { border-color: #e3e3e0; }
+.drop-shadow-\[0_6px_7px_rgba\(0\,0\,0\,0\.22\)\] { filter: drop-shadow(0 6px 7px rgba(0,0,0,0.22)); }
+.grid-cols-\[70px_1fr\] { grid-template-columns: 70px 1fr; }
+.h-\[15px\] { height: 15px; }
+.h-\[45px\] { height: 45px; }
+.h-\[46px\] { height: 46px; }
+.h-\[64px\] { height: 64px; }
+.h-\[70px\] { height: 70px; }
+.leading-\[1\.45\] { line-height: 1.45; }
+.leading-\[20px\] { line-height: 20px; }
+.m-\[5px\] { margin: 5px; }
+.max-h-\[480px\] { max-height: 480px; }
+.max-w-\[1440px\] { max-width: 1440px; }
+.max-w-\[335px\] { max-width: 335px; }
+.max-w-\[650px\] { max-width: 650px; }
+.max-w-\[680px\] { max-width: 680px; }
+.max-w-\[780px\] { max-width: 780px; }
+.max-w-\[90\%\] { max-width: 90%; }
+.mb-\[10px\] { margin-bottom: 10px; }
+.ms-0 { margin-inline-start: 0; }
+.min-h-\[115px\] { min-height: 115px; }
+.min-h-\[154px\] { min-height: 154px; }
+.min-h-\[290px\] { min-height: 290px; }
+.min-h-\[380px\] { min-height: 380px; }
+.min-h-\[420px\] { min-height: 420px; }
+.min-h-\[430px\] { min-height: 430px; }
+.min-h-\[55px\] { min-height: 55px; }
+.min-w-\[240px\] { min-width: 240px; }
+.ml-\[10px\] { margin-left: 10px; }
+.rounded-\[16px\] { border-radius: 16px; }
+.rounded-\[24px\] { border-radius: 24px; }
+.rounded-\[26px\] { border-radius: 26px; }
+.rounded-\[28px\] { border-radius: 28px; }
+.rounded-br-\[22px\] { border-bottom-right-radius: 22px; }
+.rounded-t-\[22px\] { border-top-left-radius: 22px; border-top-right-radius: 22px; }
+.shadow-\[0px_0px_1px_0px_rgba\(0\,0\,0\,0\.03\)\,0px_1px_2px_0px_rgba\(0\,0\,0\,0\.06\)\] {
+  box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.03), 0px 1px 2px 0px rgba(0,0,0,0.06);
+}
+.shadow-\[inset_0px_0px_0px_1px_rgba\(26\,26\,0\,0\.16\)\] {
+  box-shadow: inset 0px 0px 0px 1px rgba(26,26,0,0.16);
+}
+.text-\[\#1b1b18\] { color: #1b1b18; }
+.text-\[\#292929\] { color: #292929; }
+.text-\[\#706f6c\] { color: #706f6c; }
+.text-\[\#EA6109\] { color: #EA6109; }
+.text-\[\#F53003\] { color: #F53003; }
+.text-\[\#f53003\] { color: #f53003; }
+.text-\[12px\] { font-size: 12px; }
+.text-\[13px\] { font-size: 13px; }
+.text-\[15px\] { font-size: 15px; }
+.text-\[16px\] { font-size: 16px; }
+.text-\[18px\] { font-size: 18px; }
+.text-\[30px\] { font-size: 30px; }
+.w-\[15px\] { width: 15px; }
+.w-\[448px\] { width: 448px; }
+.w-\[64px\] { width: 64px; }
+.w-\[70px\] { width: 70px; }
+
+/* ============ before: (::before) ============ */
+.before\:border-\[\#e3e3e0\]::before { border-color: #e3e3e0; }
+.before\:left-\[0\.4rem\]::before { left: 0.4rem; }
+
+/* ============ hover: ============ */
+.hover\:bg-\[\#EA6109\]:hover { background-color: #EA6109; }
+.hover\:border-\[\#19140035\]:hover { border-color: #19140035; }
+.hover\:border-\[\#1915014a\]:hover { border-color: #1915014a; }
+.hover\:border-\[\#97C11D\]:hover { border-color: #97C11D; }
+.hover\:scale-\[1\.02\]:hover { transform: scale(1.02); }
+
+/* ============ focus: ============ */
+.focus\:ring-\[\#EA6109\]\/20:focus { --tw-ring-color: rgb(234 97 9 / 0.2); }
+.focus\:ring-offset-\[\#fb6200\]:focus { --tw-ring-offset-color: #fb6200; }
+
+/* ============ dark: (@media prefers-color-scheme: dark) ============ */
+@media (prefers-color-scheme: dark) {
+  .dark\:bg-\[\#0a0a0a\] { background-color: #0a0a0a; }
+  .dark\:bg-\[\#161615\] { background-color: #161615; }
+  .dark\:bg-\[\#1D0002\] { background-color: #1D0002; }
+  .dark\:bg-\[\#3E3E3A\] { background-color: #3E3E3A; }
+  .dark\:bg-\[\#eeeeec\] { background-color: #eeeeec; }
+  .dark\:border-\[\#3E3E3A\] { border-color: #3E3E3A; }
+  .dark\:border-\[\#eeeeec\] { border-color: #eeeeec; }
+  .dark\:shadow-\[inset_0px_0px_0px_1px_\#fffaed2d\] { box-shadow: inset 0px 0px 0px 1px #fffaed2d; }
+  .dark\:text-\[\#1C1C1A\] { color: #1C1C1A; }
+  .dark\:text-\[\#A1A09A\] { color: #A1A09A; }
+  .dark\:text-\[\#EDEDEC\] { color: #EDEDEC; }
+  .dark\:text-\[\#F61500\] { color: #F61500; }
+  .dark\:text-\[\#FF4433\] { color: #FF4433; }
+
+  .dark\:before\:border-\[\#3E3E3A\]::before { border-color: #3E3E3A; }
+
+  .dark\:hover\:border-\[\#3E3E3A\]:hover { border-color: #3E3E3A; }
+  .dark\:hover\:border-\[\#62605b\]:hover { border-color: #62605b; }
+}
+
+/* ============ sm: (min-width: 640px) ============ */
+@media (min-width: 640px) {
+  .sm\:grid-cols-\[120px_1fr\] { grid-template-columns: 120px 1fr; }
+  .sm\:grid-cols-\[1fr_auto\] { grid-template-columns: 1fr auto; }
+  .sm\:h-\[62px\] { height: 62px; }
+  .sm\:min-h-\[500px\] { min-height: 500px; }
+  .sm\:text-\[34px\] { font-size: 34px; }
+  .sm\:text-\[40px\] { font-size: 40px; }
+  .sm\:w-\[62px\] { width: 62px; }
+}
+
+/* ============ md: (min-width: 768px) ============ */
+@media (min-width: 768px) {
+  .md\:aspect-\[1\.8\/1\] { aspect-ratio: 1.8/1; }
+  .md\:aspect-\[2\.18\/1\] { aspect-ratio: 2.18/1; }
+  .md\:grid-cols-\[120px_1fr\] { grid-template-columns: 120px 1fr; }
+  .md\:grid-cols-\[1fr_1fr\] { grid-template-columns: 1fr 1fr; }
+  .md\:grid-cols-\[39\.2\%_60\.8\%\] { grid-template-columns: 39.2% 60.8%; }
+  .md\:text-\[14px\] { font-size: 14px; }
+  .md\:text-\[20px\] { font-size: 20px; }
+  .md\:w-\[86\%\] { width: 86%; }
+}
+
+/* ============ lg: (min-width: 1024px) ============ */
+@media (min-width: 1024px) {
+  .lg\:-mt-\[6\.6rem\] { margin-top: -6.6rem; }
+  .lg\:flex { display: flex; }
+  .lg\:flex-row { flex-direction: row; }
+  .lg\:grid-cols-\[1\.4fr_1fr_1fr_1fr\] { grid-template-columns: 1.4fr 1fr 1fr 1fr; }
+  .lg\:grid-cols-\[1fr_1fr\] { grid-template-columns: 1fr 1fr; }
+  .lg\:h-\[668px\] { height: 668px; }
+  .lg\:items-center { align-items: center; }
+  .lg\:justify-between { justify-content: space-between; }
+  .lg\:max-h-\[92\%\] { max-height: 92%; }
+  .lg\:min-h-\[420px\] { min-height: 420px; }
+  .lg\:ml-auto { margin-left: auto; }
+  .lg\:ms-8 { margin-inline-start: 2rem; }
+  .lg\:order-1 { order: 1; }
+  .lg\:pr-\[7\%\] { padding-right: 7%; }
+  .lg\:text-\[18px\] { font-size: 18px; }
+  .lg\:w-auto { width: auto; }
+  .lg\:w-\[438px\] { width: 438px; }
+  .lg\:w-\[46\%\] { width: 46%; }
+  .lg\:w-\[54\%\] { width: 54%; }
+  .lg\:w-\[72\%\] { width: 72%; }
+}
+
+/* ============ Breakpoint arbitrario min-[1021px]: ============ */
+@media (min-width: 1021px) {
+  .min-\[1021px\]\:flex { display: flex; }
+}
+
+/* ============ Variante arbitraria [@media(hover:hover)_and_(max-width:1023px)]: ============ */
+@media (hover: hover) and (max-width: 1023px) {
+  .\[\@media\(hover\:hover\)_and_\(max-width\:1023px\)\]\:hover\:bg-gray-100:hover {
+    background-color: #f3f4f6;
+  }
+}
+
+/* ============ Selector arbitrario not-has-[nav]: ============ */
+.not-has-\[nav\]\:hidden:not(:has(nav)) { display: none; }

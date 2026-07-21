@@ -256,7 +256,6 @@
             </div>
         </div>
     </section>
-
 @endsection
 
 @push('seo')

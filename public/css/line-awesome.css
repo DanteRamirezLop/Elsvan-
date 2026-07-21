@@ -4389,8 +4389,8 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: normal;
   font-display: auto;
-  src: url("../fonts/la-brands-400.eot");
-  src: url("../fonts/la-brands-400.eot?#iefix") format("embedded-opentype"), url("../fonts/la-brands-400.woff2") format("woff2"), url("../fonts/la-brands-400.woff") format("woff"), url("../fonts/la-brands-400.ttf") format("truetype"), url("../fonts/la-brands-400.svg#lineawesome") format("svg"); }
+  src: url("/fonts/la-brands-400.eot");
+  src: url("/fonts/la-brands-400.eot?#iefix") format("embedded-opentype"), url("/fonts/la-brands-400.woff2") format("woff2"), url("/fonts/la-brands-400.woff") format("woff"), url("/fonts/la-brands-400.ttf") format("truetype"), url("/fonts/la-brands-400.svg#lineawesome") format("svg"); }
 
 .lab {
   font-family: 'Line Awesome Brands'; }
@@ -4399,8 +4399,8 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 400;
   font-display: auto;
-  src: url("../fonts/la-regular-400.eot");
-  src: url("../fonts/la-regular-400.eot?#iefix") format("embedded-opentype"), url("../fonts/la-regular-400.woff2") format("woff2"), url("../fonts/la-regular-400.woff") format("woff"), url("../fonts/la-regular-400.ttf") format("truetype"), url("../fonts/la-regular-400.svg#lineawesome") format("svg"); }
+  src: url("/fonts/la-regular-400.eot");
+  src: url("/fonts/la-regular-400.eot?#iefix") format("embedded-opentype"), url("/fonts/la-regular-400.woff2") format("woff2"), url("/fonts/la-regular-400.woff") format("woff"), url("/fonts/la-regular-400.ttf") format("truetype"), url("/fonts/la-regular-400.svg#lineawesome") format("svg"); }
 
 .lar {
   font-family: 'Line Awesome Free';
@@ -4410,8 +4410,8 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 900;
   font-display: auto;
-  src: url("../fonts/la-solid-900.eot");
-  src: url("../fonts/la-solid-900.eot?#iefix") format("embedded-opentype"), url("../fonts/la-solid-900.woff2") format("woff2"), url("../fonts/la-solid-900.woff") format("woff"), url("../fonts/la-solid-900.ttf") format("truetype"), url("../fonts/la-solid-900.svg#lineawesome") format("svg"); }
+  src: url("/fonts/la-solid-900.eot");
+  src: url("/fonts/la-solid-900.eot?#iefix") format("embedded-opentype"), url("/fonts/la-solid-900.woff2") format("woff2"), url("/fonts/la-solid-900.woff") format("woff"), url("/fonts/la-solid-900.ttf") format("truetype"), url("/fonts/la-solid-900.svg#lineawesome") format("svg"); }
 
 .la,
 .las {
@@ -6583,12 +6583,12 @@ readers do not read off random characters that represent icons */
 
  @font-face {
   font-family: 'fontello';
-  src: url('../fonts/fontello.eot?78226653');
-  src: url('../fonts/fontello.eot?78226653#iefix') format('embedded-opentype'),
-       url('../fonts/fontello.woff2?78226653') format('woff2'),
-       url('../fonts/fontello.woff?78226653') format('woff'),
-       url('../fonts/fontello.ttf?78226653') format('truetype'),
-       url('../fonts/fontello.svg?78226653#fontello') format('svg');
+  src: url('/fonts/fontello.eot?78226653');
+  src: url('/fonts/fontello.eot?78226653#iefix') format('embedded-opentype'),
+       url('/fonts/fontello.woff2?78226653') format('woff2'),
+       url('/fonts/fontello.woff?78226653') format('woff'),
+       url('/fonts/fontello.ttf?78226653') format('truetype'),
+       url('/fonts/fontello.svg?78226653#fontello') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -6602,42 +6602,42 @@ readers do not read off random characters that represent icons */
   }
 }
 */
- 
+
  [class^="icon-"]:before, [class*=" icon-"]:before {
   font-family: "fontello";
   font-style: normal;
   font-weight: bold;
   speak: never;
- 
+
   display: inline-block;
   text-decoration: inherit;
   width: 1em;
   /* margin-right: .2em; */
   text-align: center;
   /* opacity: .8; */
- 
+
   /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
- 
+
   /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
- 
+
   /* Animation center compensation - margins should be symmetric */
   /* remove if not needed */
   /* margin-left: .2em; */
- 
+
   /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
- 
+
   /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
- 
+
   /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
- 
+
 .icon-heart-empty:before { content: '\e800'; } /* 'î €' */
 .icon-star-empty:before { content: '\e801'; } /* 'î ' */
 .icon-mail:before { content: '\e802'; } /* 'î ‚' */
