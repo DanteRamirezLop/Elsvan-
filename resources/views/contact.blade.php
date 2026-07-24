@@ -215,6 +215,14 @@
                                 text: data.message,
                             });
                             form.reset();
+
+                            if (typeof gtag === 'function') {
+                                gtag('event', 'conversion', {
+                                    'send_to': 'AW-11336011322/REmFCNTRh9UcELqct50q',
+                                    'value': 1.0,
+                                    'currency': 'PEN'
+                                });
+                            }
                         } else if (response.status === 422) {
                             const firstError = Object.values(data.errors)[0][0];
                             Toast.fire({
