@@ -267,3 +267,127 @@
     <meta property="og:image" itemprop="image" content="{{$seo['image']}}" />
 @endpush
 
+@push('javascript')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('contactFormSubmit');
+            const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 2800,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                 }
+                });
+
+            const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+            const requiredFields = [
+                { field: form.nombres, label: 'Nombres' },
+                { field: form.apellidos, label: 'Apellidos' },
+                { field: form.celular, label: 'Celular' },
+                { field: form.correo, label: 'Correo electrónico' },
+                { field: form.solicitud, label: 'Tu solicitud' },
+            ];
+
+            function validateForm() {
+                for (const { field, label } of requiredFields) {
+                    if (!field.value.trim()) {
+                        Toast.fire({
+                            icon: 'warning',
+                            title: 'Revisa el formulario',
+                            text: `El campo "${label}" es obligatorio.`,
+                        });
+                        field.focus();
+                        return false;
+                    }
+                }
+
+                if (!emailRegex.test(form.correo.value.trim())) {
+                    Toast.fire({
+                        icon: 'warning',
+                        title: 'Revisa el formulario',
+                        text: 'Ingresa un correo electrónico válido.',
+                    });
+                    form.correo.focus();
+                    return false;
+                }
+                return true;
+            }
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                if (!validateForm()) {
+                    return;
+                }
+
+                const payload = {
+                    nombres: form.nombres.value,
+                    apellidos: form.apellidos.value,
+                    celular: form.celular.value,
+                    correo: form.correo.value,
+                    solicitud: form.solicitud.value,
+                };
+
+                submitBtn.disabled = true;
+
+                fetch('{{ route('contactanos.send') }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': token,
+                    },
+                    body: JSON.stringify(payload),
+                })
+                    .then(async (response) => {
+                        const data = await response.json();
+
+                        if (response.ok) {
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'Consulta enviada',
+                                text: data.message,
+                            });
+                            form.reset();
+
+                            if (typeof gtag === 'function') {
+                                gtag('event', 'conversion', {
+                                    'send_to': 'AW-11336011322/REmFCNTRh9UcELqct50q',
+                                    'value': 1.0,
+                                    'currency': 'PEN'
+                                });
+                            }
+                        } else if (response.status === 422) {
+                            const firstError = Object.values(data.errors)[0][0];
+                            Toast.fire({
+                                icon: 'warning',
+                                title: 'Revisa el formulario',
+                                text: firstError,
+                            });
+                        } else {
+                            throw new Error(data.message || 'Error al enviar');
+                        }
+                    })
+                    .catch(function () {
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Ocurrió un error',
+                            text: 'No pudimos enviar tu consulta. Inténtalo nuevamente.',
+                        });
+                    })
+                    .finally(function () {
+                        submitBtn.disabled = false;
+                    });
+            });
+        });
+    </script>
+@endpush
+

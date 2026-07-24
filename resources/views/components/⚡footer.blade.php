@@ -83,7 +83,7 @@ new class extends Component
             </div>
             <p>
                 @foreach($phones as $phone)
-                <span>{{ $phone->formatted_number}} </span><br/>
+                <a href="tel:{{ $phone->dial_number }}" class="hover:underline">{{ $phone->formatted_number}}</a><br/>
                 @endforeach
             </p>
           </div>

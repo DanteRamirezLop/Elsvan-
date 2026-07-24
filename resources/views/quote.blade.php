@@ -33,6 +33,7 @@
                                     data-name="{{ $item->name }}"
                                     data-image="{{ $item->main_image ? Storage::disk('public')->url($item->main_image) : '' }}"
                                     data-blueprints="{{ $item->blueprints->map(fn ($blueprint) => [
+                                        'id' => $blueprint->id,
                                         'number_departments' => $blueprint->number_departments,
                                         'image' => $blueprint->image ? Storage::disk('public')->url($blueprint->image) : '',
                                     ])->toJson() }}"
@@ -223,8 +224,8 @@
                         <div class="swiper sliderBlueprint">
                             <div class="swiper-wrapper">
                                 @foreach($project->blueprints as $blueprint)
-                                    <div class="swiper-slide ">
-                                        <article id="property-card" class="overflow-hidden rounded-[26px] bg-orange ">
+                                <div class="swiper-slide " data-blueprint-id="{{ $blueprint->id }}">
+                                    <article id="property-card" class="overflow-hidden rounded-[26px] bg-orange ">
                                         <!-- Ficha blanca -->
                                         <div class="m-[5px] mb-0 rounded-t-[22px] rounded-br-[22px] bg-white px-5 pb-7 pt-4 sm:px-9 sm:pb-8 sm:pt-5">
                                             <!-- Plano -->
@@ -300,10 +301,23 @@
 
             if (!select) return;
 
-            function updateFloorPlan(image) {
-                document.querySelectorAll('#floor-plan').forEach((img) => {
-                    img.src = image || '';
-                });
+            function getBlueprintSlideIndex(blueprintId) {
+                const slides = Array.from(
+                    document.querySelectorAll('.sliderBlueprint .swiper-slide:not(.swiper-slide-duplicate)')
+                );
+                return slides.findIndex((slide) => slide.dataset.blueprintId === String(blueprintId));
+            }
+
+            function goToBlueprintSlide(blueprintId) {
+                if (!blueprintId) return;
+
+                const sliderEl = document.querySelector('.sliderBlueprint');
+                if (!sliderEl || !sliderEl.swiper) return;
+
+                const index = getBlueprintSlideIndex(blueprintId);
+                if (index === -1) return;
+
+                sliderEl.swiper.slideToLoop(index);
             }
 
             function updatePlanos(option) {
@@ -330,6 +344,7 @@
                     opt.value = blueprint.number_departments;
                     opt.textContent = blueprint.number_departments;
                     opt.dataset.image = blueprint.image || '';
+                    opt.dataset.blueprintId = blueprint.id || '';
                     departamento.appendChild(opt);
                 });
             }
@@ -352,7 +367,7 @@
             if (departamento) {
                 departamento.addEventListener('change', () => {
                     const option = departamento.options[departamento.selectedIndex];
-                    updateFloorPlan(option ? option.dataset.image : '');
+                    goToBlueprintSlide(option ? option.dataset.blueprintId : '');
                 });
             }
 

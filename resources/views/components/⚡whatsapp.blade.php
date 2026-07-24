@@ -32,7 +32,7 @@ new class extends Component
 
                 @foreach($whatsapps as $item)
                 <div class="wa__popup_content_item ">
-                    <a target="_blank" href="https://web.whatsapp.com/send?phone={{$item->number}}&amp;text=Hola, tengo una consulta" class="wa__stt wa__stt_online">
+                    <a target="_blank" href="https://wa.me/{{ $item->number }}?text={{ rawurlencode('Hola, tengo una consulta') }}" class="wa__stt wa__stt_online">
                         <div class="wa__popup_avatar">
                             <div class="wa__cs_img_wrap wrap_img_icon"></div>
                         </div>

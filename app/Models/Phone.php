@@ -28,4 +28,12 @@ class Phone extends Model
             substr($local, 6, 3)
         );
     }
+
+    public function getDialNumberAttribute(): string
+    {
+        $digits = preg_replace('/\D/', '', $this->number);
+        $local = substr($digits, -9);
+
+        return '+51'.$local;
+    }
 }
