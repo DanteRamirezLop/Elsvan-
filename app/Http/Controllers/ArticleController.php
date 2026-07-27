@@ -46,6 +46,7 @@ class ArticleController extends Controller
             'keywords'      => $noticia->tags,
             'image'         => $dominio.'/uploads/cms/'.$noticia->feature_image,
         );
+
         $data['faqs'] = $this->extraerFaqs($noticia->content ?? '');
 
         return view('articles.show',$data);
@@ -53,8 +54,8 @@ class ArticleController extends Controller
 
     /**
      * Extrae pares pregunta/respuesta del contenido del artículo para el schema FAQPage.
-     * Solo toma encabezados (h2-h4) que contienen "?" (ya visibles en el artículo) junto
-     * con los párrafos que los siguen hasta el próximo encabezado.
+     * Toma cada encabezado (h2-h4) visible en el artículo como pregunta/tema, junto
+     * con los párrafos que lo siguen hasta el próximo encabezado.
      */
     private function extraerFaqs(string $html): array
     {
@@ -75,7 +76,7 @@ class ArticleController extends Controller
         foreach ($headings as $heading) {
             $question = trim($heading->textContent);
 
-            if (!str_contains($question, '?')) {
+            if ($question === '') {
                 continue;
             }
 

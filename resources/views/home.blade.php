@@ -91,9 +91,9 @@
                 </a>
                 <div class=" rounded-b-xl bg-brown px-5 py-4 text-center shadow-project">
                      <a href="{{$project->tag == 'vendido' ? '' : route('proyectos.show', $project) }}" class="{{ $project->tag == 'vendido' ? 'project-link-sold' : '' }}">
-                        <h3 class="text-xl font-extrabold uppercase text-green">
+                        <div class="text-xl font-extrabold uppercase text-green">
                             {{$project->name}}
-                        </h3>
+                        </div>
                     </a>
                     <p class="text-white">
                         {{ Str::limit($project->location, 72) }}
