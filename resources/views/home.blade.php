@@ -1,6 +1,17 @@
 @extends('layouts.web')
 
 @section('content')
+    <div class="sr-only">
+        <h1>Inmobiliaria en Lima</h1>
+        <h2>Venta de departamentos en Lima</h2>
+        <h3>Departamentos en Miraflores</h3>
+        <h4>Proyecto Escudero</h4>
+        <h2>Nosotros</h2>
+        <h2>Galería</h2>
+        <h2>Blog inmobiliario</h2>
+        <h2>Contáctanos</h2>
+    </div>
+
     <livewire:slider/>
 
     <livewire:marquee/>
@@ -157,9 +168,9 @@
             <div class="flex justify-center w-full items-center px-6 pb-12 lg:w-[54%] lg:px-10 lg:pb-0 lg:pr-[7%]">
                     <div class="w-full max-w-[650px] my-12">
 
-                        <h1 class="mb-6 text-center text-[30px] font-extrabold leading-tight text-white sm:text-[34px]">
+                        <p class="mb-6 text-center text-[30px] font-extrabold leading-tight text-white sm:text-[34px]">
                             CONTÁCTANOS AHORA
-                        </h1>
+                        </p>
 
                         <form id="contactForm" method="POST" class="space-y-4" novalidate>
                             <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">

@@ -46,8 +46,63 @@ class ArticleController extends Controller
             'keywords'      => $noticia->tags,
             'image'         => $dominio.'/uploads/cms/'.$noticia->feature_image,
         );
+        $data['faqs'] = $this->extraerFaqs($noticia->content ?? '');
 
         return view('articles.show',$data);
+    }
+
+    /**
+     * Extrae pares pregunta/respuesta del contenido del artículo para el schema FAQPage.
+     * Solo toma encabezados (h2-h4) que contienen "?" (ya visibles en el artículo) junto
+     * con los párrafos que los siguen hasta el próximo encabezado.
+     */
+    private function extraerFaqs(string $html): array
+    {
+        if (trim($html) === '') {
+            return [];
+        }
+
+        $dom = new \DOMDocument();
+        libxml_use_internal_errors(true);
+        $dom->loadHTML('<?xml encoding="utf-8" ?>' . $html);
+        libxml_clear_errors();
+
+        $xpath = new \DOMXPath($dom);
+        $headings = $xpath->query('//h2 | //h3 | //h4');
+
+        $faqs = [];
+
+        foreach ($headings as $heading) {
+            $question = trim($heading->textContent);
+
+            if (!str_contains($question, '?')) {
+                continue;
+            }
+
+            $answerParts = [];
+            $sibling = $heading->nextSibling;
+
+            while ($sibling !== null && !in_array($sibling->nodeName, ['h1', 'h2', 'h3', 'h4'])) {
+                if ($sibling->nodeType === XML_ELEMENT_NODE) {
+                    $text = trim($sibling->textContent);
+                    if ($text !== '') {
+                        $answerParts[] = $text;
+                    }
+                }
+                $sibling = $sibling->nextSibling;
+            }
+
+            $answer = trim(implode(' ', $answerParts));
+
+            if ($answer !== '') {
+                $faqs[] = [
+                    'question' => $question,
+                    'answer' => $answer,
+                ];
+            }
+        }
+
+        return $faqs;
     }
 
 

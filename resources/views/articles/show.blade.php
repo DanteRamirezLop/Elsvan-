@@ -81,4 +81,20 @@
     <meta property="og:title" content="{{$seo['title']}}" />
     <meta property="og:description" content="{{$seo['description']}}" />
     <meta property="og:image" itemprop="image" content="{{$seo['image']}}" />
+    @if(!empty($faqs))
+    <script type="application/ld+json">
+    {!! json_encode([
+        '@context' => 'https://schema.org',
+        '@type' => 'FAQPage',
+        'mainEntity' => collect($faqs)->map(fn($faq) => [
+            '@type' => 'Question',
+            'name' => $faq['question'],
+            'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => $faq['answer'],
+            ],
+        ])->all(),
+    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
+    </script>
+    @endif
 @endpush
