@@ -49,9 +49,9 @@
                         md:text-[14px] lg:text-[18px]">
                      Mira nuestros departamentos en venta
                 </span>
-                <h2 class="text-3xl  font-bold  md:text-4xl text-brown">
+                <p class="text-3xl  font-bold  md:text-4xl text-brown">
                     Tu nuevo hogar te espera
-                </h2>
+                </p>
             </div>
 
             <!-- Botón -->
@@ -91,9 +91,9 @@
                 </a>
                 <div class=" rounded-b-xl bg-brown px-5 py-4 text-center shadow-project">
                      <a href="{{$project->tag == 'vendido' ? '' : route('proyectos.show', $project) }}" class="{{ $project->tag == 'vendido' ? 'project-link-sold' : '' }}">
-                        <h2 class="text-xl font-extrabold uppercase text-green">
+                        <h3 class="text-xl font-extrabold uppercase text-green">
                             {{$project->name}}
-                        </h2>
+                        </h3>
                     </a>
                     <p class="text-white">
                         {{ Str::limit($project->location, 72) }}
@@ -133,9 +133,9 @@
                        Elsvan Inmobiliaria
                 </span>
 
-                <h2 class="text-3xl  font-bold  md:text-4xl text-brown">
+                <p class="text-3xl  font-bold  md:text-4xl text-brown">
                      Visita nuestros proyectos
-                </h2>
+                </p>
             </div>
 
             <!-- Botón -->
