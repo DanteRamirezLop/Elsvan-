@@ -21,7 +21,6 @@
     </section>
     @endif
 
-
     <div class="iframe-center">
         <div class="w-5/6 lg:w-3/5">
             @if(isset($page->info_1))
@@ -30,8 +29,8 @@
                 </div>
             @endif
         </div>
-
     </div>
+
     <!-- Misión y visión -->
     <div class="section">
         <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
