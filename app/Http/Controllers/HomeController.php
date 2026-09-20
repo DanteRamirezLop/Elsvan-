@@ -35,8 +35,7 @@ class HomeController extends Controller
         $data['year'] = date('Y') - 2012;
 
        $projects = RealEstateProject::where('status', 'published')
-        ->orderByRaw("CASE WHEN tag IN ('lanzamiento', 'estreno') THEN 0 ELSE 1 END")
-        ->orderBy('created_at', 'asc')
+        ->orderedByTag()
         ->take(6)
         ->get();
         $data['projects'] = $projects;

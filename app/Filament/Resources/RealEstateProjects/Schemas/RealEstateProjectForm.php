@@ -37,9 +37,11 @@ class RealEstateProjectForm
                 Select::make('tag')
                 ->label('Etiqueta')
                 ->options([
-                    'vendido' => 'Vendido',
+                    'en_construccion' => 'En construcción',
+                    'proxima_entrega' => 'Próxima entrega',
                     'lanzamiento' => 'Lanzamiento',
                     'estreno' => 'Estreno',
+                    'vendido' => 'Vendido',
                 ])
                 ->placeholder('Selecciona una etiqueta'),
                 TextInput::make('rooms_from'),

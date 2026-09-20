@@ -78,12 +78,12 @@
                         @if($project->tag == 'vendido')
                             <div class="absolute inset-0 z-20 flex items-center justify-center">
                                 <span class="rounded-lg bg-white px-10 py-3 text-2xl font-extrabold uppercase text-orange shadow-lg">
-                                     {{$project->tag}}
+                                     {{$project->tag_label}}
                                 </span>
                             </div>
                         @else
                             <div class="uppercase absolute left-0 top-0 z-20 flex h-14 w-full items-center justify-center bg-green-tranparence px-4 text-center text-xl font-extrabold text-white">
-                                {{$project->tag}}
+                                {{$project->tag_label}}
                             </div>
                         @endif
                         <img src="{{ $project->main_image ? Storage::disk('public')->url($project->main_image) : '' }}" alt="{{$project->name}}" class="h-full w-full object-cover">

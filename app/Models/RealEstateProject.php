@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -29,6 +30,28 @@ class RealEstateProject extends Model
     //     return $this->hasMany(ProjectEnvironment::class)
     //         ->orderBy('sort_order');
     // }
+
+    public function scopeOrderedByTag(Builder $query): Builder
+    {
+        return $query
+            ->orderByRaw("CASE tag
+                WHEN 'en_construccion' THEN 0
+                WHEN 'proxima_entrega' THEN 1
+                WHEN 'lanzamiento' THEN 2
+                WHEN 'estreno' THEN 3
+                WHEN 'vendido' THEN 4
+                ELSE 5 END")
+            ->orderBy('created_at', 'asc');
+    }
+
+    public function getTagLabelAttribute(): ?string
+    {
+        return match ($this->tag) {
+            'proxima_entrega' => 'Próxima entrega',
+            'en_construccion' => 'En construcción',
+            default => $this->tag,
+        };
+    }
 
     public function getRouteKeyName()
     {

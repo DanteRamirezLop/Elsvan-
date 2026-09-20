@@ -39,12 +39,16 @@ class RealEstateProjectsTable
                         'vendido' => 'Vendido',
                         'lanzamiento' => 'Lanzamiento',
                         'estreno' => 'Estreno',
+                        'proxima_entrega' => 'Próxima entrega',
+                        'en_construccion' => 'En construcción',
                         default => $state,
                     })
                     ->color(fn (string $state): string => match ($state) {
                         'vendido' => 'danger',
                         'lanzamiento' => 'warning',
                         'estreno' => 'success',
+                        'proxima_entrega' => 'info',
+                        'en_construccion' => 'primary',
                         default => 'gray',
                     }),
                 TextColumn::make('created_at')

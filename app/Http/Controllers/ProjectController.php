@@ -13,8 +13,7 @@ class ProjectController extends Controller
     public function index(){
 
         $projects = RealEstateProject::where('status', 'published')
-            ->orderByRaw("CASE WHEN tag IN ('lanzamiento', 'estreno') THEN 0 ELSE 1 END")
-            ->orderBy('created_at', 'asc')
+            ->orderedByTag()
             ->paginate(9);
         $data['projects'] = $projects;
 
