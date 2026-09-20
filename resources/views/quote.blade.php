@@ -295,8 +295,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const select = document.getElementById('proyecto');
-            const nombre = document.getElementById('proyecto-nombre');
-            const imagen = document.getElementById('proyecto-imagen');
             const departamento = document.getElementById('departamento');
 
             if (!select) return;
@@ -349,19 +347,12 @@
                 });
             }
 
+            const quoteUrlTemplate = @json(route('quote', ['project' => '__SLUG__']));
+
             select.addEventListener('change', () => {
-                const option = select.options[select.selectedIndex];
+                if (!select.value) return;
 
-                if (nombre) {
-                    nombre.textContent = ' ' + option.dataset.name;
-                }
-
-                if (imagen) {
-                    imagen.src = option.dataset.image || '';
-                    imagen.alt = option.dataset.name || '';
-                }
-
-                updatePlanos(option);
+                window.location.href = quoteUrlTemplate.replace('__SLUG__', encodeURIComponent(select.value));
             });
 
             if (departamento) {
