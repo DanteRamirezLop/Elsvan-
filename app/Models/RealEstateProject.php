@@ -25,11 +25,6 @@ class RealEstateProject extends Model
         'delivery_date',
     ];
 
-    // public function environments(): HasMany
-    // {
-    //     return $this->hasMany(ProjectEnvironment::class)
-    //         ->orderBy('sort_order');
-    // }
 
     public function scopeOrderedByTag(Builder $query): Builder
     {
@@ -41,7 +36,7 @@ class RealEstateProject extends Model
                 WHEN 'estreno' THEN 3
                 WHEN 'vendido' THEN 4
                 ELSE 5 END")
-            ->orderBy('created_at', 'asc');
+            ->orderBy('created_at', 'desc');
     }
 
     public function getTagLabelAttribute(): ?string
