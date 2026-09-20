@@ -184,7 +184,7 @@
                         <div class="swiper sliderBlueprint">
                             <div class="swiper-wrapper">
                                 @foreach($project->blueprints as $blueprint)
-                                    <div class="swiper-slide ">
+                                    <div class="swiper-slide " data-blueprint-id="{{ $blueprint->id }}">
                                         <article id="property-card" class="overflow-hidden rounded-[26px] bg-orange ">
                                         <!-- Ficha blanca -->
                                         <div class="m-[5px] mb-0 rounded-t-[22px] rounded-br-[22px] bg-white px-5 pb-7 pt-4 sm:px-9 sm:pb-8 sm:pt-5">
@@ -258,7 +258,7 @@
                                             Seleccionar plano
                                         </option>
                                         @foreach($project->blueprints as $blueprint)
-                                            <option value="{{ $blueprint->number_departments }}">{{ $blueprint->number_departments }}</option>
+                                            <option value="{{ $blueprint->number_departments }}" data-blueprint-id="{{ $blueprint->id }}">{{ $blueprint->number_departments }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -456,6 +456,22 @@
             const submitBtn = document.getElementById('quoteFormSubmit');
             const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
             const proyectoNombre = @json($project->name);
+
+            // Al elegir un plano en el select, el slider muestra ese plano.
+            form.departamento.addEventListener('change', function () {
+                const option = form.departamento.options[form.departamento.selectedIndex];
+                const blueprintId = option ? option.dataset.blueprintId : '';
+                const sliderEl = document.querySelector('.sliderBlueprint');
+
+                if (!blueprintId || !sliderEl || !sliderEl.swiper) return;
+
+                const slides = Array.from(
+                    sliderEl.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)')
+                );
+                const index = slides.findIndex((slide) => slide.dataset.blueprintId === blueprintId);
+
+                if (index !== -1) sliderEl.swiper.slideToLoop(index);
+            });
 
             const Toast = Swal.mixin({
                 toast: true,
