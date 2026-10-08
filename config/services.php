@@ -28,6 +28,16 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'sperant' => [
+        'enabled' => env('SPERANT_ENABLED', false),
+        'url' => env('SPERANT_URL', 'https://api.sperant.com'),
+        'token' => env('SPERANT_TOKEN'),
+        'clients_endpoint' => env('SPERANT_CLIENTS_ENDPOINT', '/v3/clients'),
+        'input_channel_id' => env('SPERANT_INPUT_CHANNEL_ID'),
+        'source_id' => env('SPERANT_SOURCE_ID'),
+        'timeout' => env('SPERANT_TIMEOUT', 15),
+    ],
+
     'slack' => [
         'notifications' => [
             'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),

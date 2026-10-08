@@ -11,6 +11,7 @@ class RealEstateProject extends Model
      protected $fillable = [
         'name',
         'slug',
+        'sperant_project_id',
         'location',
         'district',
         'description',

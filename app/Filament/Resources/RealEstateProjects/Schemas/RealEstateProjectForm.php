@@ -20,6 +20,9 @@ class RealEstateProjectForm
                     ->required(),
                 TextInput::make('slug')
                     ->required(),
+                TextInput::make('sperant_project_id')
+                    ->label('ID de proyecto en Sperant')
+                    ->helperText('Necesario para enviar las cotizaciones de este proyecto al CRM Sperant.'),
                 TextInput::make('location'),
                 TextInput::make('district'),
                 Textarea::make('description')

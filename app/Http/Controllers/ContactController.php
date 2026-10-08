@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactFormMail;
 use App\Mail\QuoteFormMail;
+use App\Jobs\SendLeadToSperant;
 use App\Models\Page;
 use App\Models\RealEstateProject;
 
@@ -71,6 +72,14 @@ class ContactController extends Controller
                 'correo'    => ['required', 'email', 'max:150'],
                 'solicitud' => ['required', 'string', 'max:2000'],
             ]);
+            SendLeadToSperant::dispatch([
+                'first_name' => $validated['nombres'],
+                'last_name'  => $validated['apellidos'],
+                'email'      => $validated['correo'],
+                'phone'      => $validated['celular'],
+                'message'    => $validated['solicitud'],
+                'origin'     => 'Web - Contáctanos',
+            ]);
             Mail::to(config('mail.contact_to'))->send(new ContactFormMail($validated));
             return response()->json([
                 'status'  => true,
@@ -102,6 +111,19 @@ class ContactController extends Controller
                 'email'            => ['required', 'email', 'max:150'],
                 'mensaje'          => ['nullable', 'string', 'max:2000'],
                 'terminos'         => ['accepted'],
+            ]);
+            [$firstName, $lastName] = array_pad(explode(' ', trim($validated['nombre']), 2), 2, null);
+            SendLeadToSperant::dispatch([
+                'first_name'      => $firstName,
+                'last_name'       => $lastName,
+                'email'           => $validated['email'],
+                'phone'           => $validated['celular'],
+                'document_type'   => $validated['tipo_documento'],
+                'document_number' => $validated['numero_documento'],
+                'project'         => $validated['proyecto'],
+                'unit'            => $validated['departamento'],
+                'message'         => $validated['mensaje'] ?? null,
+                'origin'          => 'Web - Cotizar',
             ]);
             Mail::to(config('mail.contact_to'))->send(new QuoteFormMail($validated));
             return response()->json([
