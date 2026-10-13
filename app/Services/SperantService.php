@@ -61,6 +61,9 @@ class SperantService
 
         $documentTypeId = config('services.sperant.document_types.'.($lead['document_type'] ?? ''));
 
+        // Sperant exige project_id
+        $projectId = $project?->sperant_project_id ?: config('services.sperant.default_project_id');
+
         return array_filter([
             'fname' => $lead['first_name'],
             'lname' => $lead['last_name'] ?? null,
@@ -68,7 +71,7 @@ class SperantService
             'phone' => $lead['phone'],
             'document_type_id' => filled($documentTypeId) ? (int) $documentTypeId : null,
             'document' => $lead['document_number'] ?? null,
-            'project_id' => filled($project?->sperant_project_id) ? (int) $project->sperant_project_id : null,
+            'project_id' => filled($projectId) ? (int) $projectId : null,
             'input_channel_id' => (int) config('services.sperant.input_channel_id'),
             'source_id' => (int) config('services.sperant.source_id'),
             'interest_type_id' => (int) config('services.sperant.interest_type_id'),

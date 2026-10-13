@@ -84,6 +84,33 @@ class SperantIntegrationTest extends TestCase
             && $request['email_consent'] === true);
     }
 
+    public function test_contact_form_uses_default_project(): void
+    {
+        config(['services.sperant.default_project_id' => '99']);
+        Http::fake(['sperant.test/*' => Http::response(['data' => ['id' => '1']], 200)]);
+
+        $this->postJson(route('contactanos.send'), [
+            'nombres' => 'Luis',
+            'apellidos' => 'Ramos',
+            'celular' => '999111222',
+            'correo' => 'luis@example.com',
+            'solicitud' => 'Hola',
+        ])->assertJson(['status' => true]);
+
+        Http::assertSent(fn (Request $request) => $request['project_id'] === 99
+            && $request['fname'] === 'Luis');
+    }
+
+    public function test_validation_error_is_not_retried(): void
+    {
+        Http::fake(['sperant.test/*' => Http::response(['errors' => [['msg' => 'project_id es requerido']]], 400)]);
+
+        $this->postJson(route('quote.send'), $this->quotePayload())
+            ->assertJson(['status' => true]);
+
+        Http::assertSentCount(1);
+    }
+
     public function test_job_does_nothing_when_integration_is_disabled(): void
     {
         config(['services.sperant.enabled' => false]);

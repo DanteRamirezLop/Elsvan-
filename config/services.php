@@ -36,6 +36,8 @@ return [
         'input_channel_id' => env('SPERANT_INPUT_CHANNEL_ID'),
         'source_id' => env('SPERANT_SOURCE_ID'),
         'interest_type_id' => env('SPERANT_INTEREST_TYPE_ID'),
+        // Proyecto usado cuando el lead no trae proyecto (Contáctanos) o el proyecto no tiene ID de Sperant
+        'default_project_id' => env('SPERANT_DEFAULT_PROJECT_ID'),
         // Tipo de documento del formulario => document_type_id en Sperant (ver: php artisan sperant:catalogs)
         'document_types' => [
             'dni' => env('SPERANT_DOCUMENT_TYPE_DNI', 1),
