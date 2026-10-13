@@ -106,6 +106,7 @@ class ContactController extends Controller
                 'proyecto'         => ['required', 'string', 'max:150'],
                 'departamento'     => ['required', 'string', 'max:100'],
                 'nombre'           => ['required', 'string', 'max:100'],
+                'apellidos'        => ['required', 'string', 'max:100'],
                 'celular'          => ['required', 'string', 'max:30'],
                 'tipo_documento'   => ['required', 'string', 'max:50'],
                 'numero_documento' => ['required', 'string', 'max:30'],
@@ -117,6 +118,7 @@ class ContactController extends Controller
                 'project'         => $validated['proyecto'],
                 'unit'            => $validated['departamento'],
                 'name'            => $validated['nombre'],
+                'last_name'       => $validated['apellidos'],
                 'phone'           => $validated['celular'],
                 'document_type'   => $validated['tipo_documento'],
                 'document_number' => $validated['numero_documento'],
@@ -124,10 +126,9 @@ class ContactController extends Controller
                 'message'         => $validated['mensaje'] ?? null,
                 'terms_accepted'  => true,
             ]);
-            [$firstName, $lastName] = array_pad(explode(' ', trim($validated['nombre']), 2), 2, null);
             SendLeadToSperant::dispatch([
-                'first_name'      => $firstName,
-                'last_name'       => $lastName,
+                'first_name'      => $validated['nombre'],
+                'last_name'       => $validated['apellidos'],
                 'email'           => $validated['email'],
                 'phone'           => $validated['celular'],
                 'document_type'   => $validated['tipo_documento'],

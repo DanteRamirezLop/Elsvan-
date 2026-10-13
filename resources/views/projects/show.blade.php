@@ -263,7 +263,7 @@
                                     </select>
                                 </div>
 
-                                <!-- Nombre y celular -->
+                                <!-- Nombre y apellidos -->
                                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-7">
 
                                     <div>
@@ -278,12 +278,34 @@
                                             id="nombre"
                                             name="nombre"
                                             type="text"
-                                            autocomplete="name"
+                                            autocomplete="given-name"
                                             required
                                             class="h-12 w-full rounded-full border-2 border-[#FF8A48] px-5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-orange-100"
                                         >
                                     </div>
 
+                                    <div>
+                                        <label
+                                            for="apellidos"
+                                            class="mb-1.5 block text-sm font-medium sm:text-base"
+                                        >
+                                            Apellidos
+                                        </label>
+
+                                        <input
+                                            id="apellidos"
+                                            name="apellidos"
+                                            type="text"
+                                            autocomplete="family-name"
+                                            required
+                                            class="h-12 w-full rounded-full border-2 border-[#FF8A48] px-5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-orange-100"
+                                        >
+                                    </div>
+
+                                </div>
+
+                                <!-- Celular y email -->
+                                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-7">
                                     <div>
                                         <label
                                             for="celular"
@@ -298,6 +320,24 @@
                                             type="tel"
                                             required
                                             autocomplete="tel"
+                                            class="h-12 w-full rounded-full border-2 border-[#FF8A48] px-5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-orange-100"
+                                        >
+                                    </div>
+
+                                    <div>
+                                        <label
+                                            for="email"
+                                            class="mb-1.5 block text-sm font-medium sm:text-base"
+                                        >
+                                            Email*
+                                        </label>
+
+                                        <input
+                                            id="email"
+                                            name="email"
+                                            type="email"
+                                            required
+                                            autocomplete="email"
                                             class="h-12 w-full rounded-full border-2 border-[#FF8A48] px-5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-orange-100"
                                         >
                                     </div>
@@ -346,25 +386,6 @@
                                         >
                                     </div>
 
-                                </div>
-
-                                <!-- Email -->
-                                <div>
-                                    <label
-                                        for="email"
-                                        class="mb-1.5 block text-sm font-medium sm:text-base"
-                                    >
-                                        Email*
-                                    </label>
-
-                                    <input
-                                        id="email"
-                                        name="email"
-                                        type="email"
-                                        required
-                                        autocomplete="email"
-                                        class="h-12 w-full rounded-full border-2 border-[#FF8A48] px-5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-orange-100"
-                                    >
                                 </div>
 
                                 <!-- Mensaje -->
@@ -490,6 +511,7 @@
             const requiredFields = [
                 { field: form.departamento, label: 'Plano del proyecto' },
                 { field: form.nombre, label: 'Nombre' },
+                { field: form.apellidos, label: 'Apellidos' },
                 { field: form.celular, label: 'Celular' },
                 { field: form.tipo_documento, label: 'Tipo de documento' },
                 { field: form.numero_documento, label: 'Número de documento' },
@@ -544,6 +566,7 @@
                     proyecto: proyectoNombre,
                     departamento: departamentoOption ? departamentoOption.text : form.departamento.value,
                     nombre: form.nombre.value,
+                    apellidos: form.apellidos.value,
                     celular: form.celular.value,
                     tipo_documento: form.tipo_documento.value,
                     numero_documento: form.numero_documento.value,

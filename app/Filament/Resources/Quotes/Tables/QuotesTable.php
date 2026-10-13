@@ -28,6 +28,9 @@ class QuotesTable
                 TextColumn::make('name')
                     ->label('Nombre')
                     ->searchable(),
+                TextColumn::make('last_name')
+                    ->label('Apellidos')
+                    ->searchable(),
                 TextColumn::make('phone')
                     ->label('Celular')
                     ->searchable(),

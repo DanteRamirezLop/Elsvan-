@@ -37,10 +37,20 @@ class SperantService
      */
     public function list(string $resource, array $query = []): array
     {
-        return $this->client()
-            ->get('/v3/'.$resource, $query)
-            ->throw()
-            ->json('data', []);
+        $items = [];
+        $page = 1;
+
+        // La API pagina de 20 en 20; se recorren todas las páginas
+        do {
+            $response = $this->client()
+                ->get('/v3/'.$resource, $query + ['page' => $page])
+                ->throw();
+
+            $items = array_merge($items, $response->json('data', []));
+            $page++;
+        } while ($response->json('links.next') && $page <= 50);
+
+        return $items;
     }
 
     /**

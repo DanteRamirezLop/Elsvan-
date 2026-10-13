@@ -10,6 +10,7 @@ class Quote extends Model
         'project',
         'unit',
         'name',
+        'last_name',
         'phone',
         'document_type',
         'document_number',

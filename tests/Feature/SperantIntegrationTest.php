@@ -35,7 +35,8 @@ class SperantIntegrationTest extends TestCase
         return [
             'proyecto' => 'torre-sol',
             'departamento' => 'Tipo A',
-            'nombre' => 'Ana María Pérez',
+            'nombre' => 'Ana María',
+            'apellidos' => 'Pérez Gómez',
             'celular' => '999888777',
             'tipo_documento' => 'dni',
             'numero_documento' => '12345678',
@@ -52,8 +53,8 @@ class SperantIntegrationTest extends TestCase
         $this->postJson(route('quote.send'), $this->quotePayload())
             ->assertJson(['status' => true]);
 
-        Queue::assertPushed(SendLeadToSperant::class, fn ($job) => $job->lead['first_name'] === 'Ana'
-            && $job->lead['last_name'] === 'María Pérez'
+        Queue::assertPushed(SendLeadToSperant::class, fn ($job) => $job->lead['first_name'] === 'Ana María'
+            && $job->lead['last_name'] === 'Pérez Gómez'
             && $job->lead['project'] === 'torre-sol');
     }
 
@@ -73,8 +74,8 @@ class SperantIntegrationTest extends TestCase
 
         Http::assertSent(fn (Request $request) => $request->url() === 'https://sperant.test/v3/clients'
             && $request->hasHeader('Authorization', 'secret-token')
-            && $request['fname'] === 'Ana'
-            && $request['lname'] === 'María Pérez'
+            && $request['fname'] === 'Ana María'
+            && $request['lname'] === 'Pérez Gómez'
             && $request['document_type_id'] === 1
             && $request['document'] === '12345678'
             && $request['project_id'] === 42

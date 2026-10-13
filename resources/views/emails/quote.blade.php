@@ -21,6 +21,10 @@
             <td>{{ $data['nombre'] }}</td>
         </tr>
         <tr>
+            <td><strong>Apellidos:</strong></td>
+            <td>{{ $data['apellidos'] }}</td>
+        </tr>
+        <tr>
             <td><strong>Celular:</strong></td>
             <td>{{ $data['celular'] }}</td>
         </tr>

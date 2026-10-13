@@ -21,7 +21,7 @@ class QuoteFormMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Nueva cotización de proyecto - '.$this->data['nombre'],
+            subject: 'Nueva cotización de proyecto - '.$this->data['nombre'].' '.$this->data['apellidos'],
             replyTo: [$this->data['email']],
         );
     }

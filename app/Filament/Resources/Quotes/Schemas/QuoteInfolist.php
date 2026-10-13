@@ -18,6 +18,8 @@ class QuoteInfolist
                     ->label('Departamento'),
                 TextEntry::make('name')
                     ->label('Nombre'),
+                TextEntry::make('last_name')
+                    ->label('Apellidos'),
                 TextEntry::make('phone')
                     ->label('Celular'),
                 TextEntry::make('document_type')

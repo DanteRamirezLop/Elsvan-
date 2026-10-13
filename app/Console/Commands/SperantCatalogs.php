@@ -46,7 +46,7 @@ class SperantCatalogs extends Command
             $this->info($title);
 
             try {
-                $rows = collect($sperant->list($resource, ['per_page' => 100]))
+                $rows = collect($sperant->list($resource))
                     ->map(fn ($item) => [
                         $item['attributes']['id'] ?? $item['id'],
                         $item['attributes']['name'] ?? '',
