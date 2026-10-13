@@ -123,6 +123,7 @@ class ContactController extends Controller
                 'project'         => $validated['proyecto'],
                 'unit'            => $validated['departamento'],
                 'message'         => $validated['mensaje'] ?? null,
+                'consent'         => true,
                 'origin'          => 'Web - Cotizar',
             ]);
             Mail::to(config('mail.contact_to'))->send(new QuoteFormMail($validated));

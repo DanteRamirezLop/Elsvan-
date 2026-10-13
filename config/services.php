@@ -35,6 +35,13 @@ return [
         'clients_endpoint' => env('SPERANT_CLIENTS_ENDPOINT', '/v3/clients'),
         'input_channel_id' => env('SPERANT_INPUT_CHANNEL_ID'),
         'source_id' => env('SPERANT_SOURCE_ID'),
+        'interest_type_id' => env('SPERANT_INTEREST_TYPE_ID'),
+        // Tipo de documento del formulario => document_type_id en Sperant (ver: php artisan sperant:catalogs)
+        'document_types' => [
+            'dni' => env('SPERANT_DOCUMENT_TYPE_DNI', 1),
+            'ce' => env('SPERANT_DOCUMENT_TYPE_CE', 2),
+            'pasaporte' => env('SPERANT_DOCUMENT_TYPE_PASAPORTE', 4),
+        ],
         'timeout' => env('SPERANT_TIMEOUT', 15),
     ],
 

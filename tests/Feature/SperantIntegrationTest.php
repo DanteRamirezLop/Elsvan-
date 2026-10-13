@@ -24,6 +24,8 @@ class SperantIntegrationTest extends TestCase
             'services.sperant.token' => 'secret-token',
             'services.sperant.clients_endpoint' => '/v3/clients',
             'services.sperant.input_channel_id' => '5',
+            'services.sperant.source_id' => '7',
+            'services.sperant.interest_type_id' => '4',
             'mail.contact_to' => 'ventas@example.com',
         ]);
     }
@@ -70,11 +72,16 @@ class SperantIntegrationTest extends TestCase
             ->assertJson(['status' => true]);
 
         Http::assertSent(fn (Request $request) => $request->url() === 'https://sperant.test/v3/clients'
-            && $request->hasHeader('Authorization', 'Bearer secret-token')
+            && $request->hasHeader('Authorization', 'secret-token')
             && $request['fname'] === 'Ana'
-            && $request['document_type'] === 'DNI'
-            && $request['project_id'] === '42'
-            && $request['input_channel_id'] === '5');
+            && $request['lname'] === 'María Pérez'
+            && $request['document_type_id'] === 1
+            && $request['document'] === '12345678'
+            && $request['project_id'] === 42
+            && $request['input_channel_id'] === 5
+            && $request['source_id'] === 7
+            && $request['interest_type_id'] === 4
+            && $request['email_consent'] === true);
     }
 
     public function test_job_does_nothing_when_integration_is_disabled(): void
