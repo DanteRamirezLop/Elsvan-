@@ -9,6 +9,7 @@ use App\Mail\ContactFormMail;
 use App\Mail\QuoteFormMail;
 use App\Jobs\SendLeadToSperant;
 use App\Models\Page;
+use App\Models\Quote;
 use App\Models\RealEstateProject;
 
 class ContactController extends Controller
@@ -111,6 +112,17 @@ class ContactController extends Controller
                 'email'            => ['required', 'email', 'max:150'],
                 'mensaje'          => ['nullable', 'string', 'max:2000'],
                 'terminos'         => ['accepted'],
+            ]);
+            Quote::create([
+                'project'         => $validated['proyecto'],
+                'unit'            => $validated['departamento'],
+                'name'            => $validated['nombre'],
+                'phone'           => $validated['celular'],
+                'document_type'   => $validated['tipo_documento'],
+                'document_number' => $validated['numero_documento'],
+                'email'           => $validated['email'],
+                'message'         => $validated['mensaje'] ?? null,
+                'terms_accepted'  => true,
             ]);
             [$firstName, $lastName] = array_pad(explode(' ', trim($validated['nombre']), 2), 2, null);
             SendLeadToSperant::dispatch([
