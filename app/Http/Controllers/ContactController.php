@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactFormMail;
 use App\Mail\QuoteFormMail;
+use App\Http\Middleware\CaptureUtmParameters;
 use App\Jobs\SendLeadToSperant;
 use App\Models\Page;
 use App\Models\Quote;
@@ -80,6 +81,7 @@ class ContactController extends Controller
                 'phone'      => $validated['celular'],
                 'message'    => $validated['solicitud'],
                 'origin'     => 'Web - Contáctanos',
+                'tracking'   => CaptureUtmParameters::fromRequest($request),
             ]);
             Mail::to(config('mail.contact_to'))->send(new ContactFormMail($validated));
             return response()->json([
@@ -138,6 +140,7 @@ class ContactController extends Controller
                 'message'         => $validated['mensaje'] ?? null,
                 'consent'         => true,
                 'origin'          => 'Web - Cotizar',
+                'tracking'        => CaptureUtmParameters::fromRequest($request),
             ]);
             Mail::to(config('mail.contact_to'))->send(new QuoteFormMail($validated));
             return response()->json([

@@ -35,8 +35,8 @@ class SperantCatalogs extends Command
      */
     public function handle(SperantService $sperant): int
     {
-        if (blank(config('services.sperant.token'))) {
-            $this->error('Falta SPERANT_TOKEN en el .env');
+        if (blank($sperant->setting('token'))) {
+            $this->error('Falta el token de Sperant (Filament > Integración Sperant o SPERANT_TOKEN en el .env)');
 
             return self::FAILURE;
         }

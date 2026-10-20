@@ -36,6 +36,12 @@ return [
         'input_channel_id' => env('SPERANT_INPUT_CHANNEL_ID'),
         'source_id' => env('SPERANT_SOURCE_ID'),
         'interest_type_id' => env('SPERANT_INTEREST_TYPE_ID'),
+        // Medio de captación / canal de entrada para leads de campañas pagadas (vacío = usa los de arriba)
+        'google_ads_source_id' => env('SPERANT_GOOGLE_ADS_SOURCE_ID'),
+        'google_ads_input_channel_id' => env('SPERANT_GOOGLE_ADS_INPUT_CHANNEL_ID'),
+        'facebook_ads_source_id' => env('SPERANT_FACEBOOK_ADS_SOURCE_ID'),
+        'instagram_ads_source_id' => env('SPERANT_INSTAGRAM_ADS_SOURCE_ID'),
+        'meta_ads_input_channel_id' => env('SPERANT_META_ADS_INPUT_CHANNEL_ID'),
         // Proyecto usado cuando el lead no trae proyecto (Contáctanos) o el proyecto no tiene ID de Sperant
         'default_project_id' => env('SPERANT_DEFAULT_PROJECT_ID'),
         // Tipo de documento del formulario => document_type_id en Sperant (ver: php artisan sperant:catalogs)

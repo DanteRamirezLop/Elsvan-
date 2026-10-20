@@ -2,12 +2,14 @@
 
 namespace Tests\Feature;
 
+use App\Http\Middleware\CaptureUtmParameters;
 use App\Jobs\SendLeadToSperant;
 use App\Models\RealEstateProject;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Queue;
+use Illuminate\Support\Facades\Route;
 use Tests\TestCase;
 
 class SperantIntegrationTest extends TestCase
@@ -100,6 +102,180 @@ class SperantIntegrationTest extends TestCase
 
         Http::assertSent(fn (Request $request) => $request['project_id'] === 99
             && $request['fname'] === 'Luis');
+    }
+
+    public function test_landing_with_utms_stores_them_in_a_cookie(): void
+    {
+        Route::middleware('web')->get('/_utm-landing', fn () => 'ok');
+
+        $this->get('/_utm-landing?utm_source=google&utm_medium=cpc&utm_campaign=torre-sol&foo=bar')
+            ->assertCookie(CaptureUtmParameters::COOKIE, json_encode([
+                'utm_source' => 'google',
+                'utm_medium' => 'cpc',
+                'utm_campaign' => 'torre-sol',
+            ]));
+    }
+
+    public function test_organic_referrer_is_stored(): void
+    {
+        Route::middleware('web')->get('/_utm-landing', fn () => 'ok');
+
+        $this->withHeader('Referer', 'https://www.google.com.pe/')
+            ->get('/_utm-landing')
+            ->assertCookie(CaptureUtmParameters::COOKIE, json_encode(['referrer' => 'google.com.pe']));
+    }
+
+    public function test_organic_visit_does_not_replace_a_previous_campaign(): void
+    {
+        Route::middleware('web')->get('/_utm-landing', fn () => 'ok');
+
+        $this->withHeader('Referer', 'https://www.google.com.pe/')
+            ->withCookie(CaptureUtmParameters::COOKIE, json_encode(['utm_source' => 'ig', 'utm_medium' => 'paid_social']))
+            ->get('/_utm-landing')
+            ->assertCookieMissing(CaptureUtmParameters::COOKIE);
+    }
+
+    public function test_internal_navigation_is_not_stored_as_referrer(): void
+    {
+        Route::middleware('web')->get('/_utm-landing', fn () => 'ok');
+
+        $this->withHeader('Referer', url('/proyectos'))
+            ->get('/_utm-landing')
+            ->assertCookieMissing(CaptureUtmParameters::COOKIE);
+    }
+
+    public function test_campaign_visit_replaces_previous_origin(): void
+    {
+        Route::middleware('web')->get('/_utm-landing', fn () => 'ok');
+
+        $this->withHeader('Referer', 'https://l.instagram.com/')
+            ->withCookie(CaptureUtmParameters::COOKIE, json_encode(['referrer' => 'google.com']))
+            ->get('/_utm-landing?utm_source=ig&utm_medium=paid_social&utm_campaign=torre-sol')
+            ->assertCookie(CaptureUtmParameters::COOKIE, json_encode([
+                'utm_source' => 'ig',
+                'utm_medium' => 'paid_social',
+                'utm_campaign' => 'torre-sol',
+                'referrer' => 'l.instagram.com',
+            ]));
+    }
+
+    public function test_instagram_ads_leads_use_meta_captation_way(): void
+    {
+        config([
+            'services.sperant.facebook_ads_source_id' => '20',
+            'services.sperant.meta_ads_input_channel_id' => '9',
+        ]);
+        Http::fake(['sperant.test/*' => Http::response(['id' => 1], 201)]);
+
+        $this->withCredentials()->withCookie(CaptureUtmParameters::COOKIE, json_encode([
+            'utm_source' => 'ig',
+            'utm_medium' => 'paid_social',
+            'utm_campaign' => 'torre-sol',
+        ]))->postJson(route('quote.send'), $this->quotePayload())
+            ->assertJson(['status' => true]);
+
+        // Sin ID propio de Instagram se usa el de Facebook
+        Http::assertSent(fn (Request $request) => $request['source_id'] === 20
+            && $request['input_channel_id'] === 9
+            && $request['utm_source'] === 'ig'
+            && str_contains($request['observation'], 'Tráfico: Instagram Ads - torre-sol'));
+    }
+
+    public function test_organic_search_lead_is_sent_as_organic(): void
+    {
+        config(['services.sperant.google_ads_source_id' => '12']);
+        Http::fake(['sperant.test/*' => Http::response(['id' => 1], 201)]);
+
+        $this->withCredentials()->withCookie(CaptureUtmParameters::COOKIE, json_encode(['referrer' => 'google.com.pe']))
+            ->postJson(route('quote.send'), $this->quotePayload())
+            ->assertJson(['status' => true]);
+
+        Http::assertSent(fn (Request $request) => $request['utm_source'] === 'google'
+            && $request['utm_medium'] === 'organic'
+            && $request['source_id'] === 7
+            && str_contains($request['observation'], 'Tráfico: Orgánico - Búsqueda en Google'));
+    }
+
+    public function test_stored_utms_are_sent_to_sperant(): void
+    {
+        Http::fake(['sperant.test/*' => Http::response(['id' => 1], 201)]);
+
+        $this->withCredentials()->withCookie(CaptureUtmParameters::COOKIE, json_encode([
+            'utm_source' => 'google',
+            'utm_medium' => 'cpc',
+            'utm_campaign' => 'lanzamiento-torre-sol',
+            'utm_term' => 'departamentos en lima',
+            'utm_content' => 'anuncio-a',
+        ]))->postJson(route('quote.send'), $this->quotePayload())
+            ->assertJson(['status' => true]);
+
+        Http::assertSent(fn (Request $request) => $request['utm_source'] === 'google'
+            && $request['utm_medium'] === 'cpc'
+            && $request['utm_campaign'] === 'lanzamiento-torre-sol'
+            && $request['utm_term'] === 'departamentos en lima'
+            && $request['utm_content'] === 'anuncio-a');
+    }
+
+    public function test_gclid_without_utms_is_attributed_to_google_ads(): void
+    {
+        Http::fake(['sperant.test/*' => Http::response(['id' => 1], 201)]);
+
+        $this->withCredentials()->withCookie(CaptureUtmParameters::COOKIE, json_encode(['gclid' => 'abc123']))
+            ->postJson(route('quote.send'), $this->quotePayload())
+            ->assertJson(['status' => true]);
+
+        Http::assertSent(fn (Request $request) => $request['utm_source'] === 'google'
+            && $request['utm_medium'] === 'cpc'
+            && $request['utm_campaign'] === 'Web - Cotizar'
+            && str_contains($request['observation'], 'ID de clic gclid: abc123'));
+    }
+
+    public function test_google_ads_leads_use_their_own_captation_way(): void
+    {
+        config([
+            'services.sperant.google_ads_source_id' => '12',
+            'services.sperant.google_ads_input_channel_id' => '8',
+        ]);
+        Http::fake(['sperant.test/*' => Http::response(['id' => 1], 201)]);
+
+        $this->withCredentials()->withCookie(CaptureUtmParameters::COOKIE, json_encode([
+            'utm_source' => 'google',
+            'utm_medium' => 'cpc',
+            'utm_campaign' => 'torre-sol',
+        ]))->postJson(route('quote.send'), $this->quotePayload())
+            ->assertJson(['status' => true]);
+
+        Http::assertSent(fn (Request $request) => $request['source_id'] === 12
+            && $request['input_channel_id'] === 8
+            && str_contains($request['observation'], 'Tráfico: Google Ads - torre-sol'));
+    }
+
+    public function test_organic_leads_keep_the_default_captation_way(): void
+    {
+        config(['services.sperant.google_ads_source_id' => '12']);
+        Http::fake(['sperant.test/*' => Http::response(['id' => 1], 201)]);
+
+        $this->withCredentials()->withCookie(CaptureUtmParameters::COOKIE, json_encode([
+            'utm_source' => 'facebook',
+            'utm_medium' => 'social',
+        ]))->postJson(route('quote.send'), $this->quotePayload())
+            ->assertJson(['status' => true]);
+
+        Http::assertSent(fn (Request $request) => $request['source_id'] === 7
+            && $request['input_channel_id'] === 5);
+    }
+
+    public function test_visit_without_origin_is_sent_as_direct(): void
+    {
+        Http::fake(['sperant.test/*' => Http::response(['id' => 1], 201)]);
+
+        $this->postJson(route('quote.send'), $this->quotePayload())
+            ->assertJson(['status' => true]);
+
+        Http::assertSent(fn (Request $request) => $request['utm_source'] === 'direct'
+            && $request['utm_medium'] === 'none'
+            && $request['utm_campaign'] === 'Web - Cotizar'
+            && ! isset($request['utm_term']));
     }
 
     public function test_validation_error_is_not_retried(): void
