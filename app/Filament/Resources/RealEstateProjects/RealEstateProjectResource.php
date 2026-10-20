@@ -14,6 +14,7 @@ use App\Filament\Resources\RealEstateProjects\Schemas\RealEstateProjectInfolist;
 use App\Filament\Resources\RealEstateProjects\Tables\RealEstateProjectsTable;
 use App\Models\RealEstateProject;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -25,6 +26,12 @@ class RealEstateProjectResource extends Resource
     protected static ?string $model = RealEstateProject::class;
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-building-office-2';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Inmobiliaria';
+
+    protected static ?string $modelLabel = 'proyecto';
+
+    protected static ?string $pluralModelLabel = 'proyectos';
 
     protected static ?string $recordTitleAttribute = 'Project';
 

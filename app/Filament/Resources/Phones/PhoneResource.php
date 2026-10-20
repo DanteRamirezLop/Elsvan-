@@ -11,6 +11,7 @@ use App\Filament\Resources\Phones\Schemas\PhoneInfolist;
 use App\Filament\Resources\Phones\Tables\PhonesTable;
 use App\Models\Phone;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -21,6 +22,12 @@ class PhoneResource extends Resource
     protected static ?string $model = Phone::class;
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-phone';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Contenido';
+
+    protected static ?string $modelLabel = 'teléfono';
+
+    protected static ?string $pluralModelLabel = 'teléfonos';
 
     protected static ?string $recordTitleAttribute = 'Phone';
 

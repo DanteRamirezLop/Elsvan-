@@ -11,6 +11,7 @@ use App\Filament\Resources\Emails\Schemas\EmailInfolist;
 use App\Filament\Resources\Emails\Tables\EmailsTable;
 use App\Models\Email;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -21,6 +22,12 @@ class EmailResource extends Resource
     protected static ?string $model = Email::class;
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-envelope';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Contenido';
+
+    protected static ?string $modelLabel = 'correo';
+
+    protected static ?string $pluralModelLabel = 'correos';
 
     protected static ?string $recordTitleAttribute = 'Email';
 

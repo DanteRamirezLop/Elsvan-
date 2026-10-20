@@ -11,6 +11,7 @@ use App\Filament\Resources\Networks\Schemas\NetworkInfolist;
 use App\Filament\Resources\Networks\Tables\NetworksTable;
 use App\Models\Network;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -21,6 +22,12 @@ class NetworkResource extends Resource
     protected static ?string $model = Network::class;
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-hashtag';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Contenido';
+
+    protected static ?string $modelLabel = 'red social';
+
+    protected static ?string $pluralModelLabel = 'redes sociales';
 
     protected static ?string $recordTitleAttribute = 'Network';
 

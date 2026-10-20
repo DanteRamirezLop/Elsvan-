@@ -11,6 +11,7 @@ use App\Filament\Resources\Claims\Schemas\ClaimInfolist;
 use App\Filament\Resources\Claims\Tables\ClaimsTable;
 use App\Models\Claim;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -21,6 +22,12 @@ class ClaimResource extends Resource
     protected static ?string $model = Claim::class;
 
     protected static string|BackedEnum|null $navigationIcon ='heroicon-o-shield-exclamation';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Formularios';
+
+    protected static ?string $modelLabel = 'reclamo';
+
+    protected static ?string $pluralModelLabel = 'reclamos';
 
     protected static ?string $recordTitleAttribute = 'Claims';
 

@@ -11,6 +11,7 @@ use App\Filament\Resources\Banners\Schemas\BannerInfolist;
 use App\Filament\Resources\Banners\Tables\BannersTable;
 use App\Models\Banner;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -21,6 +22,8 @@ class BannerResource extends Resource
     protected static ?string $model = Banner::class;
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-square-3-stack-3d';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Contenido';
 
     protected static ?string $recordTitleAttribute = 'Banner';
 

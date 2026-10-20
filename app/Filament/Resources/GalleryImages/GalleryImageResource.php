@@ -11,6 +11,7 @@ use App\Filament\Resources\GalleryImages\Schemas\GalleryImageInfolist;
 use App\Filament\Resources\GalleryImages\Tables\GalleryImagesTable;
 use App\Models\GalleryImage;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -21,6 +22,12 @@ class GalleryImageResource extends Resource
     protected static ?string $model = GalleryImage::class;
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-photo';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Contenido';
+
+    protected static ?string $modelLabel = 'imagen de galería';
+
+    protected static ?string $pluralModelLabel = 'imágenes de galería';
 
     protected static ?string $recordTitleAttribute = 'GalleryImage';
 

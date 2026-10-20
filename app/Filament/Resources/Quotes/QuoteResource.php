@@ -8,6 +8,7 @@ use App\Filament\Resources\Quotes\Schemas\QuoteInfolist;
 use App\Filament\Resources\Quotes\Tables\QuotesTable;
 use App\Models\Quote;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
@@ -17,6 +18,8 @@ class QuoteResource extends Resource
     protected static ?string $model = Quote::class;
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-document-currency-dollar';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Formularios';
 
     protected static ?string $modelLabel = 'cotización';
 

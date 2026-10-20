@@ -5,6 +5,7 @@ namespace App\Filament\Pages;
 use App\Models\SperantSetting;
 use App\Services\SperantService;
 use BackedEnum;
+use UnitEnum;
 use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -24,6 +25,8 @@ use Throwable;
 class SperantSettings extends Page
 {
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-arrows-right-left';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Inmobiliaria';
 
     protected static ?string $navigationLabel = 'Integración Sperant';
 
@@ -75,7 +78,7 @@ class SperantSettings extends Page
                     ]),
 
                 Section::make('Valores por defecto')
-                    ->description('Se usan para todos los leads de la web. Consulta los IDs con el botón "Ver IDs de Sperant".')
+                    ->description('Se usan para todos los leads de la web.')
                     ->columns(2)
                     ->components([
                         TextInput::make('input_channel_id')
@@ -181,6 +184,7 @@ class SperantSettings extends Page
 
             Action::make('catalogs')
                 ->label('Ver IDs de Sperant')
+                ->hidden()
                 ->icon('heroicon-o-list-bullet')
                 ->color('gray')
                 ->modalHeading('IDs disponibles en Sperant')
